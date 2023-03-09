@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Software_Manager.Models
+namespace SoftwareManagerAPI.Models
 {
     public class Software
     {
@@ -14,14 +15,17 @@ namespace Software_Manager.Models
         public double Size { get; set; }
 
 
-        [StringLength(200)]
-        public string? ImageFileName { get; set; }
+        //[StringLength(200)]
+        //public string? ImageFileName { get; set; }
 
-        public virtual ICollection<SoftwareClaim> softwareClaims { get; set; }
+        public byte[] PictureData { get; set; }
+        public string PictureContentType { get; set; }
+        [NotMapped]
+        public virtual ICollection<SoftwareClaim> SoftwareClaims { get; set; }
         
         public Software()
         {
-            softwareClaims = new HashSet<SoftwareClaim>();
+            SoftwareClaims = new HashSet<SoftwareClaim>();
             Id = Guid.NewGuid().ToString();
 
         }

@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SoftwareManagerAPI.Models
 {
@@ -16,24 +17,25 @@ namespace SoftwareManagerAPI.Models
 
         [Key]
         public string Id { get; set; }
-        [Required]
-        public string SoftwareId { get; set; }
-        [Required]
-        public string ClassRoomId { get; set; }
-        [Required]
-        public string AppUserId { get; set; }
+        public string? SoftwareId { get; set; }
+        public string? ClassRoomId { get; set; }
+        public string? AppUserId { get; set; }
+        [NotMapped]
+        public virtual Software? Software { get; set; }
+        [NotMapped]
+        public virtual ClassRoom? ClassRoom { get; set; }
+        [NotMapped]
+        public virtual AppUser? AppUser { get; set; }
+
         [Required]
         public Status Status { get; set; }
 
-        public virtual Software Softwer { get; set; }
-        public virtual ClassRoom ClassRoom { get; set; }
-        public virtual AppUser AppUser{ get; set; }
+        [Required]
+        public DateTime ClaimDate { get; set; }
 
         public SoftwareClaim()
         {
-
             Id = Guid.NewGuid().ToString();
-
         }
     }
 }

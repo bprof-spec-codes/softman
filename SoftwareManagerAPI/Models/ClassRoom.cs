@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Software_Manager.Models
+namespace SoftwareManagerAPI.Models
 {
     public class ClassRoom
     {
@@ -10,12 +11,12 @@ namespace Software_Manager.Models
         public string RoomNumber { get; set; }
         [Required]
         public double StorageCapacity { get; set; }
+        [NotMapped]
+        public virtual ICollection<SoftwareClaim> SoftwareClaims { get; set; }
 
-        public virtual ICollection<SoftwareClaim> softwareClaims { get; set; }
         public ClassRoom() {
-            softwareClaims = new HashSet<SoftwareClaim>();
+            SoftwareClaims = new HashSet<SoftwareClaim>();
             Id =Guid.NewGuid().ToString();
-        
         }
     }
 }
