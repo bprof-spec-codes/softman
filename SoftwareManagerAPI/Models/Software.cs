@@ -18,8 +18,8 @@ namespace SoftwareManagerAPI.Models
         //[StringLength(200)]
         //public string? ImageFileName { get; set; }
 
-        public byte[] PictureData { get; set; }
-        public string PictureContentType { get; set; }
+        public byte[]? PictureData { get; set; }
+        public string? PictureContentType { get; set; }
         [NotMapped]
         public virtual ICollection<SoftwareClaim> SoftwareClaims { get; set; }
         
