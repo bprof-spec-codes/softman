@@ -11,7 +11,7 @@ namespace SoftwareManagerAPI.Models
         [Required]
         public string LastName { get; set; }
         [NotMapped]
-        public virtual ICollection<SoftwareClaim> SoftwareClaims { get; set; }
+        public virtual ICollection<SoftwareClaim>? SoftwareClaims { get; set; }
         public AppUser()
         {
             SoftwareClaims = new HashSet<SoftwareClaim>();

@@ -12,7 +12,7 @@ namespace SoftwareManagerAPI.Models
         [Required]
         public double StorageCapacity { get; set; }
         [NotMapped]
-        public virtual ICollection<SoftwareClaim> SoftwareClaims { get; set; }
+        public virtual ICollection<SoftwareClaim>? SoftwareClaims { get; set; }
 
         public ClassRoom() {
             SoftwareClaims = new HashSet<SoftwareClaim>();
