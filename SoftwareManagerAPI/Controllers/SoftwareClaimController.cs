@@ -34,5 +34,58 @@ namespace SoftwareManagerAPI.Controllers
             new SoftwareClaim(){Id="SoftwareClaim0005",ClaimDate=new DateTime(2015,2,11,6,23,12),
                 Status=Status.Rejected, SoftwareId="Soft0004",ClassRoomId="Class0002", AppUserId="User000"}
         };
+
+        [HttpGet]
+        public IEnumerable<SoftwareClaim> GetAll()
+        {
+            return SoftwareClaims;
+        }
+
+        [HttpGet("{id}")]
+        public SoftwareClaim? GetOne(string id)
+        {
+            return SoftwareClaims.FirstOrDefault(t => t.Id == id);
+        }
+
+        [HttpGet]
+        [Route("[action]")]
+        public IEnumerable<SoftwareClaim> SearchSoftwareClaims(string search)
+        {
+            throw new ArgumentException("Adatbázis kell hozzá, hogy LazyLoadingProxy-t tudjunk használni!");
+        }
+
+        [HttpPost]
+        public async void CreateSoftwareClaim(SoftwareClassRoomViewModel model)
+        {
+            Random rnd = new Random(); //teszt ideéig van benne, aztán töröljük
+            int rndNumber = rnd.Next(0,AppUsers.Count()); //teszt ideéig van benne, aztán töröljük
+
+            SoftwareClaim softwareClaim = new SoftwareClaim();
+            softwareClaim.Status= Status.Sent;
+            softwareClaim.ClaimDate = DateTime.Now;
+            softwareClaim.SoftwareId = model.Software.Id;
+            softwareClaim.ClassRoomId = model.ClassRoom.Id;
+            softwareClaim.AppUserId = AppUsers[rndNumber].Id; //ez a teszt kedvéért egy random érték, adatbázis és authorizáció esetén ki lesz cserélve
+
+            SoftwareClaims.Add(softwareClaim);
+        }
+
+        [HttpPut]
+        public async void UpdateSoftwareClaim([FromBody] SoftwareClaim updatedSoftwareClaim)
+        {
+            SoftwareClaim oldSoftwareClaim = SoftwareClaims.FirstOrDefault(t=>t.Id== updatedSoftwareClaim.Id);
+            oldSoftwareClaim.AppUserId=updatedSoftwareClaim.AppUserId;
+            oldSoftwareClaim.ClassRoomId = updatedSoftwareClaim.ClassRoomId;
+            oldSoftwareClaim.SoftwareId = updatedSoftwareClaim.SoftwareId;
+            oldSoftwareClaim.ClaimDate = updatedSoftwareClaim.ClaimDate;
+            oldSoftwareClaim.Status = updatedSoftwareClaim.Status;
+        }
+
+        [HttpDelete("{id}")]
+        public async void DeleteSoftwareClaim(string id)
+        {
+            SoftwareClaim softwareClaimToDelete = SoftwareClaims.FirstOrDefault(t=>t.Id== id);
+            SoftwareClaims.Remove(softwareClaimToDelete);
+        }
     }
 }
