@@ -43,14 +43,14 @@ namespace SoftwareManagerAPI.Controllers
         }
 
         [HttpPut]
-        public async void UpdateSoftware([FromBody] Software softwareToUpdate)
+        public async void UpdateSoftware([FromBody] Software updatedSoftware)
         {
-            Software oldSoftware = SoftwaresList.FirstOrDefault(t=>t.Id==softwareToUpdate.Id);
-            oldSoftware.Name = softwareToUpdate.Name;
-            oldSoftware.VersionNumber = softwareToUpdate.VersionNumber;
-            oldSoftware.Size = softwareToUpdate.Size;
-            oldSoftware.PictureData = softwareToUpdate.PictureData;
-            oldSoftware.PictureContentType = softwareToUpdate.PictureContentType;
+            Software oldSoftware = SoftwaresList.FirstOrDefault(t=>t.Id==updatedSoftware.Id);
+            oldSoftware.Name = updatedSoftware.Name;
+            oldSoftware.VersionNumber = updatedSoftware.VersionNumber;
+            oldSoftware.Size = updatedSoftware.Size;
+            oldSoftware.PictureData = updatedSoftware.PictureData;
+            oldSoftware.PictureContentType = updatedSoftware.PictureContentType;
         }
 
         [HttpGet]

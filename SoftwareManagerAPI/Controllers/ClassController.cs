@@ -15,5 +15,47 @@ namespace SoftwareManagerAPI.Controllers
             new ClassRoom(){Id="Class0003",RoomNumber="BA.03.18.",StorageCapacity=1000},
             new ClassRoom(){Id="Class0004",RoomNumber="BD.02.11.",StorageCapacity=2000}
         };
+
+        [HttpGet]
+        public IEnumerable<ClassRoom> GetAll()
+        {
+            return ClassRooms;
+        }
+
+        [HttpGet("{id}")]
+        public ClassRoom? GetOne(string id)
+        {
+            return ClassRooms.FirstOrDefault(t=>t.Id== id);
+        }
+
+        [HttpGet]
+        [Route("[action]")]
+        public IEnumerable<ClassRoom> SearchClasses (string search)
+        {
+            var results = ClassRooms.Where(t =>
+            t.RoomNumber.ToLower().Contains(search.ToLower()));
+            return results;
+        }
+        
+        [HttpPost]
+        public async void CreateClass([FromBody] ClassRoom classRoom)
+        {
+            ClassRooms.Add(classRoom);
+        }
+
+        [HttpPut]
+        public async void UpdateClass([FromBody] ClassRoom updatedClassRoom)
+        {
+            ClassRoom oldClassRoom = ClassRooms.FirstOrDefault(t => t.Id == updatedClassRoom.Id);
+            oldClassRoom.RoomNumber= updatedClassRoom.RoomNumber;
+            oldClassRoom.StorageCapacity= updatedClassRoom.StorageCapacity;
+        }
+
+        [HttpDelete("{id}")]
+        public async void DeleteClass(string id)
+        {
+            ClassRoom classRoomToDelete = ClassRooms.FirstOrDefault(t => t.Id == id);
+            ClassRooms.Remove(classRoomToDelete);
+        }
     }
 }
