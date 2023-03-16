@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using SoftwareManagerAPI.Data.Logic;
 using SoftwareManagerAPI.Models;
 using System.Diagnostics;
 
@@ -8,6 +9,17 @@ namespace SoftwareManagerAPI.Controllers
     [Route("[controller]")]
     public class SoftwareController : ControllerBase
     {
+
+        ISoftware SoftwareRepo;
+
+        public SoftwareController(ISoftware SoftwareRepo)
+        {
+
+            this.SoftwareRepo = SoftwareRepo;
+
+        }
+
+
         static List<Software> SoftwaresList = new List<Software>()
         {
             new Software() { Name = "Word", Size = 1500, VersionNumber = "2023", Id = "Soft0000" },
@@ -20,7 +32,7 @@ namespace SoftwareManagerAPI.Controllers
         [HttpGet]
         public IEnumerable<Software> GetAll()
         {
-            return SoftwaresList;
+            return SoftwareRepo.ReadAll();
         }
 
         [HttpGet("{id}")]

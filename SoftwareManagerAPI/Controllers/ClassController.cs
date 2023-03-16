@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using SoftwareManagerAPI.Data.Logic;
 using SoftwareManagerAPI.Models;
 
 namespace SoftwareManagerAPI.Controllers
@@ -7,6 +8,15 @@ namespace SoftwareManagerAPI.Controllers
     [Route("[controller]")]
     public class ClassController : ControllerBase
     {
+        IClassRoom ClassRoomRepo;
+
+        public ClassController(IClassRoom ClassRoomRepo) { 
+        
+        this.ClassRoomRepo = ClassRoomRepo;
+        
+        }
+        
+        
         static List<ClassRoom> ClassRooms = new List<ClassRoom>()
         {
             new ClassRoom(){Id="Class0000",RoomNumber="BA.01.11.",StorageCapacity=3000},
@@ -19,7 +29,7 @@ namespace SoftwareManagerAPI.Controllers
         [HttpGet]
         public IEnumerable<ClassRoom> GetAll()
         {
-            return ClassRooms;
+            return ClassRoomRepo.ReadAll();
         }
 
         [HttpGet("{id}")]

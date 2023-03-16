@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Formatters;
+using SoftwareManagerAPI.Data.Logic;
 using SoftwareManagerAPI.Models;
 
 namespace SoftwareManagerAPI.Controllers
@@ -8,6 +9,18 @@ namespace SoftwareManagerAPI.Controllers
     [Route("[controller]")]
     public class SoftwareClaimController : ControllerBase
     {
+
+
+        ISoftwareClaim SoftwareClaim;
+
+        public SoftwareClaimController(ISoftwareClaim SoftwareClaim)
+        {
+
+            this.SoftwareClaim = SoftwareClaim;
+
+        }
+
+
         static List<AppUser> AppUsers = new List<AppUser>()
         {
             new AppUser(){Id="User000", Email="bela@bela.hu", NormalizedEmail="BELA@BELA.HU",
@@ -38,7 +51,7 @@ namespace SoftwareManagerAPI.Controllers
         [HttpGet]
         public IEnumerable<SoftwareClaim> GetAll()
         {
-            return SoftwareClaims;
+            return SoftwareClaim.ReadAll();
         }
 
         [HttpGet("{id}")]

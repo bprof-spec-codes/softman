@@ -20,12 +20,9 @@ namespace SoftwareManagerAPI.Models
 
         public byte[]? PictureData { get; set; }
         public string? PictureContentType { get; set; }
-        [NotMapped]
-        public virtual ICollection<SoftwareClaim>? SoftwareClaims { get; set; }
-        
+
         public Software()
         {
-            SoftwareClaims = new HashSet<SoftwareClaim>();
             Id = Guid.NewGuid().ToString();
 
         }
