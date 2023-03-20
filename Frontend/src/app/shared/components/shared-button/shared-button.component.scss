@@ -1,0 +1,41 @@
+/*
+
+Background
+
+position: absolute;
+width: 149px;
+height: 44px;
+left: 1547px;
+top: 35px;
+
+background: #7214FF;
+border-radius: 10px;
+
+
+Sign in
+
+position: absolute;
+width: 80px;
+height: 30px;
+left: 1582px;
+top: 42px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 25px;
+line-height: 30px;
+text-align: center;
+
+color: #FFFFFF;
+
+
+*/
+
+
+button {
+    @apply rounded-xl text-link px-8 py-2;
+
+    background: #7214FF;
+    color: #FFFFFF;
+}

@@ -51,17 +51,16 @@ nav {
             @apply inline-block;
 
             & a {
-                font-family: 'Inter';
-                font-style: normal;
-                font-weight: 400;
-                font-size: 25px;
-                line-height: 30px;
-                color: #FFFFFF;
+               @apply text-link;
             }
 
             &:not(:last-child) {
                 @apply mr-14;
             }
         }
+    }
+
+    & .btn {
+        @apply float-right mr-48 relative top-6;
     }
 }
