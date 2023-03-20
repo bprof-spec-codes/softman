@@ -1,7 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-const routes: Routes = [];
+import { FeaturePublicComponent } from './features/feature-public/feature-public.component';
+
+const routes: Routes = [
+  { path: '', component: FeaturePublicComponent }
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
