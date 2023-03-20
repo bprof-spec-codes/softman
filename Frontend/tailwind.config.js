@@ -9,6 +9,5 @@ module.exports = {
   plugins: [],
   corePlugins: {
     preflight: true
-  },
-  prefix: 'tw'
+  }
 }

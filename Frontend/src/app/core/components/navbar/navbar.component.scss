@@ -30,3 +30,38 @@ color: #FFFFFF;
 
 
 */
+
+nav {
+    @apply w-screen h-24;
+
+    background: linear-gradient(90.26deg, #307373 28.57%, #0B1234 93.95%);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+    & img {
+        @apply inline-block relative mx-16;
+
+        height: 60%;
+        top: 20%;
+    }
+
+    & ul {
+        @apply inline-block relative top-6;
+
+        & li {
+            @apply inline-block;
+
+            & a {
+                font-family: 'Inter';
+                font-style: normal;
+                font-weight: 400;
+                font-size: 25px;
+                line-height: 30px;
+                color: #FFFFFF;
+            }
+
+            &:not(:last-child) {
+                @apply mr-14;
+            }
+        }
+    }
+}
