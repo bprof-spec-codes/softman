@@ -15,11 +15,27 @@ module.exports = {
           fontFamily: 'Inter',
           fontStyle: 'normal',
           fontWeight: 400,
-          fontSize: '25px',
-          lineHeight: '30px',
+          fontSize: '1.22rem',
+          lineHeight: '1.9rem', //30px
           color: '#FFFFFF',
           cursor: 'pointer'
-      }
+        },
+        '.text-title': {
+          fontFamily: 'Inter',
+          fontStyle: 'normal',
+          fontWeight: 700,
+          fontSize: '2.8rem',
+          lineHeight: '4rem',
+          color: '#FFFFFF'
+        },
+        '.text-subtitle': {
+          fontFamily: 'Inter',
+          fontStyle: 'normal',
+          fontWeight: 400,
+          fontSize: '1.1rem',
+          lineHeight: '2.5rem',
+          color: '#FFFFFF'
+        }
       })
     })
   ],

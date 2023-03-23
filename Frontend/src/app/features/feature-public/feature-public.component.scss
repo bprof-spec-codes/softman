@@ -1,0 +1,58 @@
+@import "index";
+
+/*
+
+Background v2
+
+position: absolute;
+width: 1920px;
+height: 1812px;
+left: 0px;
+top: -1px;
+
+background: linear-gradient(105.17deg, #060B27 25%, #191348 97.49%);
+box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+
+*/
+
+
+.summary {
+    @include box-shadow;
+
+    background: $color-grad-public_summary;
+    height: 40vh;
+
+    &__col-side {
+        @apply h-full;
+
+        width: 28%;
+
+        & img {
+            @apply relative;
+
+            height: 65%;
+            top: 17.5%;
+        }
+    }
+
+    &__col-mid {
+        @apply h-full;
+
+        width: 44%;
+
+        & ul {
+            @apply h-fit relative;
+
+            top: 25%;
+
+            & li:first-child{
+                @apply mb-10 uppercase;
+            }
+        }
+    }
+}
+
+.text {
+    @apply text-center;
+}

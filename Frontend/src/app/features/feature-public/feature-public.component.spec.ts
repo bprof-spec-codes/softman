@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { FeaturePublicComponent } from './feature-public.component';
 
-describe('NavbarComponent', () => {
+describe('FeaturePublicComponent', () => {
   let component: FeaturePublicComponent;
   let fixture: ComponentFixture<FeaturePublicComponent>;
 
