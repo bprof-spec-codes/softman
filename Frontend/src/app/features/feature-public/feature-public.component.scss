@@ -21,11 +21,33 @@ footer, .summary {
     @include box-shadow;
 
     background: $color-grad-public_primary;
-    height: 40vh;
 }
+
+
+.description {
+    @apply w-fit mx-auto;
+
+    padding-top: 10vh;
+
+    & li {
+        & h2 {
+            @apply text-subtitle;
+        }
+
+        & h3 {
+            @apply text-normal;
+
+            color: black;
+            text-align: left;
+        }
+    }
+}
+
 
 .summary {
     @include grid--r1-c3;
+
+    height: 40vh;
 
     &__cell-1, &__cell-3 {
         & img {
@@ -54,7 +76,7 @@ footer, .summary {
     @include grid--r1-c3;
 
     background-color: $color-public_basic;
-    height: 35vh;
+    height: 40vh;
 }
 
 
@@ -63,19 +85,47 @@ footer, .summary {
 
     background-color: $color-public_special;
     height: 30vh;
+
+    &__cell-1 {
+        & img {
+            @apply relative cursor-pointer;
+
+            top: 33%;
+            height: 34%;
+            margin-left: 10%;
+        }
+    }
+
+    &__cell-2 {
+        & img {
+            @apply block w-fit mx-auto relative;
+
+            top: 20%;
+            height: 80%;
+        }
+    }
 }
 
 
 footer {
     @apply grid grid-cols-4 grid-rows-3;
 
-    padding: 5vh 20%;
+    height: 50vh;
+    padding: 8vh 20%;
 
     & .cell-1 { grid-area: 1 / 1 / 2 / 5; }
     & .cell-2 { grid-area: 2 / 1 / 4 / 2; }
     & .cell-3 { grid-area: 2 / 2 / 4 / 3; }
     & .cell-4 { grid-area: 2 / 3 / 4 / 4; }
     & .cell-5 { grid-area: 2 / 4 / 4 / 5; }
+
+    & .cell-1 {
+        & h3 {
+            @apply text-normal;
+
+            font-weight: 700;
+        }
+    }
 
     & div[class^=cell-] {
         & ul {
@@ -88,13 +138,13 @@ footer {
 
             & li {
                 & h3 {
-                    @apply text-subtitle;
+                    @apply text-normal;
 
                     font-weight: 700;
                 }
 
                 & h4 {
-                    @apply text-subtitle;
+                    @apply text-normal;
 
                     font-style: italic;
                 }

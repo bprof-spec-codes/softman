@@ -32,9 +32,17 @@ module.exports = {
         '.text-subtitle': {
           fontFamily: 'Inter',
           fontStyle: 'normal',
+          fontWeight: 700,
+          fontSize: '1.9rem',
+          lineHeight: '2.6rem',
+          color: '#000000'
+        },
+        '.text-normal': {
+          fontFamily: 'Inter',
+          fontStyle: 'normal',
           fontWeight: 400,
           fontSize: '1.1rem',
-          lineHeight: '2.5rem',
+          lineHeight: '2.2rem',
           color: '#FFFFFF',
           textAlign: 'center'
         }
