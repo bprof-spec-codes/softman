@@ -44,7 +44,7 @@ namespace SoftwareManagerAPI.Controllers
         [HttpPost]
         public async void CreateSoftware([FromBody] Software software)
         {
-            SoftwaresList.Add(software);
+            SoftwareRepo.Create(software);
         }
 
         [HttpDelete("{id}")]

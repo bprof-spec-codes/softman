@@ -13,7 +13,8 @@ namespace SoftwareManagerAPI.Models
         public string VersionNumber { get; set; }
         [Required]
         public double Size { get; set; }
-
+        [NotMapped]
+        public virtual ICollection<SoftwareClaim> SoftwareClaims { get; set; }
 
         //[StringLength(200)]
         //public string? ImageFileName { get; set; }
@@ -23,6 +24,7 @@ namespace SoftwareManagerAPI.Models
 
         public Software()
         {
+            SoftwareClaims = new HashSet<SoftwareClaim>();
             Id = Guid.NewGuid().ToString();
 
         }

@@ -19,6 +19,13 @@ namespace SoftwareManagerAPI.Data
         {
 
 
+            builder.Entity<SoftwareClaim>().HasOne(t => t.AppUser).WithMany(t => t.SoftwareClaims);
+            builder.Entity<SoftwareClaim>().HasOne(t => t.ClassRoom).WithMany(t => t.SoftwareClaims);
+            builder.Entity<SoftwareClaim>().HasOne(t => t.Software).WithMany(t => t.SoftwareClaims);
+
+
+
+
 
             builder.Entity<IdentityRole>().HasData(
               new { Id = "1", Name = "Admin", NormalizedName = "ADMIN" },
@@ -53,9 +60,10 @@ namespace SoftwareManagerAPI.Data
                 Email = "KisPista@gmail.com",
                 EmailConfirmed = true,
                 FirstName = "Kis",
-                LastName="Pista",
+                LastName = "Pista",
                 UserName = "KisPista@gmail.com",
-                NormalizedUserName = "KISPISTA@GMAIL.COM"
+                NormalizedUserName = "KISPISTA@GMAIL.COM",
+                NormalizedEmail = "KISPISTA@GMAIL.COM"
             };
             KisPista.PasswordHash = ph.HashPassword(KisPista, "PistaKis");
             builder.Entity<AppUser>().HasData(KisPista);
@@ -72,7 +80,8 @@ namespace SoftwareManagerAPI.Data
                 FirstName = "Nagy",
                 LastName = "József",
                 UserName = "Jozsi@gmail.com",
-                NormalizedUserName = "JOZSI@GMAIL.COM"
+                NormalizedUserName = "JOZSI@GMAIL.COM",
+                NormalizedEmail = "JOZSI@GMAIL.COM"
             };
             Jozsi.PasswordHash = ph.HashPassword(Jozsi, "NemJozsi");
             builder.Entity<AppUser>().HasData(Jozsi);
@@ -164,6 +173,7 @@ namespace SoftwareManagerAPI.Data
                 );
 
             base.OnModelCreating(builder);
+            ;
         }
 
 

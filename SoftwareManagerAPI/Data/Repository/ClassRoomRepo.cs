@@ -24,9 +24,9 @@ namespace SoftwareManagerAPI.Data.Repository
             db.SaveChanges();
         }
 
-        public IEnumerable<ClassRoom> ReadAll()
+        public IQueryable<ClassRoom> ReadAll()
         {
-            return db.Classrooms;
+            return db.Set<ClassRoom>();
         }
 
         public ClassRoom ReadByID(string id)

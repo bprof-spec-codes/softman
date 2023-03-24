@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace SoftwareManagerAPI.Migrations
 {
-    public partial class init : Migration
+    public partial class test : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -48,6 +48,35 @@ namespace SoftwareManagerAPI.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Classrooms",
+                columns: table => new
+                {
+                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    RoomNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    StorageCapacity = table.Column<double>(type: "float", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Classrooms", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Softwares",
+                columns: table => new
+                {
+                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    VersionNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Size = table.Column<double>(type: "float", nullable: false),
+                    PictureData = table.Column<byte[]>(type: "varbinary(max)", nullable: true),
+                    PictureContentType = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Softwares", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -156,20 +185,102 @@ namespace SoftwareManagerAPI.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
-            migrationBuilder.InsertData(
-                table: "AspNetRoles",
-                columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "1", null, "Admin", "ADMIN" });
+            migrationBuilder.CreateTable(
+                name: "softwareClaims",
+                columns: table => new
+                {
+                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    SoftwareId = table.Column<string>(type: "nvarchar(450)", nullable: true),
+                    ClassRoomId = table.Column<string>(type: "nvarchar(450)", nullable: true),
+                    AppUserId = table.Column<string>(type: "nvarchar(450)", nullable: true),
+                    Status = table.Column<int>(type: "int", nullable: false),
+                    ClaimDate = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_softwareClaims", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_softwareClaims_AspNetUsers_AppUserId",
+                        column: x => x.AppUserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_softwareClaims_Classrooms_ClassRoomId",
+                        column: x => x.ClassRoomId,
+                        principalTable: "Classrooms",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_softwareClaims_Softwares_SoftwareId",
+                        column: x => x.SoftwareId,
+                        principalTable: "Softwares",
+                        principalColumn: "Id");
+                });
 
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "2", null, "Customer", "CUSTOMER" });
+                values: new object[,]
+                {
+                    { "1", null, "Admin", "ADMIN" },
+                    { "2", null, "Customer", "CUSTOMER" }
+                });
 
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "d347c94a-8a1f-4f7e-ae40-73285c6aaca9", 0, "e2a1eab4-f666-4704-8d35-d227e052e077", "kovi91@gmail.com", true, "Kovács", "András", false, null, null, "KOVI91@GMAIL.COM", "AQAAAAEAACcQAAAAEHeHx2vd42z9PGE5Gulz99RQS928HzJFBnF0GrwUz+g2xvTz2wOD0kPDtkvuvoiQqA==", null, false, "2ab65dc4-a1bf-471c-8cc9-c9fccc75eb22", false, "kovi91@gmail.com" });
+                values: new object[,]
+                {
+                    { "User001", 0, "cd02a2b1-b50e-4b85-9b8a-269b54e84ccf", "kovi91@gmail.com", true, "Kovács", "András", false, null, "KOVI91@GMAIL.COM", "KOVI91@GMAIL.COM", "AQAAAAEAACcQAAAAEPZZPEahoNwltsPr4YzwXiOw6Hb1qom0qIGRvatkcOu7NIQA7NRT0tCYBh5wSHNfQg==", null, false, "5b07c482-d899-4276-916a-4be410561a4e", false, "kovi91@gmail.com" },
+                    { "User002", 0, "39e2b788-be41-47ae-af8b-5ebd41eafd7b", "KisPista@gmail.com", true, "Kis", "Pista", false, null, "KISPISTA@GMAIL.COM", "KISPISTA@GMAIL.COM", "AQAAAAEAACcQAAAAEO/MZFWkHU1DU9oKoetk2y1+kgTV1KmagWM9hTiy6ytd3vsl5RLn2jRdNLFykyLBFw==", null, false, "31e3f828-a031-41bf-b564-298cf4439153", false, "KisPista@gmail.com" },
+                    { "User003", 0, "7ccaf7c1-fb3a-4c0d-89b2-1571f3c2e9cc", "Jozsi@gmail.com", true, "Nagy", "József", false, null, "JOZSI@GMAIL.COM", "JOZSI@GMAIL.COM", "AQAAAAEAACcQAAAAEA1X/gYq10Acy7r9z1B6AIifclfNHq4Zw7Q1VG17qUh/3QnIBI4xZz7ZhI+r1z5PhA==", null, false, "4c51f6cf-89b2-4216-ae3a-8485bd57d897", false, "Jozsi@gmail.com" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Classrooms",
+                columns: new[] { "Id", "RoomNumber", "StorageCapacity" },
+                values: new object[,]
+                {
+                    { "Class0000", "BA.01.11.", 3000.0 },
+                    { "Class0001", "BC.04.07.", 3500.0 },
+                    { "Class0002", "BA.11.20.", 1400.0 },
+                    { "Class0003", "BA.03.18.", 1000.0 },
+                    { "Class0004", "BD.02.11.", 2000.0 }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Softwares",
+                columns: new[] { "Id", "Name", "PictureContentType", "PictureData", "Size", "VersionNumber" },
+                values: new object[,]
+                {
+                    { "Soft0000", "Word", null, null, 1500.0, "2023" },
+                    { "Soft0001", "Excel", null, null, 2000.0, "2023" },
+                    { "Soft0002", "Visual Studio", null, null, 4500.0, "2022" },
+                    { "Soft0003", "Matlab", null, null, 800.0, "2018" },
+                    { "Soft0004", "Packet Tracer", null, null, 600.0, "2016" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "AspNetUserRoles",
+                columns: new[] { "RoleId", "UserId" },
+                values: new object[,]
+                {
+                    { "1", "User001" },
+                    { "2", "User002" },
+                    { "2", "User003" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "softwareClaims",
+                columns: new[] { "Id", "AppUserId", "ClaimDate", "ClassRoomId", "SoftwareId", "Status" },
+                values: new object[,]
+                {
+                    { "SoftwareClaim0000", "User003", new DateTime(2023, 2, 11, 6, 23, 12, 0, DateTimeKind.Unspecified), "Class0001", "Soft0000", 0 },
+                    { "SoftwareClaim0001", "User003", new DateTime(2022, 11, 20, 9, 45, 33, 0, DateTimeKind.Unspecified), "Class0001", "Soft0001", 2 },
+                    { "SoftwareClaim0002", "User001", new DateTime(2023, 1, 19, 9, 30, 30, 0, DateTimeKind.Unspecified), "Class0002", "Soft0003", 1 },
+                    { "SoftwareClaim0003", "User002", new DateTime(2020, 2, 9, 6, 10, 12, 0, DateTimeKind.Unspecified), "Class0001", "Soft0003", 2 },
+                    { "SoftwareClaim0004", "User001", new DateTime(2022, 6, 22, 9, 23, 12, 0, DateTimeKind.Unspecified), "Class0003", "Soft0002", 1 },
+                    { "SoftwareClaim0005", "User002", new DateTime(2015, 2, 11, 6, 23, 12, 0, DateTimeKind.Unspecified), "Class0002", "Soft0004", 2 }
+                });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
@@ -209,6 +320,21 @@ namespace SoftwareManagerAPI.Migrations
                 column: "NormalizedUserName",
                 unique: true,
                 filter: "[NormalizedUserName] IS NOT NULL");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_softwareClaims_AppUserId",
+                table: "softwareClaims",
+                column: "AppUserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_softwareClaims_ClassRoomId",
+                table: "softwareClaims",
+                column: "ClassRoomId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_softwareClaims_SoftwareId",
+                table: "softwareClaims",
+                column: "SoftwareId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -229,10 +355,19 @@ namespace SoftwareManagerAPI.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
+                name: "softwareClaims");
+
+            migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
+
+            migrationBuilder.DropTable(
+                name: "Classrooms");
+
+            migrationBuilder.DropTable(
+                name: "Softwares");
         }
     }
 }

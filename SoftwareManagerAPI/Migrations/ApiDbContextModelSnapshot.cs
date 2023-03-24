@@ -265,7 +265,7 @@ namespace SoftwareManagerAPI.Migrations
                         {
                             Id = "User001",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "14b62925-a399-4d3d-85d6-338879866f42",
+                            ConcurrencyStamp = "cd02a2b1-b50e-4b85-9b8a-269b54e84ccf",
                             Email = "kovi91@gmail.com",
                             EmailConfirmed = true,
                             FirstName = "Kovács",
@@ -273,9 +273,9 @@ namespace SoftwareManagerAPI.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "KOVI91@GMAIL.COM",
                             NormalizedUserName = "KOVI91@GMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEA5IeRj6oM09hf3RpYvWOF+fV2TOxPFvFGgWSMAEJLxlKD4l/2eaNLY4636JCm7U3w==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEPZZPEahoNwltsPr4YzwXiOw6Hb1qom0qIGRvatkcOu7NIQA7NRT0tCYBh5wSHNfQg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "316e2707-e902-4bb7-bf0b-1dbd2180e8f4",
+                            SecurityStamp = "5b07c482-d899-4276-916a-4be410561a4e",
                             TwoFactorEnabled = false,
                             UserName = "kovi91@gmail.com"
                         },
@@ -283,16 +283,17 @@ namespace SoftwareManagerAPI.Migrations
                         {
                             Id = "User002",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "f46ffdf8-a042-4cad-a264-6f39a7bdf7d7",
+                            ConcurrencyStamp = "39e2b788-be41-47ae-af8b-5ebd41eafd7b",
                             Email = "KisPista@gmail.com",
                             EmailConfirmed = true,
                             FirstName = "Kis",
                             LastName = "Pista",
                             LockoutEnabled = false,
+                            NormalizedEmail = "KISPISTA@GMAIL.COM",
                             NormalizedUserName = "KISPISTA@GMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEExkGcJTmpe85RGk9wmdnALlnVJVraK66yx9JbF5wm22pCkMwQR2/AgePhijCvc8CA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEO/MZFWkHU1DU9oKoetk2y1+kgTV1KmagWM9hTiy6ytd3vsl5RLn2jRdNLFykyLBFw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "08c166a8-3a7b-4ce8-8da5-e278fae31301",
+                            SecurityStamp = "31e3f828-a031-41bf-b564-298cf4439153",
                             TwoFactorEnabled = false,
                             UserName = "KisPista@gmail.com"
                         },
@@ -300,16 +301,17 @@ namespace SoftwareManagerAPI.Migrations
                         {
                             Id = "User003",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "03a1f751-5139-43ae-9895-1ba6afe0869d",
+                            ConcurrencyStamp = "7ccaf7c1-fb3a-4c0d-89b2-1571f3c2e9cc",
                             Email = "Jozsi@gmail.com",
                             EmailConfirmed = true,
                             FirstName = "Nagy",
                             LastName = "József",
                             LockoutEnabled = false,
+                            NormalizedEmail = "JOZSI@GMAIL.COM",
                             NormalizedUserName = "JOZSI@GMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEHHiv5daOpKC6RaXaJisvVr0pCSvQ4B7VEEQCr7qB1N4rkGCXmbn+vku3rkGTj0u+g==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEA1X/gYq10Acy7r9z1B6AIifclfNHq4Zw7Q1VG17qUh/3QnIBI4xZz7ZhI+r1z5PhA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "e56dbf58-b5a1-4cfc-ae4c-6babd03830aa",
+                            SecurityStamp = "4c51f6cf-89b2-4216-ae3a-8485bd57d897",
                             TwoFactorEnabled = false,
                             UserName = "Jozsi@gmail.com"
                         });
@@ -329,7 +331,7 @@ namespace SoftwareManagerAPI.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Classrooms");
+                    b.ToTable("Classrooms", (string)null);
 
                     b.HasData(
                         new
@@ -388,7 +390,7 @@ namespace SoftwareManagerAPI.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Softwares");
+                    b.ToTable("Softwares", (string)null);
 
                     b.HasData(
                         new
@@ -434,23 +436,29 @@ namespace SoftwareManagerAPI.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("AppUserId")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<DateTime>("ClaimDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("ClassRoomId")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("SoftwareId")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<int>("Status")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.ToTable("softwareClaims");
+                    b.HasIndex("AppUserId");
+
+                    b.HasIndex("ClassRoomId");
+
+                    b.HasIndex("SoftwareId");
+
+                    b.ToTable("softwareClaims", (string)null);
 
                     b.HasData(
                         new
@@ -558,6 +566,42 @@ namespace SoftwareManagerAPI.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("SoftwareManagerAPI.Models.SoftwareClaim", b =>
+                {
+                    b.HasOne("SoftwareManagerAPI.Models.AppUser", "AppUser")
+                        .WithMany("SoftwareClaims")
+                        .HasForeignKey("AppUserId");
+
+                    b.HasOne("SoftwareManagerAPI.Models.ClassRoom", "ClassRoom")
+                        .WithMany("SoftwareClaims")
+                        .HasForeignKey("ClassRoomId");
+
+                    b.HasOne("SoftwareManagerAPI.Models.Software", "Software")
+                        .WithMany("SoftwareClaims")
+                        .HasForeignKey("SoftwareId");
+
+                    b.Navigation("AppUser");
+
+                    b.Navigation("ClassRoom");
+
+                    b.Navigation("Software");
+                });
+
+            modelBuilder.Entity("SoftwareManagerAPI.Models.AppUser", b =>
+                {
+                    b.Navigation("SoftwareClaims");
+                });
+
+            modelBuilder.Entity("SoftwareManagerAPI.Models.ClassRoom", b =>
+                {
+                    b.Navigation("SoftwareClaims");
+                });
+
+            modelBuilder.Entity("SoftwareManagerAPI.Models.Software", b =>
+                {
+                    b.Navigation("SoftwareClaims");
                 });
 #pragma warning restore 612, 618
         }

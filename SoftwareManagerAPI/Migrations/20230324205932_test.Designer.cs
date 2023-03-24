@@ -12,8 +12,8 @@ using SoftwareManagerAPI.Data;
 namespace SoftwareManagerAPI.Migrations
 {
     [DbContext(typeof(ApiDbContext))]
-    [Migration("20230315154050_init2")]
-    partial class init2
+    [Migration("20230324205932_test")]
+    partial class test
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -150,6 +150,23 @@ namespace SoftwareManagerAPI.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetUserRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            UserId = "User001",
+                            RoleId = "1"
+                        },
+                        new
+                        {
+                            UserId = "User002",
+                            RoleId = "2"
+                        },
+                        new
+                        {
+                            UserId = "User003",
+                            RoleId = "2"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
@@ -248,20 +265,57 @@ namespace SoftwareManagerAPI.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "37ac4738-01f5-4591-a6a2-b55a97731651",
+                            Id = "User001",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "69062b26-146f-4a45-987a-e3b16af7e084",
+                            ConcurrencyStamp = "cd02a2b1-b50e-4b85-9b8a-269b54e84ccf",
                             Email = "kovi91@gmail.com",
                             EmailConfirmed = true,
                             FirstName = "Kovács",
                             LastName = "András",
                             LockoutEnabled = false,
+                            NormalizedEmail = "KOVI91@GMAIL.COM",
                             NormalizedUserName = "KOVI91@GMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAENhOwMUND0nILES6qV8L/m2aKR1IFx1sIlYi7iMKKFZeQ0XO4k5K+QVbe6ojb8h7qw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEPZZPEahoNwltsPr4YzwXiOw6Hb1qom0qIGRvatkcOu7NIQA7NRT0tCYBh5wSHNfQg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "81d8c903-abc5-4f17-b938-1a92dd50ca70",
+                            SecurityStamp = "5b07c482-d899-4276-916a-4be410561a4e",
                             TwoFactorEnabled = false,
                             UserName = "kovi91@gmail.com"
+                        },
+                        new
+                        {
+                            Id = "User002",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "39e2b788-be41-47ae-af8b-5ebd41eafd7b",
+                            Email = "KisPista@gmail.com",
+                            EmailConfirmed = true,
+                            FirstName = "Kis",
+                            LastName = "Pista",
+                            LockoutEnabled = false,
+                            NormalizedEmail = "KISPISTA@GMAIL.COM",
+                            NormalizedUserName = "KISPISTA@GMAIL.COM",
+                            PasswordHash = "AQAAAAEAACcQAAAAEO/MZFWkHU1DU9oKoetk2y1+kgTV1KmagWM9hTiy6ytd3vsl5RLn2jRdNLFykyLBFw==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "31e3f828-a031-41bf-b564-298cf4439153",
+                            TwoFactorEnabled = false,
+                            UserName = "KisPista@gmail.com"
+                        },
+                        new
+                        {
+                            Id = "User003",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "7ccaf7c1-fb3a-4c0d-89b2-1571f3c2e9cc",
+                            Email = "Jozsi@gmail.com",
+                            EmailConfirmed = true,
+                            FirstName = "Nagy",
+                            LastName = "József",
+                            LockoutEnabled = false,
+                            NormalizedEmail = "JOZSI@GMAIL.COM",
+                            NormalizedUserName = "JOZSI@GMAIL.COM",
+                            PasswordHash = "AQAAAAEAACcQAAAAEA1X/gYq10Acy7r9z1B6AIifclfNHq4Zw7Q1VG17qUh/3QnIBI4xZz7ZhI+r1z5PhA==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "4c51f6cf-89b2-4216-ae3a-8485bd57d897",
+                            TwoFactorEnabled = false,
+                            UserName = "Jozsi@gmail.com"
                         });
                 });
 
@@ -280,6 +334,38 @@ namespace SoftwareManagerAPI.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Classrooms");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "Class0000",
+                            RoomNumber = "BA.01.11.",
+                            StorageCapacity = 3000.0
+                        },
+                        new
+                        {
+                            Id = "Class0001",
+                            RoomNumber = "BC.04.07.",
+                            StorageCapacity = 3500.0
+                        },
+                        new
+                        {
+                            Id = "Class0002",
+                            RoomNumber = "BA.11.20.",
+                            StorageCapacity = 1400.0
+                        },
+                        new
+                        {
+                            Id = "Class0003",
+                            RoomNumber = "BA.03.18.",
+                            StorageCapacity = 1000.0
+                        },
+                        new
+                        {
+                            Id = "Class0004",
+                            RoomNumber = "BD.02.11.",
+                            StorageCapacity = 2000.0
+                        });
                 });
 
             modelBuilder.Entity("SoftwareManagerAPI.Models.Software", b =>
@@ -307,6 +393,43 @@ namespace SoftwareManagerAPI.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Softwares");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "Soft0000",
+                            Name = "Word",
+                            Size = 1500.0,
+                            VersionNumber = "2023"
+                        },
+                        new
+                        {
+                            Id = "Soft0001",
+                            Name = "Excel",
+                            Size = 2000.0,
+                            VersionNumber = "2023"
+                        },
+                        new
+                        {
+                            Id = "Soft0002",
+                            Name = "Visual Studio",
+                            Size = 4500.0,
+                            VersionNumber = "2022"
+                        },
+                        new
+                        {
+                            Id = "Soft0003",
+                            Name = "Matlab",
+                            Size = 800.0,
+                            VersionNumber = "2018"
+                        },
+                        new
+                        {
+                            Id = "Soft0004",
+                            Name = "Packet Tracer",
+                            Size = 600.0,
+                            VersionNumber = "2016"
+                        });
                 });
 
             modelBuilder.Entity("SoftwareManagerAPI.Models.SoftwareClaim", b =>
@@ -315,23 +438,85 @@ namespace SoftwareManagerAPI.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("AppUserId")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<DateTime>("ClaimDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("ClassRoomId")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("SoftwareId")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<int>("Status")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
+                    b.HasIndex("AppUserId");
+
+                    b.HasIndex("ClassRoomId");
+
+                    b.HasIndex("SoftwareId");
+
                     b.ToTable("softwareClaims");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "SoftwareClaim0000",
+                            AppUserId = "User003",
+                            ClaimDate = new DateTime(2023, 2, 11, 6, 23, 12, 0, DateTimeKind.Unspecified),
+                            ClassRoomId = "Class0001",
+                            SoftwareId = "Soft0000",
+                            Status = 0
+                        },
+                        new
+                        {
+                            Id = "SoftwareClaim0001",
+                            AppUserId = "User003",
+                            ClaimDate = new DateTime(2022, 11, 20, 9, 45, 33, 0, DateTimeKind.Unspecified),
+                            ClassRoomId = "Class0001",
+                            SoftwareId = "Soft0001",
+                            Status = 2
+                        },
+                        new
+                        {
+                            Id = "SoftwareClaim0002",
+                            AppUserId = "User001",
+                            ClaimDate = new DateTime(2023, 1, 19, 9, 30, 30, 0, DateTimeKind.Unspecified),
+                            ClassRoomId = "Class0002",
+                            SoftwareId = "Soft0003",
+                            Status = 1
+                        },
+                        new
+                        {
+                            Id = "SoftwareClaim0003",
+                            AppUserId = "User002",
+                            ClaimDate = new DateTime(2020, 2, 9, 6, 10, 12, 0, DateTimeKind.Unspecified),
+                            ClassRoomId = "Class0001",
+                            SoftwareId = "Soft0003",
+                            Status = 2
+                        },
+                        new
+                        {
+                            Id = "SoftwareClaim0004",
+                            AppUserId = "User001",
+                            ClaimDate = new DateTime(2022, 6, 22, 9, 23, 12, 0, DateTimeKind.Unspecified),
+                            ClassRoomId = "Class0003",
+                            SoftwareId = "Soft0002",
+                            Status = 1
+                        },
+                        new
+                        {
+                            Id = "SoftwareClaim0005",
+                            AppUserId = "User002",
+                            ClaimDate = new DateTime(2015, 2, 11, 6, 23, 12, 0, DateTimeKind.Unspecified),
+                            ClassRoomId = "Class0002",
+                            SoftwareId = "Soft0004",
+                            Status = 2
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -383,6 +568,42 @@ namespace SoftwareManagerAPI.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("SoftwareManagerAPI.Models.SoftwareClaim", b =>
+                {
+                    b.HasOne("SoftwareManagerAPI.Models.AppUser", "AppUser")
+                        .WithMany("SoftwareClaims")
+                        .HasForeignKey("AppUserId");
+
+                    b.HasOne("SoftwareManagerAPI.Models.ClassRoom", "ClassRoom")
+                        .WithMany("SoftwareClaims")
+                        .HasForeignKey("ClassRoomId");
+
+                    b.HasOne("SoftwareManagerAPI.Models.Software", "Software")
+                        .WithMany("SoftwareClaims")
+                        .HasForeignKey("SoftwareId");
+
+                    b.Navigation("AppUser");
+
+                    b.Navigation("ClassRoom");
+
+                    b.Navigation("Software");
+                });
+
+            modelBuilder.Entity("SoftwareManagerAPI.Models.AppUser", b =>
+                {
+                    b.Navigation("SoftwareClaims");
+                });
+
+            modelBuilder.Entity("SoftwareManagerAPI.Models.ClassRoom", b =>
+                {
+                    b.Navigation("SoftwareClaims");
+                });
+
+            modelBuilder.Entity("SoftwareManagerAPI.Models.Software", b =>
+                {
+                    b.Navigation("SoftwareClaims");
                 });
 #pragma warning restore 612, 618
         }
