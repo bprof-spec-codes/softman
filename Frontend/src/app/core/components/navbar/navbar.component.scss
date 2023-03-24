@@ -35,7 +35,7 @@ color: #FFFFFF;
 
 nav {
     @include box-shadow;
-    @apply w-full h-24;
+    @apply w-full h-20;
 
     background: $color-grad-navbar;
 
@@ -47,7 +47,7 @@ nav {
     }
 
     & ul {
-        @apply inline-block relative top-6;
+        @apply inline-block relative top-5;
 
         & li {
             @apply inline-block;
@@ -63,6 +63,6 @@ nav {
     }
 
     & .btn {
-        @apply float-right mr-48 relative top-6;
+        @apply float-right mr-48 relative top-5;
     }
 }
