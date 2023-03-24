@@ -26,7 +26,8 @@ module.exports = {
           fontWeight: 700,
           fontSize: '2.8rem',
           lineHeight: '4rem',
-          color: '#FFFFFF'
+          color: '#FFFFFF',
+          textAlign: 'center'
         },
         '.text-subtitle': {
           fontFamily: 'Inter',
@@ -34,7 +35,8 @@ module.exports = {
           fontWeight: 400,
           fontSize: '1.1rem',
           lineHeight: '2.5rem',
-          color: '#FFFFFF'
+          color: '#FFFFFF',
+          textAlign: 'center'
         }
       })
     })

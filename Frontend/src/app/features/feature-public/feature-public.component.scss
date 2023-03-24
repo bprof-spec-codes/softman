@@ -69,14 +69,36 @@ footer, .summary {
 footer {
     @apply grid grid-cols-4 grid-rows-3;
 
-    .cell-1 { grid-area: 1 / 1 / 2 / 5; }
-    .cell-2 { grid-area: 2 / 1 / 4 / 2; }
-    .cell-3 { grid-area: 2 / 2 / 4 / 3; }
-    .cell-4 { grid-area: 2 / 3 / 4 / 4; }
-    .cell-5 { grid-area: 2 / 4 / 4 / 5; }
-}
+    padding: 5vh 20%;
 
+    & .cell-1 { grid-area: 1 / 1 / 2 / 5; }
+    & .cell-2 { grid-area: 2 / 1 / 4 / 2; }
+    & .cell-3 { grid-area: 2 / 2 / 4 / 3; }
+    & .cell-4 { grid-area: 2 / 3 / 4 / 4; }
+    & .cell-5 { grid-area: 2 / 4 / 4 / 5; }
 
-.text {
-    @apply text-center;
+    & div[class^=cell-] {
+        & ul {
+            & li:first-child {
+                @apply mx-auto w-28 h-28 mb-3;
+
+                background-color: #D9D9D9;
+                border-radius: 100%;
+            }
+
+            & li {
+                & h3 {
+                    @apply text-subtitle;
+
+                    font-weight: 700;
+                }
+
+                & h4 {
+                    @apply text-subtitle;
+
+                    font-style: italic;
+                }
+            }
+        }
+    }
 }
