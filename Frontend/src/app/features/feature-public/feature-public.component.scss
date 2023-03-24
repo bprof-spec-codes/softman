@@ -17,30 +17,26 @@ box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 */
 
 
-.summary {
+footer, .summary {
     @include box-shadow;
 
-    background: $color-grad-public_summary;
+    background: $color-grad-public_primary;
     height: 40vh;
+}
 
-    &__col-side {
-        @apply h-full;
+.summary {
+    @include grid--r1-c3;
 
-        width: 28%;
-
+    &__cell-1, &__cell-3 {
         & img {
-            @apply relative;
+            @apply block m-auto relative;
 
             height: 65%;
             top: 17.5%;
         }
     }
 
-    &__col-mid {
-        @apply h-full;
-
-        width: 44%;
-
+    &__cell-2 {
         & ul {
             @apply h-fit relative;
 
@@ -52,6 +48,34 @@ box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
         }
     }
 }
+
+
+.feature-dnd {
+    @include grid--r1-c3;
+
+    background-color: $color-public_basic;
+    height: 35vh;
+}
+
+
+.feature-ms {
+    @include grid--r1-c3;
+
+    background-color: $color-public_special;
+    height: 30vh;
+}
+
+
+footer {
+    @apply grid grid-cols-4 grid-rows-3;
+
+    .cell-1 { grid-area: 1 / 1 / 2 / 5; }
+    .cell-2 { grid-area: 2 / 1 / 4 / 2; }
+    .cell-3 { grid-area: 2 / 2 / 4 / 3; }
+    .cell-4 { grid-area: 2 / 3 / 4 / 4; }
+    .cell-5 { grid-area: 2 / 4 / 4 / 5; }
+}
+
 
 .text {
     @apply text-center;
