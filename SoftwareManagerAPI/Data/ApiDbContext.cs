@@ -22,7 +22,9 @@ namespace SoftwareManagerAPI.Data
             builder.Entity<SoftwareClaim>().HasOne(t => t.AppUser).WithMany(t => t.SoftwareClaims);
             builder.Entity<SoftwareClaim>().HasOne(t => t.ClassRoom).WithMany(t => t.SoftwareClaims);
             builder.Entity<SoftwareClaim>().HasOne(t => t.Software).WithMany(t => t.SoftwareClaims);
-
+            builder.Entity<AppUser>().HasMany(t => t.SoftwareClaims).WithOne(t => t.AppUser);
+            builder.Entity<ClassRoom>().HasMany(t => t.SoftwareClaims).WithOne(t => t.ClassRoom);
+            builder.Entity<Software>().HasMany(t => t.SoftwareClaims).WithOne(t => t.Software);
 
 
 

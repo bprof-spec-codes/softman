@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace SoftwareManagerAPI.Models
 {
@@ -12,6 +13,7 @@ namespace SoftwareManagerAPI.Models
         [Required]
         public double StorageCapacity { get; set; }
         [NotMapped]
+        [JsonIgnore]
         public virtual ICollection<SoftwareClaim>? SoftwareClaims { get; set; }
 
         public ClassRoom() {

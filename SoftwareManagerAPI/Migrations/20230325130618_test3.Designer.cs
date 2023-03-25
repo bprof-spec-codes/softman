@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SoftwareManagerAPI.Data;
 
@@ -11,9 +12,10 @@ using SoftwareManagerAPI.Data;
 namespace SoftwareManagerAPI.Migrations
 {
     [DbContext(typeof(ApiDbContext))]
-    partial class ApiDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230325130618_test3")]
+    partial class test3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -265,7 +267,7 @@ namespace SoftwareManagerAPI.Migrations
                         {
                             Id = "User001",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "5854d258-1a3a-4211-a4ed-b4fdaa8b20db",
+                            ConcurrencyStamp = "ddd9ca4a-f575-4cc6-ad58-df20959b7a64",
                             Email = "kovi91@gmail.com",
                             EmailConfirmed = true,
                             FirstName = "Kovács",
@@ -273,9 +275,9 @@ namespace SoftwareManagerAPI.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "KOVI91@GMAIL.COM",
                             NormalizedUserName = "KOVI91@GMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEDK5YukO4LcnLSsyndloh5wTe+nTjXXtWuAh8dsE6iiXJ4sHswwxje04XZoTmvwDSg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEJeaFtcdaVS7ixJcFhrkU30uuclsPVQKDv7+nVekMEvEwp5IJT3c08swOVWugSTNSw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "6f2f37aa-7344-4cf2-afd0-829ecf213fd3",
+                            SecurityStamp = "8b1a1a63-6a07-46e0-bf1b-26b2a0933a41",
                             TwoFactorEnabled = false,
                             UserName = "kovi91@gmail.com"
                         },
@@ -283,7 +285,7 @@ namespace SoftwareManagerAPI.Migrations
                         {
                             Id = "User002",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "ae213d05-88f7-469e-8ade-3b248d74b463",
+                            ConcurrencyStamp = "aefac04f-ff3a-4a35-b9c1-1e033e3ff8a7",
                             Email = "KisPista@gmail.com",
                             EmailConfirmed = true,
                             FirstName = "Kis",
@@ -291,9 +293,9 @@ namespace SoftwareManagerAPI.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "KISPISTA@GMAIL.COM",
                             NormalizedUserName = "KISPISTA@GMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEAg9iR0W8a7HxQ3qjQOf5S4IeXkg9o6fVquGgsy4aSXsErwGDJyIOMALwg3O4C738Q==",
+                            PasswordHash = "AQAAAAEAACcQAAAAECJPyb4Zl+MvRbHfnVNiwUcnf3PNPpe0Aubt9mWnZ2EO+xvabO2v3DwPavXN3TIHZg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "b6d40eda-da32-4a6d-a560-9d51783d38e4",
+                            SecurityStamp = "b0120ed6-2ff8-48ef-97d0-76418b10d8fb",
                             TwoFactorEnabled = false,
                             UserName = "KisPista@gmail.com"
                         },
@@ -301,7 +303,7 @@ namespace SoftwareManagerAPI.Migrations
                         {
                             Id = "User003",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "f750f21f-90d9-4409-ba3b-6a2ce15f1904",
+                            ConcurrencyStamp = "7d979d68-6916-415e-906f-255b1c13ba59",
                             Email = "Jozsi@gmail.com",
                             EmailConfirmed = true,
                             FirstName = "Nagy",
@@ -309,9 +311,9 @@ namespace SoftwareManagerAPI.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "JOZSI@GMAIL.COM",
                             NormalizedUserName = "JOZSI@GMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEPCm/UZGK/uD9lLm9rkZIFadLveuJ3RGBKlqB2mJFZ9TNZH+2+gYESw213hxJUdOdQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEKnEbZqWzU7sajcCUjgHIgK1WvM5VFoe33QAcwJSd7Cspor9hT+XgkJB8rH6sQJUXA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "007e04a2-79eb-4b97-b378-224d40a6df76",
+                            SecurityStamp = "13ebba5a-6092-498f-abb3-446242402cd5",
                             TwoFactorEnabled = false,
                             UserName = "Jozsi@gmail.com"
                         });

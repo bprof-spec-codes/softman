@@ -35,7 +35,8 @@ namespace SoftwareManagerAPI.Controllers
         [HttpGet("{id}")]
         public ClassRoom? GetOne(string id)
         {
-            return ClassRooms.FirstOrDefault(t=>t.Id== id);
+            
+            return ClassRoomRepo.ReadByID(id);
         }
 
         [HttpGet]
