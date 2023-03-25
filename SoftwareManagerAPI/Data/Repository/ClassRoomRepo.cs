@@ -24,14 +24,20 @@ namespace SoftwareManagerAPI.Data.Repository
             db.SaveChanges();
         }
 
-        public IQueryable<ClassRoom> ReadAll()
+        public IEnumerable<ClassRoom> ReadAll()
         {
-            return db.Set<ClassRoom>();
+            return db.Classrooms;
         }
 
         public ClassRoom ReadByID(string id)
         {
             return db.Classrooms.FirstOrDefault(t => t.Id == id);
+        }
+
+        public IEnumerable<ClassRoom> SearchClasses(string search)
+        {
+            return db.Classrooms.Where(t =>t.RoomNumber.ToLower().Contains(search.ToLower()));
+
         }
 
         public void Update(ClassRoom uptodate)

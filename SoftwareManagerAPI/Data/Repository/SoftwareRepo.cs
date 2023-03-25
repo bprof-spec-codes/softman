@@ -35,6 +35,14 @@ namespace SoftwareManagerAPI.Data.Repository
             return db.Softwares.FirstOrDefault(t => t.Id == id);
         }
 
+        public IEnumerable<Software> SearchSoftwares(string search)
+        {
+            return db.Softwares.Where(t =>
+             t.Name.ToLower().Contains(search.ToLower()) ||
+             t.VersionNumber.ToLower().Contains(search.ToLower()));
+            
+        }
+
         public void Update(Software uptodate)
         {
             DeleteByID(uptodate.Id);

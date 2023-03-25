@@ -8,7 +8,8 @@ namespace SoftwareManagerAPI.Data.Logic
 
         public void DeleteByID(string id);
 
-        IQueryable<ClassRoom> ReadAll();
+        IEnumerable<ClassRoom> ReadAll();
+        public IEnumerable<ClassRoom> SearchClasses(string search);
 
         ClassRoom ReadByID(string id);
         void Update(ClassRoom uptodate);

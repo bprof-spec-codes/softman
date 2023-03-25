@@ -12,7 +12,7 @@ namespace SoftwareManagerAPI.Data.Logic
 
         Software ReadByID(string id);
         void Update(Software uptodate);
-
+        public IEnumerable<Software> SearchSoftwares(string search);
 
     }
 }
