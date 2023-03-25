@@ -1,0 +1,17 @@
+@import "index";
+
+.content {
+    @apply w-full relative;
+
+    background: $color-grad-secondary;
+    height: $height-content;
+
+    & .img-bg {
+        @apply absolute;
+
+        height: 60%;
+        width: 50%;
+        top: 20%;
+        left: 25%;
+    }
+}

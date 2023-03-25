@@ -1,26 +1,7 @@
 @import "index";
 
-/*
-
-Background v2
-
-position: absolute;
-width: 1920px;
-height: 1812px;
-left: 0px;
-top: -1px;
-
-background: linear-gradient(105.17deg, #060B27 25%, #191348 97.49%);
-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-
-
-*/
-
-
 footer, .summary {
-    @include box-shadow;
-
-    background: $color-grad-public_primary;
+    background: $color-grad-secondary;
 }
 
 
@@ -75,7 +56,7 @@ footer, .summary {
 .feature-dnd {
     @include grid--r1-c3;
 
-    background-color: $color-public_basic;
+    background-color: $color-plain;
     height: 40vh;
 }
 
@@ -83,7 +64,7 @@ footer, .summary {
 .feature-ms {
     @include grid--r1-c3;
 
-    background-color: $color-public_special;
+    background-color: $color-extra;
     height: 30vh;
 
     &__cell-1 {
@@ -132,7 +113,7 @@ footer {
             & li:first-child {
                 @apply mx-auto w-28 h-28 mb-3;
 
-                background-color: #D9D9D9;
+                background-color: $color-extra;
                 border-radius: 100%;
             }
 

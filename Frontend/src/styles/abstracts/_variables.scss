@@ -1,5 +1,13 @@
-// GRADIENTS
-$color-grad-navbar: linear-gradient(90.26deg, #307373 28.57%, #0B1234 93.95%);
-$color-grad-public_primary: linear-gradient(105.17deg, #060B27 25%, #191348 97.49%);
-$color-public_basic: white;
-$color-public_special: #EFEFEF;
+// COLORS
+$color-primary: #307373;
+$color-secondary: #060B27;
+$color-plain: white;
+$color-extra: #EFEFEF;
+$color-action: #7214FF;
+$color-grad-primary: linear-gradient(90.26deg, $color-primary 28.57%, #0B1234 93.95%);
+$color-grad-secondary: linear-gradient(105.17deg, $color-secondary 25%, #191348 97.49%);
+$color-grad-component-primary: linear-gradient(145.92deg, rgba(255, 255, 255, 0.4) 14.22%, rgba(255, 255, 255, 0.01) 88.46%);
+
+// SIZES
+$height-navbar: 5rem;
+$height-content: calc(100vh - $height-navbar);

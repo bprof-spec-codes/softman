@@ -1,0 +1,17 @@
+@import "index";
+
+.flow-layout-panel {
+    @apply relative;
+
+    background: $color-grad-component-primary;
+    backdrop-filter: blur(20px);
+    border-radius: 10px;
+    border: 2px solid $color-primary;
+
+    & .overflow {
+        @apply float-right relative top-4 right-4 w-7;
+
+        background-color: $color-primary;
+        border-radius: 5px;
+    }
+}

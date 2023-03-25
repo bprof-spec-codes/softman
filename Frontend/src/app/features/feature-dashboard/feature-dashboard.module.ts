@@ -1,18 +1,22 @@
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 import { FeatureDashboardRoutingModule } from './feature-dashboard-routing.module';
-import { FeatureDashboardComponent } from './feature-dashboard.component';
 
 import { PageRequestSoftwaresComponent } from './pages/page-request-softwares/page-request-softwares.component';
 
+import { FlowLayoutPanelComponent } from './components/flow-layout-panel/flow-layout-panel.component';
+
 @NgModule({
   declarations: [
-    PageRequestSoftwaresComponent
+    PageRequestSoftwaresComponent,
+    FlowLayoutPanelComponent
   ],
   imports: [
+    CommonModule,
     FeatureDashboardRoutingModule
   ],
   providers: [],
-  bootstrap: [FeatureDashboardComponent]
+  bootstrap: []
 })
 export class FeatureDashboardModule { }
