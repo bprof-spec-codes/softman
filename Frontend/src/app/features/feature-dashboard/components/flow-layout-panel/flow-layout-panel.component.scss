@@ -1,17 +1,33 @@
 @import "index";
 
 .flow-layout-panel {
-    @apply relative;
+    @include component('primary');
+    @apply relative overflow-x-hidden overflow-y-auto;
 
-    background: $color-grad-component-primary;
-    backdrop-filter: blur(20px);
-    border-radius: 10px;
-    border: 2px solid $color-primary;
+    &::-webkit-scrollbar {
+        @apply w-12;
 
-    & .overflow {
-        @apply float-right relative top-4 right-4 w-7;
+    }
 
-        background-color: $color-primary;
-        border-radius: 5px;
+    &::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: $color-primary;
+        border-radius: 20px;
+        border: 1rem solid rgba(0, 0, 0, 0);
+        background-clip: padding-box;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+        background: $color-primary-hover;
+        border-radius: 20px;
+        border: 1rem solid rgba(0, 0, 0, 0);
+        background-clip: padding-box;
+    }
+
+    & .content {
+        @apply h-full w-full;
     }
 }

@@ -1,6 +1,56 @@
-<div class="content">
+<div class="page-request-softwares">
     <img class="img-bg" src="assets/images/image-bg01.svg" alt="Background image 1">
-    <app-flow-layout-panel
-        width="30%" height="70%" top="15%" left="10%"
-    ></app-flow-layout-panel>
+    <div class="container container-left">
+        <div class="cell-bar container-left__cell-1">
+            <app-search-bar></app-search-bar>
+        </div>
+        <div class="cell-btn-s container-left__cell-2">
+            <app-shared-button text="Search"></app-shared-button>
+        </div>
+        <div class="cell-btn-c container-left__cell-3">
+            <app-shared-button text="Clear"></app-shared-button>
+        </div>
+        <div class="cell-flp container-left__cell-4">
+            <app-flow-layout-panel _nghost-flp-1>
+                <app-shared-item-software
+                    *ngFor="let software of softwares"
+                    [software]="software">
+                </app-shared-item-software>
+            </app-flow-layout-panel>
+        </div>
+        <div class="cell-btn-a container-left__cell-5">
+            <app-shared-button text="Add new"></app-shared-button>
+        </div>
+    </div>
+    <div class="container container-right">
+        <div class="cell-bar container-right__cell-1">
+            <app-search-bar></app-search-bar>
+        </div>
+        <div class="cell-btn-s container-right__cell-2">
+            <app-shared-button text="Search"></app-shared-button>
+        </div>
+        <div class="cell-btn-c container-right__cell-3">
+            <app-shared-button text="Clear"></app-shared-button>
+        </div>
+        <div class="cell-flp container-right__cell-4">
+            <app-flow-layout-panel _nghost-flp-2>
+                <app-item-classroom
+                    *ngFor="let classroom of classrooms"
+                    [classroom]="classroom">
+                </app-item-classroom>
+            </app-flow-layout-panel>
+        </div>
+        <div class="cell-lab container-right__cell-5">
+            <ul>
+                <li><span>Selected classroom: BA.01.14</span></li>
+                <li><span>Storage Capacity: 15 GB</span></li>
+            </ul>
+        </div>
+        <div class="cell-dnd container-right__cell-6">
+            <app-shared-drag-n-drop></app-shared-drag-n-drop>
+        </div>
+        <div class="cell-btn-a container-right__cell-7">
+            <app-shared-button text="Send request"></app-shared-button>
+        </div>
+    </div>
 </div>

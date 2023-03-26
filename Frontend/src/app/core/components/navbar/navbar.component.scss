@@ -7,7 +7,7 @@ nav {
     height: $height-navbar;
 
     & img {
-        @apply inline-block relative mx-16;
+        @apply inline-block relative mx-16 cursor-pointer;
 
         height: 60%;
         top: 20%;

@@ -1,10 +1,18 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { PageRequestSoftwaresComponent } from './pages/page-request-softwares/page-request-softwares.component';
+import { PageRequestSoftwaresComponent } from './pages';
 
 const routes: Routes = [
-    { path: '', component: PageRequestSoftwaresComponent }
+    {
+      path: '',
+      children: [
+        {
+          path: 'request-softwares',
+          component: PageRequestSoftwaresComponent
+        }
+      ]
+    }
 ];
 
 @NgModule({

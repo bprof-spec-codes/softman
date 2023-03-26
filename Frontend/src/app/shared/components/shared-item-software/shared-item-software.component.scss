@@ -1,0 +1,43 @@
+@import "index";
+
+.item-software {
+    @include component('secondary');
+    @apply grid grid-cols-8 grid-rows-3;
+
+    height: 8rem;
+    width: 28rem;
+    margin: 1rem 2rem;
+    padding: 0.5rem;
+
+    &__cell-1 { grid-area: 1 / 1 / 4 / 4; }
+    &__cell-2 { grid-area: 1 / 4 / 2 / 9; }
+    &__cell-3 { grid-area: 2 / 4 / 4 / 9; }
+
+    &__cell-1 {
+        & .avatar {
+            @apply ml-6;
+
+            width: 6.5rem;
+            height: 6.5rem;
+            background-color: $color-extra;
+            border-radius: 100%;
+            margin-top: 2px;
+        }
+    }
+
+    &__cell-2 {
+        @apply pt-3;
+
+        & .name {
+            @apply text-normal;
+        }
+    }
+
+    &__cell-3 {
+        @apply pt-3;
+
+        & .size {
+            @apply text-desc;
+        }
+    }
+}

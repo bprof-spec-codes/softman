@@ -2,24 +2,25 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
+
+import { SharedModule } from './shared';
+
 import { AppComponent } from './app.component';
 
-import { NavbarComponent } from './core/components/navbar/navbar.component';
+import { NavbarComponent } from './core/components';
 
-import { FeaturePublicComponent } from './features/feature-public/feature-public.component';
-
-import { SharedButtonComponent } from './shared/components/shared-button/shared-button.component';
+import { FeaturePublicComponent } from './features';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    FeaturePublicComponent,
-    SharedButtonComponent
+    FeaturePublicComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]

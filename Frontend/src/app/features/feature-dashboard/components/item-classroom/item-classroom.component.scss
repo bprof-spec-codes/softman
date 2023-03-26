@@ -1,0 +1,14 @@
+@import "index";
+
+.item-classroom {
+    @include component('secondary');
+
+    height: 3rem;
+    width: 25rem;
+    margin: 1rem 2rem;
+    padding: 0.35rem 1.5rem;
+
+    & .name {
+        @apply text-normal;
+    }
+}

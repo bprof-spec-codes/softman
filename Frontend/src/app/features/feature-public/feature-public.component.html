@@ -1,4 +1,4 @@
-<div class="content">
+<div class="feature-public">
     <section class="summary">
         <div class="summary__cell-1">
             <img src="assets/images/image-sum01.svg" alt="Summary image 1">
@@ -32,12 +32,12 @@
             </ul>
         </div>
         <div class="feature-dnd__cell-2">
-            <div>
-
-            </div>
+            <app-shared-item-software
+                [software]="dummySoftware"
+            ></app-shared-item-software>
         </div>
         <div class="feature-dnd__cell-3">
-
+            <app-shared-drag-n-drop></app-shared-drag-n-drop>
         </div>
     </section>
     <section class="feature-ms">
@@ -60,7 +60,7 @@
         </div>
     </section>
 </div>
-<footer>
+<footer class="feature-public-footer">
     <div class="cell-1">
         <h3>Created by:</h3>
     </div>

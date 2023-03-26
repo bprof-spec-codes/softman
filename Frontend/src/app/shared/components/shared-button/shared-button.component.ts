@@ -8,5 +8,5 @@ import { Component, Input } from '@angular/core';
   `
 })
 export class SharedButtonComponent {
-    @Input() text: string = ''
+  @Input() text: string = ''
 }

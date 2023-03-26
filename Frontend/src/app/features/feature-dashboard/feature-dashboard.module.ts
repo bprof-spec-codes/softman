@@ -3,20 +3,27 @@ import { CommonModule } from '@angular/common';
 
 import { FeatureDashboardRoutingModule } from './feature-dashboard-routing.module';
 
-import { PageRequestSoftwaresComponent } from './pages/page-request-softwares/page-request-softwares.component';
+import { SharedModule } from 'src/app/shared';
 
-import { FlowLayoutPanelComponent } from './components/flow-layout-panel/flow-layout-panel.component';
+import { PageRequestSoftwaresComponent } from './pages';
+
+import {
+  FlowLayoutPanelComponent,
+  ItemClassroomComponent,
+  SearchBarComponent
+} from './components';
 
 @NgModule({
   declarations: [
     PageRequestSoftwaresComponent,
-    FlowLayoutPanelComponent
+    FlowLayoutPanelComponent,
+    ItemClassroomComponent,
+    SearchBarComponent
   ],
   imports: [
     CommonModule,
-    FeatureDashboardRoutingModule
-  ],
-  providers: [],
-  bootstrap: []
+    FeatureDashboardRoutingModule,
+    SharedModule
+  ]
 })
 export class FeatureDashboardModule { }

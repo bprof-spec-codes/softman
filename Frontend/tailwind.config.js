@@ -41,10 +41,18 @@ module.exports = {
           fontFamily: 'Inter',
           fontStyle: 'normal',
           fontWeight: 400,
-          fontSize: '1.1rem',
+          fontSize: '1.2rem',
           lineHeight: '2.2rem',
           color: '#FFFFFF',
           textAlign: 'center'
+        },
+        '.text-desc': {
+          fontFamily: 'Inter',
+          fontStyle: 'normal',
+          fontWeight: 400,
+          fontSize: '0.9rem',
+          lineHeight: '1.8rem',
+          color: '#FFFFFF'
         }
       })
     })

@@ -1,0 +1,12 @@
+@import "index";
+
+input {
+    @apply px-2 text-link cursor-text;
+
+    background: $color-plain;
+    border: 2px solid $color-action;
+    border-radius: 10px;
+    color: black;
+    padding-top: 0.12rem;
+    padding-bottom: 0.12rem;
+}
