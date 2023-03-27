@@ -41,8 +41,9 @@ namespace SoftwareManagerAPI.Data.Repository
 
         public void Update(ClassRoom uptodate)
         {
-            DeleteByID(uptodate.Id);
-            db.Classrooms.Add(uptodate);
+            var oldClassRoom = ReadByID(uptodate.Id);
+            oldClassRoom.RoomNumber = uptodate.RoomNumber;
+            oldClassRoom.StorageCapacity = uptodate.StorageCapacity;
             db.SaveChanges();
         }
     }
