@@ -1,7 +1,6 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using SoftwareManagerAPI.Data;
-using SoftwareManagerAPI.Data.Logic;
 using SoftwareManagerAPI.Data.Repository;
 using SoftwareManagerAPI.Models;
 using System.Collections.Generic;

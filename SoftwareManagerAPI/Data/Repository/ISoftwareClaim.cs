@@ -1,8 +1,8 @@
 ﻿using SoftwareManagerAPI.Models;
 
-namespace SoftwareManagerAPI.Data.Logic
+namespace SoftwareManagerAPI.Data.Repository
 {
-    public interface ISoftwareClaim 
+    public interface ISoftwareClaim
     {
         void Create(SoftwareClaim SoftwareClaim);
 

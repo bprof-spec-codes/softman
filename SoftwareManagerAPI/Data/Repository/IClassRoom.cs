@@ -1,6 +1,6 @@
 ﻿using SoftwareManagerAPI.Models;
 
-namespace SoftwareManagerAPI.Data.Logic
+namespace SoftwareManagerAPI.Data.Repository
 {
     public interface IClassRoom
     {

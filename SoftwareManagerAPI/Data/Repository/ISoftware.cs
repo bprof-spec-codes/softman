@@ -1,8 +1,8 @@
 ﻿using SoftwareManagerAPI.Models;
 
-namespace SoftwareManagerAPI.Data.Logic
+namespace SoftwareManagerAPI.Data.Repository
 {
-    public interface ISoftware 
+    public interface ISoftware
     {
         void Create(Software Software);
 

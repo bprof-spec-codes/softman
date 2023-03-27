@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using SoftwareManagerAPI.Data.Logic;
+using SoftwareManagerAPI.Data.Repository;
 using SoftwareManagerAPI.Models;
 using System.Diagnostics;
 

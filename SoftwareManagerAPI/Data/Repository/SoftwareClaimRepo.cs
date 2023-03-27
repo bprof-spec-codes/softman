@@ -1,5 +1,4 @@
-﻿using SoftwareManagerAPI.Data.Logic;
-using SoftwareManagerAPI.Models;
+﻿using SoftwareManagerAPI.Models;
 
 namespace SoftwareManagerAPI.Data.Repository
 {

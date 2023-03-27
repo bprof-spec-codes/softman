@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Formatters;
-using SoftwareManagerAPI.Data.Logic;
+using SoftwareManagerAPI.Data.Repository;
 using SoftwareManagerAPI.Models;
 
 namespace SoftwareManagerAPI.Controllers
