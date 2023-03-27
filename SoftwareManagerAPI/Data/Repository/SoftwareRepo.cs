@@ -44,8 +44,12 @@ namespace SoftwareManagerAPI.Data.Repository
 
         public void Update(Software uptodate)
         {
-            DeleteByID(uptodate.Id);
-            db.Softwares.Add(uptodate);
+            var oldSoftware = ReadByID(uptodate.Id);
+            oldSoftware.Name= uptodate.Name;
+            oldSoftware.VersionNumber= uptodate.VersionNumber;
+            oldSoftware.Size= uptodate.Size;
+            oldSoftware.PictureData= uptodate.PictureData;
+            oldSoftware.PictureContentType= uptodate.PictureContentType;
             db.SaveChanges();
         }
     }
