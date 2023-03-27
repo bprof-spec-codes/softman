@@ -35,8 +35,12 @@ namespace SoftwareManagerAPI.Data.Repository
 
         public void Update(SoftwareClaim uptodate)
         {
-            DeleteByID(uptodate.Id);
-            db.softwareClaims.Add(uptodate);
+            var oldSoftwareClaim = ReadByID(uptodate.Id);
+            oldSoftwareClaim.AppUserId= uptodate.AppUserId;
+            oldSoftwareClaim.ClassRoomId= uptodate.ClassRoomId;
+            oldSoftwareClaim.SoftwareId = uptodate.SoftwareId;
+            oldSoftwareClaim.ClaimDate= uptodate.ClaimDate;
+            oldSoftwareClaim.Status= uptodate.Status;
             db.SaveChanges();
         }
     }
