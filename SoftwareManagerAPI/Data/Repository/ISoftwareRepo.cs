@@ -2,17 +2,13 @@
 
 namespace SoftwareManagerAPI.Data.Repository
 {
-    public interface ISoftware
+    public interface ISoftwareRepo
     {
         void Create(Software Software);
-
-        public void DeleteByID(string id);
-
+        void DeleteByID(string id);
         IEnumerable<Software> ReadAll();
-
         Software ReadByID(string id);
+        IEnumerable<Software> SearchSoftwares(string search);
         void Update(Software uptodate);
-        public IEnumerable<Software> SearchSoftwares(string search);
-
     }
 }

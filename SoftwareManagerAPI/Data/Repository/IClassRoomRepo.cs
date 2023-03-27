@@ -2,18 +2,13 @@
 
 namespace SoftwareManagerAPI.Data.Repository
 {
-    public interface IClassRoom
+    public interface IClassRoomRepo
     {
         void Create(ClassRoom ClassRoom);
-
-        public void DeleteByID(string id);
-
+        void DeleteByID(string id);
         IEnumerable<ClassRoom> ReadAll();
-        public IEnumerable<ClassRoom> SearchClasses(string search);
-
         ClassRoom ReadByID(string id);
+        IEnumerable<ClassRoom> SearchClasses(string search);
         void Update(ClassRoom uptodate);
-
-
     }
 }

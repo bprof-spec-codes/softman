@@ -2,18 +2,12 @@
 
 namespace SoftwareManagerAPI.Data.Repository
 {
-    public interface ISoftwareClaim
+    public interface ISoftwareClaimRepo
     {
-        void Create(SoftwareClaim SoftwareClaim);
-
-        public void DeleteByID(string id);
-
+        void Create(SoftwareClaim Software);
+        void DeleteByID(string id);
         IEnumerable<SoftwareClaim> ReadAll();
-
         SoftwareClaim ReadByID(string id);
         void Update(SoftwareClaim uptodate);
-
-
-
     }
 }

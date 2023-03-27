@@ -2,7 +2,7 @@
 
 namespace SoftwareManagerAPI.Data.Repository
 {
-    public class ClassRoomRepo : IClassRoom
+    public class ClassRoomRepo : IClassRoomRepo
     {
 
         ApiDbContext db;
@@ -35,7 +35,7 @@ namespace SoftwareManagerAPI.Data.Repository
 
         public IEnumerable<ClassRoom> SearchClasses(string search)
         {
-            return db.Classrooms.Where(t =>t.RoomNumber.ToLower().Contains(search.ToLower()));
+            return db.Classrooms.Where(t => t.RoomNumber.ToLower().Contains(search.ToLower()));
 
         }
 

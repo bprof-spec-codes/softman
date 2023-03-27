@@ -2,7 +2,7 @@
 
 namespace SoftwareManagerAPI.Data.Repository
 {
-    public class SoftwareRepo : ISoftware
+    public class SoftwareRepo : ISoftwareRepo
     {
 
 
@@ -39,17 +39,17 @@ namespace SoftwareManagerAPI.Data.Repository
             return db.Softwares.Where(t =>
              t.Name.ToLower().Contains(search.ToLower()) ||
              t.VersionNumber.ToLower().Contains(search.ToLower()));
-            
+
         }
 
         public void Update(Software uptodate)
         {
             var oldSoftware = ReadByID(uptodate.Id);
-            oldSoftware.Name= uptodate.Name;
-            oldSoftware.VersionNumber= uptodate.VersionNumber;
-            oldSoftware.Size= uptodate.Size;
-            oldSoftware.PictureData= uptodate.PictureData;
-            oldSoftware.PictureContentType= uptodate.PictureContentType;
+            oldSoftware.Name = uptodate.Name;
+            oldSoftware.VersionNumber = uptodate.VersionNumber;
+            oldSoftware.Size = uptodate.Size;
+            oldSoftware.PictureData = uptodate.PictureData;
+            oldSoftware.PictureContentType = uptodate.PictureContentType;
             db.SaveChanges();
         }
     }

@@ -2,7 +2,7 @@
 
 namespace SoftwareManagerAPI.Data.Repository
 {
-    public class SoftwareClaimRepo : ISoftwareClaim
+    public class SoftwareClaimRepo : ISoftwareClaimRepo
     {
 
         ApiDbContext db;
@@ -36,11 +36,11 @@ namespace SoftwareManagerAPI.Data.Repository
         public void Update(SoftwareClaim uptodate)
         {
             var oldSoftwareClaim = ReadByID(uptodate.Id);
-            oldSoftwareClaim.AppUserId= uptodate.AppUserId;
-            oldSoftwareClaim.ClassRoomId= uptodate.ClassRoomId;
+            oldSoftwareClaim.AppUserId = uptodate.AppUserId;
+            oldSoftwareClaim.ClassRoomId = uptodate.ClassRoomId;
             oldSoftwareClaim.SoftwareId = uptodate.SoftwareId;
-            oldSoftwareClaim.ClaimDate= uptodate.ClaimDate;
-            oldSoftwareClaim.Status= uptodate.Status;
+            oldSoftwareClaim.ClaimDate = uptodate.ClaimDate;
+            oldSoftwareClaim.Status = uptodate.Status;
             db.SaveChanges();
         }
     }

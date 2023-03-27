@@ -2,7 +2,7 @@
 
 namespace SoftwareManagerAPI.Data.Repository
 {
-    public class AppuserRepo : IAppuser
+    public class AppuserRepo : IAppuserRepo
     {
 
         ApiDbContext db;
