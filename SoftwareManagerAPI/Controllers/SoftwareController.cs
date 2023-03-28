@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using SoftwareManagerAPI.Data.Repository;
 using SoftwareManagerAPI.Models;
@@ -6,6 +7,7 @@ using System.Diagnostics;
 
 namespace SoftwareManagerAPI.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("[controller]")]
     public class SoftwareController : ControllerBase

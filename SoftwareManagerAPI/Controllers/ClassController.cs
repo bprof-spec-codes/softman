@@ -1,9 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using SoftwareManagerAPI.Data.Repository;
 using SoftwareManagerAPI.Models;
 
 namespace SoftwareManagerAPI.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("[controller]")]
     public class ClassController : ControllerBase
