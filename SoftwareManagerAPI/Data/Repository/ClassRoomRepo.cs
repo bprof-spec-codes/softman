@@ -46,7 +46,9 @@ namespace SoftwareManagerAPI.Data.Repository
 
         public IEnumerable<ClassRoom> SearchClasses(string search)
         {
-            return db.Classrooms.Where(t => t.RoomNumber.ToLower().Contains(search.ToLower()));
+            return db.Classrooms.Where(t =>
+            t.RoomNumber.ToLower().Contains(search.ToLower()) ||
+            t.StorageCapacity.ToString().Contains(search.ToLower()));
 
         }
 

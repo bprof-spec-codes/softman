@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace SoftwareManagerAPI.Models
 {
@@ -21,10 +22,13 @@ namespace SoftwareManagerAPI.Models
         public string? ClassRoomId { get; set; }
         public string? AppUserId { get; set; }
         [NotMapped]
+        [JsonIgnore]
         public virtual Software? Software { get; set; }
         [NotMapped]
+        [JsonIgnore]
         public virtual ClassRoom? ClassRoom { get; set; }
         [NotMapped]
+        [JsonIgnore]
         public virtual AppUser? AppUser { get; set; }
 
         [Required]

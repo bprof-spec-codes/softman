@@ -57,11 +57,11 @@ namespace SoftwareManagerAPI.Data.Repository
         public IEnumerable<SoftwareClaim> SearchSoftwareClaims(string search)
         {
             var result = ReadAll().Where(t =>
-            t.ClaimDate.ToString().ToLower() == search.ToLower() ||
-            t.Status.ToString().ToLower() == search.ToLower() ||
-            t.AppUser.FirstName.ToLower() == search.ToLower() ||
-            t.AppUser.LastName.ToLower() == search.ToLower() ||
-            t.Software.Size.ToString() == search.ToLower());
+            t.ClaimDate.ToString().ToLower().Contains(search.ToLower()) ||
+            t.Status.ToString().ToLower().Contains(search.ToLower()) ||
+            t.AppUser.FirstName.ToLower().Contains(search.ToLower()) ||
+            t.AppUser.LastName.ToLower().Contains(search.ToLower()) ||
+            t.Software.Size.ToString().Contains(search.ToLower()));
 
             return result;
         }

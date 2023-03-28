@@ -15,8 +15,8 @@ namespace SoftwareManagerAPI.Models
         [Required]
         public double Size { get; set; }
         [NotMapped]
-        [JsonIgnore]
-        public virtual ICollection<SoftwareClaim> SoftwareClaims { get; set; }
+        [JsonIgnore(Condition =JsonIgnoreCondition.Always)]
+        public virtual ICollection<SoftwareClaim>? SoftwareClaims { get; set; }
 
         //[StringLength(200)]
         //public string? ImageFileName { get; set; }

@@ -52,8 +52,8 @@ namespace SoftwareManagerAPI.Data.Repository
         {
             return db.Softwares.Where(t =>
              t.Name.ToLower().Contains(search.ToLower()) ||
-             t.VersionNumber.ToLower().Contains(search.ToLower()));
-
+             t.VersionNumber.ToLower().Contains(search.ToLower()) ||
+             t.Size.ToString().Contains(search.ToLower()));
         }
 
         public Software Update(Software uptodate)
