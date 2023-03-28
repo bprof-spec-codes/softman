@@ -18,11 +18,20 @@ namespace SoftwareManagerAPI.Data.Repository
             return ClassRoom;
         }
 
-        public void DeleteByID(string id)
+        public ClassRoom DeleteByID(string id)
         {
             var ClassRoom = ReadByID(id);
+
+            var classRoomCopy = new ClassRoom()
+            {
+                Id = ClassRoom.Id,
+                RoomNumber = ClassRoom.RoomNumber,
+                StorageCapacity = ClassRoom.StorageCapacity
+            };
+
             db.Classrooms.Remove(ClassRoom);
             db.SaveChanges();
+            return classRoomCopy;
         }
 
         public IEnumerable<ClassRoom> ReadAll()

@@ -19,11 +19,23 @@ namespace SoftwareManagerAPI.Data.Repository
             return Software;
         }
 
-        public void DeleteByID(string id)
+        public Software DeleteByID(string id)
         {
             var Software = ReadByID(id);
+
+            var softCopy = new Software()
+            {
+                Id = id,
+                Name = Software.Name,
+                PictureContentType = Software.PictureContentType,
+                PictureData = Software.PictureData,
+                Size = Software.Size,
+                VersionNumber = Software.VersionNumber
+            };
+
             db.Softwares.Remove(Software);
             db.SaveChanges();
+            return softCopy;
         }
 
         public IEnumerable<Software> ReadAll()

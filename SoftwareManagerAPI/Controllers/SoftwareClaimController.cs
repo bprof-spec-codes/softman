@@ -39,7 +39,7 @@ namespace SoftwareManagerAPI.Controllers
         }
 
         [HttpPost]
-        public async void CreateSoftwareClaim(SoftwareClassRoomViewModel model)
+        public async Task<IActionResult> CreateSoftwareClaim(SoftwareClassRoomViewModel model)
         {
             var user = await _userManager.GetUserAsync(this.User);
             var appUserId = user.Id;
@@ -54,9 +54,10 @@ namespace SoftwareManagerAPI.Controllers
         }
 
         [HttpDelete("{id}")]
-        public async void DeleteSoftwareClaim(string id)
+        public async Task<IActionResult> DeleteSoftwareClaim(string id)
         {
-            SoftwareClaimRepo.DeleteByID(id);
+            var deletedSoftClaim = SoftwareClaimRepo.DeleteByID(id);
+            return Ok(deletedSoftClaim);
         }
     }
 }

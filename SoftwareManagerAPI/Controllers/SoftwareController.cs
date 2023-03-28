@@ -41,9 +41,10 @@ namespace SoftwareManagerAPI.Controllers
         }
 
         [HttpDelete("{id}")]
-        public async void DeleteSoftware(string id)
+        public async Task<IActionResult> DeleteSoftware(string id)
         {
-            SoftwareRepo.DeleteByID(id);
+            var deletedSoft = SoftwareRepo.DeleteByID(id);
+            return Ok(deletedSoft);
         }
 
         [HttpPut]

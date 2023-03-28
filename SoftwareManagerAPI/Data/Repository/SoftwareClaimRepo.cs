@@ -25,11 +25,23 @@ namespace SoftwareManagerAPI.Data.Repository
             return softwareClaim;
         }
 
-        public void DeleteByID(string id)
+        public SoftwareClaim DeleteByID(string id)
         {
             var SoftwareClaim = ReadByID(id);
+
+            var softClaimCopy = new SoftwareClaim()
+            {
+                SoftwareId = SoftwareClaim.Id,
+                AppUserId= SoftwareClaim.AppUserId,
+                ClaimDate = SoftwareClaim.ClaimDate,
+                ClassRoomId= SoftwareClaim.ClassRoomId,
+                Id = SoftwareClaim.Id,
+                Status= SoftwareClaim.Status
+            };
+
             db.softwareClaims.Remove(SoftwareClaim);
             db.SaveChanges();
+            return softClaimCopy;
         }
 
         public IEnumerable<SoftwareClaim> ReadAll()

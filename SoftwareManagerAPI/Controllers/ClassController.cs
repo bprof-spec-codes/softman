@@ -51,9 +51,10 @@ namespace SoftwareManagerAPI.Controllers
         }
 
         [HttpDelete("{id}")]
-        public async void DeleteClass(string id)
+        public async Task<IActionResult> DeleteClass(string id)
         {
-            ClassRoomRepo.DeleteByID(id);
+            var deletedClass = ClassRoomRepo.DeleteByID(id);
+            return Ok(deletedClass);
         }
     }
 }
