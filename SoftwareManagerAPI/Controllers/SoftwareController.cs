@@ -10,9 +10,9 @@ namespace SoftwareManagerAPI.Controllers
     public class SoftwareController : ControllerBase
     {
 
-        ISoftware SoftwareRepo;
+        ISoftwareRepo SoftwareRepo;
 
-        public SoftwareController(ISoftware SoftwareRepo)
+        public SoftwareController(ISoftwareRepo SoftwareRepo)
         {
 
             this.SoftwareRepo = SoftwareRepo;

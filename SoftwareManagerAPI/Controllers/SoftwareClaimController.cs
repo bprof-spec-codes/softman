@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Formatters;
 using SoftwareManagerAPI.Data.Repository;
 using SoftwareManagerAPI.Models;
@@ -9,15 +10,13 @@ namespace SoftwareManagerAPI.Controllers
     [Route("[controller]")]
     public class SoftwareClaimController : ControllerBase
     {
+        UserManager<AppUser> _userManager;
+        ISoftwareClaimRepo SoftwareClaimRepo;
 
-
-        ISoftwareClaim SoftwareClaimRepo;
-
-        public SoftwareClaimController(ISoftwareClaim SoftwareClaim)
+        public SoftwareClaimController(UserManager<AppUser> userManager, ISoftwareClaimRepo softwareClaimRepo)
         {
-
-            this.SoftwareClaimRepo = SoftwareClaim;
-
+            _userManager = userManager;
+            SoftwareClaimRepo = softwareClaimRepo;
         }
 
         [HttpGet]
@@ -41,19 +40,10 @@ namespace SoftwareManagerAPI.Controllers
 
         [HttpPost]
         public async void CreateSoftwareClaim(SoftwareClassRoomViewModel model)
-        {/*
-            Random rnd = new Random(); //teszt ideéig van benne, aztán töröljük
-            int rndNumber = rnd.Next(0,AppUsers.Count()); //teszt ideéig van benne, aztán töröljük
-
-            SoftwareClaim softwareClaim = new SoftwareClaim();
-            softwareClaim.Status= Status.Sent;
-            softwareClaim.ClaimDate = DateTime.Now;
-            softwareClaim.SoftwareId = model.Software.Id;
-            softwareClaim.ClassRoomId = model.ClassRoom.Id;
-            softwareClaim.AppUserId = AppUsers[rndNumber].Id; //ez a teszt kedvéért egy random érték, adatbázis és authorizáció esetén ki lesz cserélve
-
-            SoftwareClaims.Add(softwareClaim);
-            */
+        {
+            var user = await _userManager.GetUserAsync(this.User);
+            var appUserId = user.Id;
+            SoftwareClaimRepo.Create(model,appUserId);
         }
 
         [HttpPut]

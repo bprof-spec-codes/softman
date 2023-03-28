@@ -10,9 +10,17 @@ namespace SoftwareManagerAPI.Data.Repository
         {
             this.db = db;
         }
-        public void Create(SoftwareClaim Software)
+        public void Create(SoftwareClassRoomViewModel softClassViewModel, string appUserId)
         {
-            db.softwareClaims.Add(Software);
+            var classRoom = softClassViewModel.ClassRoom;
+            var soft = softClassViewModel.Software;
+
+            SoftwareClaim softwareClaim = new SoftwareClaim();
+            softwareClaim.SoftwareId = soft.Id;
+            softwareClaim.ClassRoomId = classRoom.Id;
+            softwareClaim.AppUserId = appUserId;
+
+            db.softwareClaims.Add(softwareClaim);
             db.SaveChanges();
         }
 

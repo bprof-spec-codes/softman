@@ -8,9 +8,9 @@ namespace SoftwareManagerAPI.Controllers
     [Route("[controller]")]
     public class ClassController : ControllerBase
     {
-        IClassRoom ClassRoomRepo;
+        IClassRoomRepo ClassRoomRepo;
 
-        public ClassController(IClassRoom ClassRoomRepo) { 
+        public ClassController(IClassRoomRepo ClassRoomRepo) { 
         
         this.ClassRoomRepo = ClassRoomRepo;
         

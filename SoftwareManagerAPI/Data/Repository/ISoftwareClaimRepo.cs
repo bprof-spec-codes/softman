@@ -4,7 +4,7 @@ namespace SoftwareManagerAPI.Data.Repository
 {
     public interface ISoftwareClaimRepo
     {
-        void Create(SoftwareClaim Software);
+        void Create(SoftwareClassRoomViewModel softClassViewModel, string appUserId);
         void DeleteByID(string id);
         IEnumerable<SoftwareClaim> ReadAll();
         SoftwareClaim ReadByID(string id);
