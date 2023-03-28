@@ -50,12 +50,13 @@ namespace SoftwareManagerAPI.Data.Repository
 
         }
 
-        public void Update(ClassRoom uptodate)
+        public ClassRoom Update(ClassRoom uptodate)
         {
             var oldClassRoom = ReadByID(uptodate.Id);
             oldClassRoom.RoomNumber = uptodate.RoomNumber;
             oldClassRoom.StorageCapacity = uptodate.StorageCapacity;
             db.SaveChanges();
+            return oldClassRoom;
         }
     }
 }

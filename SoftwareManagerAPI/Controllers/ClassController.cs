@@ -45,9 +45,10 @@ namespace SoftwareManagerAPI.Controllers
         }
 
         [HttpPut]
-        public async void UpdateClass([FromBody] ClassRoom updatedClassRoom)
+        public async Task<IActionResult> UpdateClass([FromBody] ClassRoom updatedClassRoom)
         {
-           ClassRoomRepo.Update(updatedClassRoom);
+            var updatedClass = ClassRoomRepo.Update(updatedClassRoom);
+            return Ok(updatedClass);
         }
 
         [HttpDelete("{id}")]

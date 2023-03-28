@@ -56,7 +56,7 @@ namespace SoftwareManagerAPI.Data.Repository
 
         }
 
-        public void Update(Software uptodate)
+        public Software Update(Software uptodate)
         {
             var oldSoftware = ReadByID(uptodate.Id);
             oldSoftware.Name = uptodate.Name;
@@ -65,6 +65,8 @@ namespace SoftwareManagerAPI.Data.Repository
             oldSoftware.PictureData = uptodate.PictureData;
             oldSoftware.PictureContentType = uptodate.PictureContentType;
             db.SaveChanges();
+
+            return oldSoftware;
         }
     }
 }

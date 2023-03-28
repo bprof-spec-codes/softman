@@ -48,9 +48,10 @@ namespace SoftwareManagerAPI.Controllers
         }
 
         [HttpPut]
-        public async void UpdateSoftware([FromBody] Software updatedSoftware)
+        public async Task<IActionResult> UpdateSoftware([FromBody] Software updatedSoftware)
         {
-            SoftwareRepo.Update(updatedSoftware);
+            var updatedSoft = SoftwareRepo.Update(updatedSoftware);
+            return Ok(updatedSoft);
         }
 
         [HttpGet]

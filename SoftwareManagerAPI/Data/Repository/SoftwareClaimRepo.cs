@@ -66,7 +66,7 @@ namespace SoftwareManagerAPI.Data.Repository
             return result;
         }
 
-        public void Update(SoftwareClaim uptodate)
+        public SoftwareClaim Update(SoftwareClaim uptodate)
         {
             var oldSoftwareClaim = ReadByID(uptodate.Id);
             oldSoftwareClaim.AppUserId = uptodate.AppUserId;
@@ -75,6 +75,8 @@ namespace SoftwareManagerAPI.Data.Repository
             oldSoftwareClaim.ClaimDate = uptodate.ClaimDate;
             oldSoftwareClaim.Status = uptodate.Status;
             db.SaveChanges();
+
+            return oldSoftwareClaim;
         }
     }
 }

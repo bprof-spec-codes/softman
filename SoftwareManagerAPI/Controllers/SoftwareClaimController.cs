@@ -48,9 +48,10 @@ namespace SoftwareManagerAPI.Controllers
         }
 
         [HttpPut]
-        public async void UpdateSoftwareClaim([FromBody] SoftwareClaim updatedSoftwareClaim)
+        public async Task<IActionResult> UpdateSoftwareClaim([FromBody] SoftwareClaim updatedSoftwareClaim)
         {
-           SoftwareClaimRepo.Update(updatedSoftwareClaim);
+            var updatedSoftClaim = SoftwareClaimRepo.Update(updatedSoftwareClaim);
+            return Ok(updatedSoftClaim);
         }
 
         [HttpDelete("{id}")]

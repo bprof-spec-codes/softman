@@ -9,6 +9,6 @@ namespace SoftwareManagerAPI.Data.Repository
         IEnumerable<SoftwareClaim> ReadAll();
         SoftwareClaim ReadByID(string id);
         IEnumerable<SoftwareClaim> SearchSoftwareClaims(string search);
-        void Update(SoftwareClaim uptodate);
+        SoftwareClaim Update(SoftwareClaim uptodate);
     }
 }

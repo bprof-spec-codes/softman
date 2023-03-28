@@ -9,6 +9,6 @@ namespace SoftwareManagerAPI.Data.Repository
         IEnumerable<ClassRoom> ReadAll();
         ClassRoom ReadByID(string id);
         IEnumerable<ClassRoom> SearchClasses(string search);
-        void Update(ClassRoom uptodate);
+        ClassRoom Update(ClassRoom uptodate);
     }
 }

@@ -9,6 +9,6 @@ namespace SoftwareManagerAPI.Data.Repository
         IEnumerable<Software> ReadAll();
         Software ReadByID(string id);
         IEnumerable<Software> SearchSoftwares(string search);
-        void Update(Software uptodate);
+        Software Update(Software uptodate);
     }
 }
