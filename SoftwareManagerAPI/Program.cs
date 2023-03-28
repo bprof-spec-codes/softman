@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using SoftwareManagerAPI.Data;
 using SoftwareManagerAPI.Data.Repository;
+using SoftwareManagerAPI.Filters;
 using SoftwareManagerAPI.Models;
 using System.Collections.Generic;
 
@@ -35,7 +36,10 @@ builder.Services.AddIdentity<AppUser, IdentityRole>(option =>
 
 
 
-builder.Services.AddControllers();
+builder.Services.AddControllers(opt=>
+{
+    opt.Filters.Add<ApiExceptionFilter>(); 
+});
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
