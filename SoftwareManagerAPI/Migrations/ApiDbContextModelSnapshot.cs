@@ -265,7 +265,7 @@ namespace SoftwareManagerAPI.Migrations
                         {
                             Id = "User001",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "5854d258-1a3a-4211-a4ed-b4fdaa8b20db",
+                            ConcurrencyStamp = "8e3ec14c-0379-4ffe-9532-8da1f57fe344",
                             Email = "kovi91@gmail.com",
                             EmailConfirmed = true,
                             FirstName = "Kovács",
@@ -273,9 +273,9 @@ namespace SoftwareManagerAPI.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "KOVI91@GMAIL.COM",
                             NormalizedUserName = "KOVI91@GMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEDK5YukO4LcnLSsyndloh5wTe+nTjXXtWuAh8dsE6iiXJ4sHswwxje04XZoTmvwDSg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEFLW9S+w+3ocbeX11Fx8BVXBb/jme11S94xIQzACCLCsho7uUxze5/1Rj4dg1B7PKQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "6f2f37aa-7344-4cf2-afd0-829ecf213fd3",
+                            SecurityStamp = "aeea7cf2-6f00-4d22-98e5-f6fac4036e5c",
                             TwoFactorEnabled = false,
                             UserName = "kovi91@gmail.com"
                         },
@@ -283,7 +283,7 @@ namespace SoftwareManagerAPI.Migrations
                         {
                             Id = "User002",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "ae213d05-88f7-469e-8ade-3b248d74b463",
+                            ConcurrencyStamp = "26782c25-6ad6-43fe-b715-9e169353e798",
                             Email = "KisPista@gmail.com",
                             EmailConfirmed = true,
                             FirstName = "Kis",
@@ -291,9 +291,9 @@ namespace SoftwareManagerAPI.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "KISPISTA@GMAIL.COM",
                             NormalizedUserName = "KISPISTA@GMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEAg9iR0W8a7HxQ3qjQOf5S4IeXkg9o6fVquGgsy4aSXsErwGDJyIOMALwg3O4C738Q==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEEHn8AkVug4OUzT+r5ItIzoD/66eSvawMrk/IMFlcBJgs5dKik5Li5eWaznh1RaNbA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "b6d40eda-da32-4a6d-a560-9d51783d38e4",
+                            SecurityStamp = "c2de6b24-0751-4b35-a099-881f7381b4b4",
                             TwoFactorEnabled = false,
                             UserName = "KisPista@gmail.com"
                         },
@@ -301,7 +301,7 @@ namespace SoftwareManagerAPI.Migrations
                         {
                             Id = "User003",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "f750f21f-90d9-4409-ba3b-6a2ce15f1904",
+                            ConcurrencyStamp = "814a0c7a-31b0-4c58-a574-9f5b293d4e62",
                             Email = "Jozsi@gmail.com",
                             EmailConfirmed = true,
                             FirstName = "Nagy",
@@ -309,9 +309,9 @@ namespace SoftwareManagerAPI.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "JOZSI@GMAIL.COM",
                             NormalizedUserName = "JOZSI@GMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEPCm/UZGK/uD9lLm9rkZIFadLveuJ3RGBKlqB2mJFZ9TNZH+2+gYESw213hxJUdOdQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEOCTlpArwSKnZYNh6P1nr8qkLMSrrEDHMruvhMpdEeKnTnpgUfEIC3Hy7ng3Q3PxZA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "007e04a2-79eb-4b97-b378-224d40a6df76",
+                            SecurityStamp = "4dba6ba2-0c69-4e39-abce-dfc01852f490",
                             TwoFactorEnabled = false,
                             UserName = "Jozsi@gmail.com"
                         });

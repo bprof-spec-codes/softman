@@ -12,7 +12,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<ApiDbContext>(option =>
 {
     option
-    .UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=CarManagerJWT;Trusted_Connection=True;MultipleActiveResultSets=true")
+    .UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=SoftManDb;Trusted_Connection=True;MultipleActiveResultSets=true")
     .UseLazyLoadingProxies();
 });
 
