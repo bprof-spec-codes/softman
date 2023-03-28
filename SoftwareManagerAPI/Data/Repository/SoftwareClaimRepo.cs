@@ -12,17 +12,26 @@ namespace SoftwareManagerAPI.Data.Repository
         }
         public SoftwareClaim Create(SoftwareClassRoomViewModel softClassViewModel, string appUserId)
         {
-            var classRoom = softClassViewModel.ClassRoom;
-            var soft = softClassViewModel.Software;
+            var classRoomId = softClassViewModel.ClassRoomId;
+            var softId = softClassViewModel.SoftwareId;
 
-            SoftwareClaim softwareClaim = new SoftwareClaim();
-            softwareClaim.SoftwareId = soft.Id;
-            softwareClaim.ClassRoomId = classRoom.Id;
-            softwareClaim.AppUserId = appUserId;
+            var sameSoftClaim = db.softwareClaims.FirstOrDefault(t => (
+            t.Status == Status.Sent || t.Status == Status.Accepted) &&
+            t.ClassRoomId == classRoomId &&
+            t.SoftwareId == softId);
 
-            db.softwareClaims.Add(softwareClaim);
-            db.SaveChanges();
-            return softwareClaim;
+            if(sameSoftClaim==null)
+            {
+                SoftwareClaim softwareClaim = new SoftwareClaim();
+                softwareClaim.SoftwareId = softId;
+                softwareClaim.ClassRoomId = classRoomId;
+                softwareClaim.AppUserId = appUserId;
+
+                db.softwareClaims.Add(softwareClaim);
+                db.SaveChanges();
+                return softwareClaim;
+            }
+            throw new ArgumentException("There is already a claim with these paramaters by you or someone else...");
         }
 
         public SoftwareClaim DeleteByID(string id)
@@ -51,7 +60,12 @@ namespace SoftwareManagerAPI.Data.Repository
 
         public SoftwareClaim ReadByID(string id)
         {
-            return db.softwareClaims.FirstOrDefault(t => t.Id == id);
+            var softClaim = db.softwareClaims.FirstOrDefault(t => t.Id == id);
+            if(softClaim!=null)
+            {
+                return softClaim;
+            }
+            throw new ArgumentException("The claimed software with this Id does not exists...");
         }
 
         public IEnumerable<SoftwareClaim> SearchSoftwareClaims(string search)

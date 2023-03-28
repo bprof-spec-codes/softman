@@ -12,16 +12,26 @@ namespace SoftwareManagerAPI.Data.Repository
         }
         public ClassRoom Create(ClassRoom ClassRoom)
         {
-            ClassRoom.Id = Guid.NewGuid().ToString();
-            db.Classrooms.Add(ClassRoom);
-            db.SaveChanges();
-            return ClassRoom;
+            var sameClass = ReadAll().FirstOrDefault(t=>
+            t.RoomNumber.ToLower() == ClassRoom.RoomNumber.ToLower() &&
+            t.StorageCapacity == ClassRoom.StorageCapacity);
+
+            ;
+
+            if(sameClass == null)
+            {
+                ClassRoom.Id = Guid.NewGuid().ToString();
+                db.Classrooms.Add(ClassRoom);
+                db.SaveChanges();
+                return ClassRoom;
+            }
+            throw new ArgumentException("There is already a class with these parameters...");
+            
         }
 
         public ClassRoom DeleteByID(string id)
         {
             var ClassRoom = ReadByID(id);
-
             var classRoomCopy = new ClassRoom()
             {
                 Id = ClassRoom.Id,
@@ -32,6 +42,8 @@ namespace SoftwareManagerAPI.Data.Repository
             db.Classrooms.Remove(ClassRoom);
             db.SaveChanges();
             return classRoomCopy;
+            throw new ArgumentException("The class with this Id does not exists...");
+            
         }
 
         public IEnumerable<ClassRoom> ReadAll()
@@ -41,7 +53,12 @@ namespace SoftwareManagerAPI.Data.Repository
 
         public ClassRoom ReadByID(string id)
         {
-            return db.Classrooms.FirstOrDefault(t => t.Id == id);
+            var classRoom = db.Classrooms.FirstOrDefault(t => t.Id == id);
+            if(classRoom!=null)
+            {
+                return classRoom;
+            }
+            throw new ArgumentException("The class with this Id does not exists...");
         }
 
         public IEnumerable<ClassRoom> SearchClasses(string search)
@@ -54,11 +71,20 @@ namespace SoftwareManagerAPI.Data.Repository
 
         public ClassRoom Update(ClassRoom uptodate)
         {
-            var oldClassRoom = ReadByID(uptodate.Id);
-            oldClassRoom.RoomNumber = uptodate.RoomNumber;
-            oldClassRoom.StorageCapacity = uptodate.StorageCapacity;
-            db.SaveChanges();
-            return oldClassRoom;
+            var sameClass = ReadAll().FirstOrDefault(t =>
+            t.RoomNumber.ToLower() == uptodate.RoomNumber.ToLower() &&
+            t.StorageCapacity == uptodate.StorageCapacity);
+
+            if(sameClass == null)
+            {
+                var oldClassRoom = ReadByID(uptodate.Id);
+                oldClassRoom.RoomNumber = uptodate.RoomNumber;
+                oldClassRoom.StorageCapacity = uptodate.StorageCapacity;
+                db.SaveChanges();
+                return oldClassRoom;
+            }
+            throw new ArgumentException("There is already a class with these paramters...");
+            
         }
     }
 }

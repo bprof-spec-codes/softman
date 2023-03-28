@@ -13,10 +13,20 @@ namespace SoftwareManagerAPI.Data.Repository
         }
         public Software Create(Software Software)
         {
-            Software.Id = Guid.NewGuid().ToString();
-            db.Softwares.Add(Software);
-            db.SaveChanges();
-            return Software;
+            var sameSoftware = ReadAll().FirstOrDefault(t=>
+            t.Name.ToLower() == Software.Name.ToLower() &&
+            t.VersionNumber.ToLower() == Software.VersionNumber.ToLower() &&
+            t.Size == Software.Size);
+
+            if(sameSoftware == null)
+            {
+                Software.Id = Guid.NewGuid().ToString();
+                db.Softwares.Add(Software);
+                db.SaveChanges();
+                return Software;
+            }
+            throw new ArgumentException("There is already a software with these patameters...");
+            
         }
 
         public Software DeleteByID(string id)
@@ -45,7 +55,12 @@ namespace SoftwareManagerAPI.Data.Repository
 
         public Software ReadByID(string id)
         {
-            return db.Softwares.FirstOrDefault(t => t.Id == id);
+            var soft = db.Softwares.FirstOrDefault(t => t.Id == id);
+            if(soft!=null)
+            {
+                return soft;
+            }
+            throw new ArgumentException("The software with this Id does not exists...");
         }
 
         public IEnumerable<Software> SearchSoftwares(string search)
@@ -58,15 +73,24 @@ namespace SoftwareManagerAPI.Data.Repository
 
         public Software Update(Software uptodate)
         {
-            var oldSoftware = ReadByID(uptodate.Id);
-            oldSoftware.Name = uptodate.Name;
-            oldSoftware.VersionNumber = uptodate.VersionNumber;
-            oldSoftware.Size = uptodate.Size;
-            oldSoftware.PictureData = uptodate.PictureData;
-            oldSoftware.PictureContentType = uptodate.PictureContentType;
-            db.SaveChanges();
+            var sameSoftware = ReadAll().FirstOrDefault(t =>
+            t.Name.ToLower() == uptodate.Name.ToLower() &&
+            t.VersionNumber.ToLower() == uptodate.VersionNumber.ToLower() &&
+            t.Size == uptodate.Size);
 
-            return oldSoftware;
+            if(sameSoftware == null)
+            {
+                var oldSoftware = ReadByID(uptodate.Id);
+                oldSoftware.Name = uptodate.Name;
+                oldSoftware.VersionNumber = uptodate.VersionNumber;
+                oldSoftware.Size = uptodate.Size;
+                oldSoftware.PictureData = uptodate.PictureData;
+                oldSoftware.PictureContentType = uptodate.PictureContentType;
+                db.SaveChanges();
+
+                return oldSoftware;
+            }
+            throw new ArgumentException("There is already a software with these parameters...");
         }
     }
 }
