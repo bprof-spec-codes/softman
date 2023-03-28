@@ -16,10 +16,10 @@ builder.Services.AddDbContext<ApiDbContext>(option =>
     .UseLazyLoadingProxies();
 });
 
-builder.Services.AddTransient<IClassRoom, ClassRoomRepo>();
-builder.Services.AddTransient<IAppuser, AppuserRepo>();
-builder.Services.AddTransient<ISoftware, SoftwareRepo>();
-builder.Services.AddTransient<ISoftwareClaim, SoftwareClaimRepo>();
+builder.Services.AddTransient<IClassRoomRepo, ClassRoomRepo>();
+builder.Services.AddTransient<IAppuserRepo, AppuserRepo>();
+builder.Services.AddTransient<ISoftwareRepo, SoftwareRepo>();
+builder.Services.AddTransient<ISoftwareClaimRepo, SoftwareClaimRepo>();
 
 
 
