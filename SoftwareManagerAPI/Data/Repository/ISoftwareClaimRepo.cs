@@ -8,6 +8,7 @@ namespace SoftwareManagerAPI.Data.Repository
         void DeleteByID(string id);
         IEnumerable<SoftwareClaim> ReadAll();
         SoftwareClaim ReadByID(string id);
+        IEnumerable<SoftwareClaim> SearchSoftwareClaims(string search);
         void Update(SoftwareClaim uptodate);
     }
 }

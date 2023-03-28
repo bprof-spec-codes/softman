@@ -41,6 +41,18 @@ namespace SoftwareManagerAPI.Data.Repository
             return db.softwareClaims.FirstOrDefault(t => t.Id == id);
         }
 
+        public IEnumerable<SoftwareClaim> SearchSoftwareClaims(string search)
+        {
+            var result = ReadAll().Where(t =>
+            t.ClaimDate.ToString().ToLower() == search.ToLower() ||
+            t.Status.ToString().ToLower() == search.ToLower() ||
+            t.AppUser.FirstName.ToLower() == search.ToLower() ||
+            t.AppUser.LastName.ToLower() == search.ToLower() ||
+            t.Software.Size.ToString() == search.ToLower());
+
+            return result;
+        }
+
         public void Update(SoftwareClaim uptodate)
         {
             var oldSoftwareClaim = ReadByID(uptodate.Id);

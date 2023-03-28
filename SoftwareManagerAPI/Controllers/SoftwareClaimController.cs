@@ -35,7 +35,7 @@ namespace SoftwareManagerAPI.Controllers
         [Route("[action]")]
         public IEnumerable<SoftwareClaim> SearchSoftwareClaims(string search)
         {
-            throw new ArgumentException("Adatbázis kell hozzá, hogy LazyLoadingProxy-t tudjunk használni!"); 
+            return SoftwareClaimRepo.SearchSoftwareClaims(search);
         }
 
         [HttpPost]
