@@ -4,7 +4,7 @@ namespace SoftwareManagerAPI.Data.Repository
 {
     public interface ISoftwareRepo
     {
-        void Create(Software Software);
+        Software Create(Software Software);
         void DeleteByID(string id);
         IEnumerable<Software> ReadAll();
         Software ReadByID(string id);

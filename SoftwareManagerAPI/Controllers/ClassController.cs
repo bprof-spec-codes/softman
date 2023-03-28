@@ -38,9 +38,10 @@ namespace SoftwareManagerAPI.Controllers
         }
         
         [HttpPost]
-        public async void CreateClass([FromBody] ClassRoom classRoom)
+        public async Task<IActionResult> CreateClass([FromBody] ClassRoom classRoom)
         {
-            ClassRoomRepo.Create(classRoom);
+            var craetedClass = ClassRoomRepo.Create(classRoom);
+            return Ok(craetedClass);
         }
 
         [HttpPut]

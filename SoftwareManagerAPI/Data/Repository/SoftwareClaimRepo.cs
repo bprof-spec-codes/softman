@@ -10,7 +10,7 @@ namespace SoftwareManagerAPI.Data.Repository
         {
             this.db = db;
         }
-        public void Create(SoftwareClassRoomViewModel softClassViewModel, string appUserId)
+        public SoftwareClaim Create(SoftwareClassRoomViewModel softClassViewModel, string appUserId)
         {
             var classRoom = softClassViewModel.ClassRoom;
             var soft = softClassViewModel.Software;
@@ -22,6 +22,7 @@ namespace SoftwareManagerAPI.Data.Repository
 
             db.softwareClaims.Add(softwareClaim);
             db.SaveChanges();
+            return softwareClaim;
         }
 
         public void DeleteByID(string id)

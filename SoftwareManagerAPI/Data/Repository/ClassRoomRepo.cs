@@ -10,10 +10,12 @@ namespace SoftwareManagerAPI.Data.Repository
         {
             this.db = db;
         }
-        public void Create(ClassRoom ClassRoom)
+        public ClassRoom Create(ClassRoom ClassRoom)
         {
+            ClassRoom.Id = Guid.NewGuid().ToString();
             db.Classrooms.Add(ClassRoom);
             db.SaveChanges();
+            return ClassRoom;
         }
 
         public void DeleteByID(string id)

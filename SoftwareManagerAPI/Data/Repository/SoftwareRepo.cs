@@ -11,10 +11,12 @@ namespace SoftwareManagerAPI.Data.Repository
         {
             this.db = db;
         }
-        public void Create(Software Software)
+        public Software Create(Software Software)
         {
+            Software.Id = Guid.NewGuid().ToString();
             db.Softwares.Add(Software);
             db.SaveChanges();
+            return Software;
         }
 
         public void DeleteByID(string id)

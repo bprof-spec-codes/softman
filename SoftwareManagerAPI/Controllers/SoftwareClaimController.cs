@@ -43,7 +43,8 @@ namespace SoftwareManagerAPI.Controllers
         {
             var user = await _userManager.GetUserAsync(this.User);
             var appUserId = user.Id;
-            SoftwareClaimRepo.Create(model,appUserId);
+            var createdSoftClaim = SoftwareClaimRepo.Create(model,appUserId);
+            return Ok(createdSoftClaim);
         }
 
         [HttpPut]

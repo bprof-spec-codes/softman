@@ -4,7 +4,7 @@ namespace SoftwareManagerAPI.Data.Repository
 {
     public interface IClassRoomRepo
     {
-        void Create(ClassRoom ClassRoom);
+        ClassRoom Create(ClassRoom ClassRoom);
         void DeleteByID(string id);
         IEnumerable<ClassRoom> ReadAll();
         ClassRoom ReadByID(string id);

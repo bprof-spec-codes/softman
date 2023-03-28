@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Infrastructure;
 using SoftwareManagerAPI.Data.Repository;
 using SoftwareManagerAPI.Models;
 using System.Diagnostics;
@@ -33,9 +34,10 @@ namespace SoftwareManagerAPI.Controllers
         }
 
         [HttpPost]
-        public async void CreateSoftware([FromBody] Software software)
+        public async Task<IActionResult> CreateSoftware([FromBody] Software software)
         {
-            SoftwareRepo.Create(software);
+            var createdSoft = SoftwareRepo.Create(software);
+            return Ok(createdSoft);
         }
 
         [HttpDelete("{id}")]
