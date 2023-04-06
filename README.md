@@ -25,7 +25,7 @@
     - Username = Jozsi@gmail.com
     - Password = almafa123
 #### API funkciólista <!-- rövid magyarázattal -->
-4 db controllert különböztetünk meg, ezek közül az Auth controller foglalja magába az autentikációval kapcsolatos endpointokat, a controller pedig a nevének megfelelő példányokon végez CRUD műveleteket azoknak megfelelő endpointokon keresztül. Bármely CRUD műveletet hívjuk meg, eredményként egy IActionResult-ot fogunk kapni, amelyben az adott példány vagy a hibaüzenet lesz becsomagolva. Egyes controlelrek kiegészülnek egyéb logikai endpointokkal, részletes leírással rendelkeznek a felsorolásban. Ezen endpointok meghívásához szükséges a controller neve mellé írni az adott endpoint nevét is pl.: Amennyiben a SearchSoftwareClaims endpoint tartalmát szeretnénk megkapni akkor azt a /SoftwareClaim/SearchSoftwareClaims címen érjük el.
+4 db controllert különböztetünk meg, ezek közül az Auth controller foglalja magába az autentikációval kapcsolatos endpointokat, a controller pedig a nevének megfelelő példányokon végez CRUD műveleteket azoknak megfelelő endpointokon keresztül. Bármely CRUD műveletet hívjuk meg, eredményként egy IActionResult-ot fogunk kapni, amelyben az adott példány vagy a hibaüzenet lesz becsomagolva. Egyes controllerek kiegészülnek egyéb logikai endpointokkal, amelyek részletes leírással rendelkeznek a felsorolásban. Ezen endpointok meghívásához szükséges a controller neve mellé írni az adott endpoint nevét is pl.: Amennyiben a SearchSoftwareClaims endpoint tartalmát szeretnénk megkapni akkor azt a /SoftwareClaim/SearchSoftwareClaims címen érjük el.
 - ##### /Auth
 - ##### /Class
   - CRUD funkciók
