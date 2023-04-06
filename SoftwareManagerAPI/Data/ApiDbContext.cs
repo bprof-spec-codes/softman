@@ -67,7 +67,7 @@ namespace SoftwareManagerAPI.Data
                 NormalizedUserName = "KISPISTA@GMAIL.COM",
                 NormalizedEmail = "KISPISTA@GMAIL.COM"
             };
-            KisPista.PasswordHash = ph.HashPassword(KisPista, "PistaKis");
+            KisPista.PasswordHash = ph.HashPassword(KisPista, "almafa123");
             builder.Entity<AppUser>().HasData(KisPista);
             builder.Entity<IdentityUserRole<string>>().HasData(new IdentityUserRole<string>
             {
@@ -85,7 +85,7 @@ namespace SoftwareManagerAPI.Data
                 NormalizedUserName = "JOZSI@GMAIL.COM",
                 NormalizedEmail = "JOZSI@GMAIL.COM"
             };
-            Jozsi.PasswordHash = ph.HashPassword(Jozsi, "NemJozsi");
+            Jozsi.PasswordHash = ph.HashPassword(Jozsi, "almafa123");
             builder.Entity<AppUser>().HasData(Jozsi);
             builder.Entity<IdentityUserRole<string>>().HasData(new IdentityUserRole<string>
             {
