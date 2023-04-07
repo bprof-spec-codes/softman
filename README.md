@@ -1,13 +1,10 @@
-# Software Manager README
-
-
-### Csapatbeosztás
+# Csapatbeosztás
 - Teamleader: Szanyi Szabolcs
 - Backend: Juhász Márton Bendegúz
 - Frontend: Schaffer Tamás, Kozma Hunor
 
 
-### User manual
+# User manual
 #### Üzemeltetés
 #### User - pass kombinációk
 - Admin
@@ -66,6 +63,6 @@
 #### UI felület <!-- hol mit lehet elérni, csinálni, képpel alátámasztva -->
 
 
-### Probléma jegyzőkönyv
+# Probléma jegyzőkönyv
 #### Backend
 #### Frontend
