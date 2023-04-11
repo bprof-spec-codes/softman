@@ -21,24 +21,20 @@ builder.Services.AddDbContext<ApiDbContext>(option =>
     .UseLazyLoadingProxies();
 });
 
-builder.Services.AddTransient<IClassRoomRepo, ClassRoomRepo>();
-builder.Services.AddTransient<IAppuserRepo, AppuserRepo>();
-builder.Services.AddTransient<ISoftwareRepo, SoftwareRepo>();
-builder.Services.AddTransient<ISoftwareClaimRepo, SoftwareClaimRepo>();
+
 
 
 
 
 builder.Services.AddIdentity<AppUser, IdentityRole>(option =>
 {
-    option.Password.RequiredLength = 8;
+    option.Password.RequiredLength = 6;
     option.Password.RequireNonAlphanumeric = false;
     option.Password.RequireDigit= false;
     option.Password.RequireUppercase= false;
 })
   .AddEntityFrameworkStores<ApiDbContext>()
   .AddDefaultTokenProviders();
-
 
 builder.Services.AddAuthentication
 (option =>
@@ -71,7 +67,10 @@ options.TokenValidationParameters = new TokenValidationParameters() {
 
 });
 
-
+builder.Services.AddTransient<IClassRoomRepo, ClassRoomRepo>();
+builder.Services.AddTransient<IAppuserRepo, AppuserRepo>();
+builder.Services.AddTransient<ISoftwareRepo, SoftwareRepo>();
+builder.Services.AddTransient<ISoftwareClaimRepo, SoftwareClaimRepo>();
 
 builder.Services.AddControllers(opt=>
 {
@@ -92,6 +91,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+
 app.UseAuthentication();
 app.UseAuthorization();
 

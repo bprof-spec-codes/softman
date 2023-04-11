@@ -9,12 +9,14 @@ namespace SoftwareManagerAPI.Data
     public class ApiDbContext : IdentityDbContext<AppUser>
     {
 
-        public ApiDbContext(DbContextOptions<ApiDbContext> opt): base(opt) { }  
+       
 
         public DbSet<AppUser> AppUsers { get; set; }
         public DbSet<ClassRoom> Classrooms { get; set; }
         public DbSet<Software> Softwares { get; set; }
         public DbSet<SoftwareClaim> softwareClaims { get; set; }
+
+        public ApiDbContext(DbContextOptions<ApiDbContext> opt) : base(opt) { }
         protected override void OnModelCreating(ModelBuilder builder)
         {
 

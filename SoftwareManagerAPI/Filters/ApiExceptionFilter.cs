@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.AspNetCore.Mvc;
-using SoftwareManagerAPI.Models;
+using SoftwareManagerAPI.Models.ViewModels;
 
 namespace SoftwareManagerAPI.Filters
 {

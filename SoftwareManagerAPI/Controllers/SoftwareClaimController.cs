@@ -4,10 +4,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Formatters;
 using SoftwareManagerAPI.Data.Repository;
 using SoftwareManagerAPI.Models;
+using SoftwareManagerAPI.Models.ViewModels;
 
 namespace SoftwareManagerAPI.Controllers
 {
-    [Authorize]
+    
     [ApiController]
     [Route("[controller]")]
     public class SoftwareClaimController : ControllerBase

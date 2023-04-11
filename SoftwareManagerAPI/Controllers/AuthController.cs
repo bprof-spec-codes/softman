@@ -1,7 +1,9 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using SoftwareManagerAPI.Models;
+using SoftwareManagerAPI.Models.ViewModels;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
@@ -13,11 +15,10 @@ namespace SoftwareManagerAPI.Controllers
     public class AuthController : ControllerBase
     {
         private readonly UserManager<AppUser> _userManager;
-        private readonly Microsoft.Extensions.Configuration.IConfiguration _configuration;
+     
         public AuthController(UserManager<AppUser> userManager, IConfiguration configuration)
         {
             _userManager = userManager;
-            _configuration = configuration;
         }
         [HttpPost]
         public async Task<IActionResult> Login([FromBody] LoginViewModel model)
@@ -43,6 +44,41 @@ namespace SoftwareManagerAPI.Controllers
                 });
             }
             return Unauthorized();
+        }
+
+
+        [HttpPut]
+        public async Task<IActionResult> InsertUser([FromBody] RegisterViewModel model)
+        {
+            var user = new AppUser
+            {
+               
+                Email = model.Email,
+                UserName = model.UserName,
+                SecurityStamp = Guid.NewGuid().ToString(),
+                FirstName = model.FirstName,
+                LastName = model.LastName,
+                
+            };
+            
+            var hiba= await _userManager.CreateAsync(user, model.Password);
+            
+            if (hiba.Succeeded==false)
+            {
+                throw new Exception("Nem felel meg az IdentityUser követelményeinek");
+            }
+            await _userManager.AddToRoleAsync(user,"Admin");
+
+            return Ok();
+        }
+
+
+        
+        [HttpGet]
+        public  IEnumerable<AppUser> GetUserInfos()
+        {
+            
+            return _userManager.Users;
         }
 
     }
