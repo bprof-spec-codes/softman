@@ -1,10 +1,14 @@
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
+using Microsoft.IdentityModel.Tokens;
 using SoftwareManagerAPI.Data;
 using SoftwareManagerAPI.Data.Repository;
 using SoftwareManagerAPI.Filters;
 using SoftwareManagerAPI.Models;
 using System.Collections.Generic;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -36,6 +40,37 @@ builder.Services.AddIdentity<AppUser, IdentityRole>(option =>
   .AddDefaultTokenProviders();
 
 
+builder.Services.AddAuthentication
+(option =>
+{
+    option.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+
+
+    option.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+
+
+    option.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+
+}).AddJwtBearer(options =>
+{ 
+options.SaveToken = true;
+
+options.RequireHttpsMetadata = true;
+
+options.TokenValidationParameters = new TokenValidationParameters() {
+    ValidateIssuer = true,
+
+    ValidateAudience = true,
+
+    ValidAudience = "http://www.security.org",
+
+    ValidIssuer = "http://www.security.org",
+    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("nagyonhosszutitkoskodhelye"))
+
+};
+
+});
+
 
 
 builder.Services.AddControllers(opt=>
@@ -57,8 +92,10 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
+app.UseAuthentication();
 app.UseAuthorization();
+
+
 
 app.MapControllers();
 

@@ -33,8 +33,7 @@ namespace SoftwareManagerAPI.Data
               new { Id = "1", Name = "Admin", NormalizedName = "ADMIN" },
               new { Id = "2", Name = "Customer", NormalizedName = "CUSTOMER" }
             );
-
-
+           
 
 
             PasswordHasher<AppUser> ph = new PasswordHasher<AppUser>();

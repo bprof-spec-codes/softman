@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace SoftwareManagerAPI.Migrations
 {
-    public partial class init : Migration
+    public partial class test : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -230,9 +230,9 @@ namespace SoftwareManagerAPI.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { "User001", 0, "8e3ec14c-0379-4ffe-9532-8da1f57fe344", "kovi91@gmail.com", true, "Kovács", "András", false, null, "KOVI91@GMAIL.COM", "KOVI91@GMAIL.COM", "AQAAAAEAACcQAAAAEFLW9S+w+3ocbeX11Fx8BVXBb/jme11S94xIQzACCLCsho7uUxze5/1Rj4dg1B7PKQ==", null, false, "aeea7cf2-6f00-4d22-98e5-f6fac4036e5c", false, "kovi91@gmail.com" },
-                    { "User002", 0, "26782c25-6ad6-43fe-b715-9e169353e798", "KisPista@gmail.com", true, "Kis", "Pista", false, null, "KISPISTA@GMAIL.COM", "KISPISTA@GMAIL.COM", "AQAAAAEAACcQAAAAEEHn8AkVug4OUzT+r5ItIzoD/66eSvawMrk/IMFlcBJgs5dKik5Li5eWaznh1RaNbA==", null, false, "c2de6b24-0751-4b35-a099-881f7381b4b4", false, "KisPista@gmail.com" },
-                    { "User003", 0, "814a0c7a-31b0-4c58-a574-9f5b293d4e62", "Jozsi@gmail.com", true, "Nagy", "József", false, null, "JOZSI@GMAIL.COM", "JOZSI@GMAIL.COM", "AQAAAAEAACcQAAAAEOCTlpArwSKnZYNh6P1nr8qkLMSrrEDHMruvhMpdEeKnTnpgUfEIC3Hy7ng3Q3PxZA==", null, false, "4dba6ba2-0c69-4e39-abce-dfc01852f490", false, "Jozsi@gmail.com" }
+                    { "User001", 0, "c5f4f8b7-3f4e-424d-af8a-d72c45903675", "kovi91@gmail.com", true, "Kovács", "András", false, null, "KOVI91@GMAIL.COM", "KOVI91@GMAIL.COM", "AQAAAAEAACcQAAAAEDQLlXBAtO3E1Vh4OoUakGwZ99es8KiuQHYcgRz7+7mNSwlJtgcmKn1NVLBlh70oYQ==", null, false, "dc011dac-f9fe-45b8-a527-d3c0e1832237", false, "kovi91@gmail.com" },
+                    { "User002", 0, "f895aa41-8431-433e-972a-661f3307bee8", "KisPista@gmail.com", true, "Kis", "Pista", false, null, "KISPISTA@GMAIL.COM", "KISPISTA@GMAIL.COM", "AQAAAAEAACcQAAAAEJ3auG2npxIPhTPRKyUu6zGscKQfvE021nk9dwuyl9/vYCMZn3NprVcSbJat0KnOvg==", null, false, "ece17076-985d-4cd6-9e0d-040ee2699a6e", false, "KisPista@gmail.com" },
+                    { "User003", 0, "792c9f47-50bf-4211-b9cb-ac288c77e9d8", "Jozsi@gmail.com", true, "Nagy", "József", false, null, "JOZSI@GMAIL.COM", "JOZSI@GMAIL.COM", "AQAAAAEAACcQAAAAEMO3phF5AFr30lz8iJdXizWi1qu7ZbhoZHSv6qpjHIW7GasewFv501dIiFpqgqAPvg==", null, false, "39968beb-9ee8-417a-a216-0ae8ad641b93", false, "Jozsi@gmail.com" }
                 });
 
             migrationBuilder.InsertData(
