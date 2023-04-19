@@ -1,0 +1,118 @@
+@import "index";
+
+form {
+    @include component('primary');
+    @apply absolute;
+
+    --computed-height: 0;
+
+    width: 31rem;
+    border-radius: 37px;
+    left: 10%;
+    transform: translateY(calc(($height-content - var(--computed-height)) / 2));
+    z-index: 5;
+
+    span {
+        @apply text-subtitle block mt-12 mb-8;
+
+        color: white;
+        font-weight: 400;
+        line-height: 3rem;
+        padding-left: 15%;
+    }
+
+    input {
+        @include component('secondary');
+        @apply text-link cursor-text block mx-auto mb-6 pl-4 py-0.5;
+
+        width: 70%;
+        font-weight: 400;
+
+        &::placeholder { color: white; }
+        &:-ms-input-placeholder{ color: white; }
+        &::-ms-input-placeholder { color: white; }
+    }
+
+    [nghost-btn-file] button {
+        @apply block py-0 mb-6;
+
+        margin-left: 15%;
+    }
+
+    .btn-container-parent {
+        --computed-height: 0;
+
+        height: var(--computed-height);
+
+        .btn-container {
+            @apply w-1/2;
+    
+            &-left {
+                @apply float-left;
+            }
+    
+            &-right {
+                @apply float-right;
+            }
+        }
+    }
+
+    
+
+    [nghost-btn-submit] {
+
+        .inline-left {
+            @apply float-left;
+
+            margin-left: 30%;
+        }
+
+        .inline-right {
+            @apply float-right;
+
+            margin-right: 30%;
+        }
+
+        .block-normal {
+            @apply block mx-auto;
+        }
+
+        .block-full {
+            @extend .block-normal;
+
+            width: 70%;
+        }
+    }
+
+    .ms-container {
+        @apply mx-auto;
+
+        width: 70%;
+
+        hr, .or {
+            @apply inline-block;
+        }
+
+        hr {
+            border: none;
+            width: 40%;
+            background: white;
+        }
+
+        .hr-show {
+            height: 2px;
+        }
+
+        .hr-hidden {
+            height: 0px;
+        }
+
+        .or {
+            @apply text-lg;
+
+            width: 20%;
+            text-align: center;
+            color: white;
+        }
+    }
+}

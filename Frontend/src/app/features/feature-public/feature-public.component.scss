@@ -71,6 +71,8 @@
         }
 
         &__cell-3 {
+            @apply relative;
+
             & .drag-n-drop {
                 @apply relative;
 
@@ -81,6 +83,15 @@
                 & .placeholder {
                     color: rgba(160, 160, 160, 0.47) !important;
                 }
+            }
+
+            & img {
+                @apply absolute;
+
+                height: 70%;
+                top: 50%;
+                right: 5%;
+                transform: translateY(-40%);
             }
         }
     }

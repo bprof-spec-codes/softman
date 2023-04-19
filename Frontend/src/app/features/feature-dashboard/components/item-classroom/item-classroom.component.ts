@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 
-import { IClassroomModel } from 'src/app/core/models';
+import { IClassroomModel } from 'src/app/core';
 
 @Component({
   selector: 'app-item-classroom',

@@ -1,6 +1,6 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 
-import { ISoftwareModel, IClassroomModel } from 'src/app/core/models';
+import { ISoftwareModel, IClassroomModel } from 'src/app/core';
 
 @Component({
   selector: 'app-page-request-softwares',

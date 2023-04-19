@@ -7,7 +7,7 @@ import { SharedModule } from './shared';
 
 import { AppComponent } from './app.component';
 
-import { NavbarComponent } from './core/components';
+import { NavbarComponent } from './core';
 
 import { FeaturePublicComponent } from './features';
 

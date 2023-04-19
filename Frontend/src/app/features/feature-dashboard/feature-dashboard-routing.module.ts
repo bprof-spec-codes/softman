@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { PageRequestSoftwaresComponent } from './pages';
+import { PageRequestSoftwaresComponent, PageAddSoftwareComponent } from './pages';
 
 const routes: Routes = [
     {
@@ -10,6 +10,10 @@ const routes: Routes = [
         {
           path: 'request-softwares',
           component: PageRequestSoftwaresComponent
+        },
+        {
+          path: 'add-software',
+          component: PageAddSoftwareComponent
         }
       ]
     }

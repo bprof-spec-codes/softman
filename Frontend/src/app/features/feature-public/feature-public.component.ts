@@ -1,6 +1,6 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 
-import { ISoftwareModel } from 'src/app/core/models';
+import { ISoftwareModel } from 'src/app/core';
 
 @Component({
   selector: 'app-feature-public',

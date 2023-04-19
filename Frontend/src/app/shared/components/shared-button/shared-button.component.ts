@@ -4,9 +4,11 @@ import { Component, Input } from '@angular/core';
   selector: 'app-shared-button',
   styleUrls: ['./shared-button.component.scss'],
   template: `
-    <button>{{text}}</button>
+    <button [ngClass]="[type, classLayer].join(' ')">{{text}}</button>
   `
 })
 export class SharedButtonComponent {
   @Input() text: string = ''
+  @Input() type: 'filled' | 'outlined' = 'filled'
+  @Input() classLayer: string = ''
 }

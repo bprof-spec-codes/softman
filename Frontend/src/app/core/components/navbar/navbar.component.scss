@@ -1,7 +1,7 @@
 @import "index";
 
 nav {
-    @apply w-full;
+    @apply w-full z-50 relative;
 
     background: $color-grad-primary;
     height: $height-navbar;

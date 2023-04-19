@@ -5,20 +5,25 @@ import { FeatureDashboardRoutingModule } from './feature-dashboard-routing.modul
 
 import { SharedModule } from 'src/app/shared';
 
-import { PageRequestSoftwaresComponent } from './pages';
+import { PageRequestSoftwaresComponent, PageAddSoftwareComponent } from './pages';
 
 import {
   FlowLayoutPanelComponent,
   ItemClassroomComponent,
-  SearchBarComponent
+  SearchBarComponent,
+  BackgroundPanelComponent,
+  FormComponent
 } from './components';
 
 @NgModule({
   declarations: [
     PageRequestSoftwaresComponent,
+    PageAddSoftwareComponent,
     FlowLayoutPanelComponent,
     ItemClassroomComponent,
-    SearchBarComponent
+    SearchBarComponent,
+    BackgroundPanelComponent,
+    FormComponent
   ],
   imports: [
     CommonModule,

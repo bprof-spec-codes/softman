@@ -1,10 +1,7 @@
 @import "index";
 
 .page-request-softwares {
-    @apply w-full relative;
-
-    background: $color-grad-secondary;
-    height: $height-content;
+    @include page;
 
     & .img-bg {
         @apply absolute;

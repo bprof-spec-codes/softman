@@ -1,8 +1,17 @@
 @import "index";
 
 button {
-    @apply rounded-xl text-link px-8 py-1;
+    @apply rounded-xl text-link px-8 py-1.5;
 
     background: $color-action;
     color: $color-plain;
+}
+
+.filled {
+    background: $color-action;
+}
+
+.outlined {
+    border: 2px solid $color-action;
+    background: transparent;
 }
