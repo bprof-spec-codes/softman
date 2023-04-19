@@ -8,7 +8,8 @@ import { SharedModule } from 'src/app/shared';
 import {
   PageRequestSoftwaresComponent,
   PageAddSoftwareComponent,
-  PageAddClassComponent
+  PageAddClassComponent,
+  PageEditClassComponent
 } from './pages';
 
 import {
@@ -24,6 +25,7 @@ import {
     PageRequestSoftwaresComponent,
     PageAddSoftwareComponent,
     PageAddClassComponent,
+    PageEditClassComponent,
     FlowLayoutPanelComponent,
     ItemClassroomComponent,
     SearchBarComponent,

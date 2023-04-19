@@ -1,0 +1,33 @@
+@import "index";
+
+.page-add-software {
+    @include page;
+
+    .img-bg {
+        @apply absolute right-0;
+
+        height: 75%;
+        top: 12.5%;
+        transform: translateX(-20%);
+    }
+
+    .background-panel {
+        @apply absolute;
+
+        width: 80%;
+        height: 90%;
+
+        transform: translate(10%, 5%);
+    }
+
+    .poly-bg {
+        @apply absolute top-0 left-0;
+
+        z-index: 1;
+        width: 70vh;
+        height: 70vh;
+        border-radius: 100%;
+        background: $color-primary;
+        filter: blur(300px);
+    }
+}

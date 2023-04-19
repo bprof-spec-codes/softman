@@ -4,7 +4,8 @@ import { RouterModule, Routes } from '@angular/router';
 import {
   PageRequestSoftwaresComponent,
   PageAddSoftwareComponent,
-  PageAddClassComponent
+  PageAddClassComponent,
+  PageEditClassComponent
 } from './pages';
 
 const routes: Routes = [
@@ -22,6 +23,10 @@ const routes: Routes = [
         {
           path: 'add-class',
           component: PageAddClassComponent
+        },
+        {
+          path: 'edit-class',
+          component: PageEditClassComponent
         }
       ]
     }
