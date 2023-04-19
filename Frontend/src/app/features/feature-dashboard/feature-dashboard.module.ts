@@ -5,7 +5,11 @@ import { FeatureDashboardRoutingModule } from './feature-dashboard-routing.modul
 
 import { SharedModule } from 'src/app/shared';
 
-import { PageRequestSoftwaresComponent, PageAddSoftwareComponent } from './pages';
+import {
+  PageRequestSoftwaresComponent,
+  PageAddSoftwareComponent,
+  PageAddClassComponent
+} from './pages';
 
 import {
   FlowLayoutPanelComponent,
@@ -19,6 +23,7 @@ import {
   declarations: [
     PageRequestSoftwaresComponent,
     PageAddSoftwareComponent,
+    PageAddClassComponent,
     FlowLayoutPanelComponent,
     ItemClassroomComponent,
     SearchBarComponent,

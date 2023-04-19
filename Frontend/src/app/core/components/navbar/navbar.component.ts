@@ -17,7 +17,7 @@ import { Router } from '@angular/router';
             <li><a routerLink="dashboard/request-softwares">Request softwares</a></li>
             <li><a routerLink="dashboard/add-software">Add software</a></li>
             <li><a>Manage claims</a></li>
-            <li><a>Add class</a></li>
+            <li><a routerLink="dashboard/add-class">Add class</a></li>
         </ul>
         <app-shared-button
             text="Sign in"
