@@ -2,6 +2,8 @@ import { Component, ViewEncapsulation } from '@angular/core';
 
 import { ISoftwareModel, IClassroomModel } from 'src/app/core';
 
+import { getAllClassesApi } from '../../services';
+
 import { ImgJetpackGuy } from 'src/assets';
 
 @Component({
@@ -11,8 +13,11 @@ import { ImgJetpackGuy } from 'src/assets';
   encapsulation: ViewEncapsulation.None
 })
 export class PageRequestSoftwaresComponent {
-
     imgJetpackGuy = ImgJetpackGuy
+
+    constructor() {
+        getAllClassesApi()
+    }
 
     softwares: ISoftwareModel[] = [
         {
