@@ -6,12 +6,14 @@ import { FeatureAuthRoutingModule } from './feature-auth-routing.module';
 import { SharedModule } from 'src/app/shared';
 
 import {
-    PageLoginComponent
+    PageLoginComponent,
+    PageRegisterComponent
 } from './pages';
 
 @NgModule({
   declarations: [
-    PageLoginComponent
+    PageLoginComponent,
+    PageRegisterComponent
   ],
   imports: [
     CommonModule,
