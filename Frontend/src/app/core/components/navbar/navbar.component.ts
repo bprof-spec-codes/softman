@@ -22,6 +22,7 @@ import { Router } from '@angular/router';
         <app-shared-button
             text="Sign in"
             [ngClass]="'btn'"
+            (click)="btnClick()"
         ></app-shared-button>
       </nav>
     </header>
@@ -32,5 +33,9 @@ export class NavbarComponent {
 
   navigateToPublic() {
     this._router.navigate([''])
+  }
+
+  btnClick() {
+    this._router.navigate(['auth/login'])
   }
 }

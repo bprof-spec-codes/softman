@@ -1,0 +1,111 @@
+<form
+    #form
+    [ngClass]="
+        options.float === 'left' ? 'form-float-left'
+            : options.float === 'right' ? 'form-float-right'
+                : 'form-float-center'
+    "
+>
+
+    <span>{{options.title}}</span>
+
+    <ng-container
+      *ngFor="let input of options.inputs"
+    >
+
+      <ng-container
+        *ngIf="
+          input.type === 'file'
+          else elseInput
+        "
+      >
+        <input
+          [type]="input.type"
+          hidden
+        >
+        <app-shared-button
+          nghost-btn-file
+          [text]="input.text"
+        ></app-shared-button>
+      </ng-container>
+
+      <ng-template #elseInput>
+        <input     
+          [type]="input.type"
+          [placeholder]="input.text"
+        >
+      </ng-template>
+      
+    </ng-container>
+    
+    <ng-container
+      *ngFor="
+        let button of options.buttons
+        index as i
+      "
+    >
+      
+      <div
+        #btn_container_parent
+        *ngIf="
+          button.display === 'inline-left'
+          else elseBtn
+        "
+        class="btn-container-parent"
+      >
+        <div
+          #btn_container_left
+          class="btn-container btn-container-left"
+        >
+          <app-shared-button
+            nghost-btn-submit
+            [text]="button.text"
+            [type]="button.type"
+            [classLayer]="generateClassLayer(button, i)"
+            ngClass="h-fit"
+          ></app-shared-button>
+        </div>
+        <div
+          #btn_container_right
+          class="btn-container btn-container-right"
+        >
+          <app-shared-button
+            nghost-btn-submit
+            [text]="options.buttons[i + 1].text"
+            [type]="options.buttons[i + 1].type"
+            [classLayer]="generateClassLayer(options.buttons[i + 1], i + 1)"
+            ngClass="h-fit"
+          ></app-shared-button>
+        </div>            
+      </div>
+
+      <ng-template #elseBtn>
+        <app-shared-button
+          *ngIf="button.display !== 'inline-right'"
+          nghost-btn-submit
+          [text]="button.text"
+          [type]="button.type"
+          [classLayer]="generateClassLayer(button, i)"
+          ngClass="h-fit"
+        ></app-shared-button>
+      </ng-template>
+      
+    </ng-container>
+    
+    <div
+      *ngIf="options.mslogin"
+      class="ms-container"
+    >
+      <hr
+        [ngClass]="[
+          options.mslogin === 'with hr' ? 'hr-show' : 'hr-hidden'
+        ].join(' ')">
+      <div class="or">OR</div>
+      <hr
+        [ngClass]="[
+          options.mslogin === 'with hr' ? 'hr-show' : 'hr-hidden'
+        ].join(' ')">
+      <img src="assets/images/image-msbtn.svg" alt="Sign in with Microsoft">
+    </div>
+
+</form>

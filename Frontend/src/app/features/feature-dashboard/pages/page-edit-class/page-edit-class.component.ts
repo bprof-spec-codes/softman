@@ -1,23 +1,31 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component } from '@angular/core';
 
-import { FormOptionsType } from '../../components';
+import { FormLayoutType } from 'src/app/shared';
 
 @Component({
   selector: 'app-page-edit-class',
-  templateUrl: './page-edit-class.component.html',
-  styleUrls: ['./page-edit-class.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  styles: [],
+  template: `
+    <app-shared-layout-form [props]="formProps"></app-shared-layout-form>
+  `
 })
 export class PageEditClassComponent {
 
-  formOptions: FormOptionsType = {
-    title: 'Edit Class',
-    inputs: [
-        { type: 'text', text: 'Classnumber' },
-        { type: 'text', text: 'Size' }
-    ],
-    buttons: [
-        { display: 'block-normal', type: 'filled', text: 'Update' },
-    ]
+  formProps: FormLayoutType = {
+    background: {
+      float: 'right',
+      src: 'image-bg03.svg'
+    },
+    panel: {
+      float: 'left',
+      title: 'Edit Class',
+      inputs: [
+          { type: 'text', text: 'Classnumber' },
+          { type: 'text', text: 'Size' }
+      ],
+      buttons: [
+          { display: 'block-normal', type: 'filled', text: 'Update' }
+      ]
+    }
   }
 }

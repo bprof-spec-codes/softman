@@ -15,9 +15,7 @@ import {
 import {
   FlowLayoutPanelComponent,
   ItemClassroomComponent,
-  SearchBarComponent,
-  BackgroundPanelComponent,
-  FormComponent
+  SearchBarComponent
 } from './components';
 
 @NgModule({
@@ -28,9 +26,7 @@ import {
     PageEditClassComponent,
     FlowLayoutPanelComponent,
     ItemClassroomComponent,
-    SearchBarComponent,
-    BackgroundPanelComponent,
-    FormComponent
+    SearchBarComponent
   ],
   imports: [
     CommonModule,

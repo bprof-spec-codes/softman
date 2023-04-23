@@ -1,5 +1,3 @@
 export * from './flow-layout-panel'
 export * from './item-classroom'
 export * from './search-bar'
-export * from './background-panel'
-export * from './form'

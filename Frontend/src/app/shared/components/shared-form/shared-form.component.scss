@@ -1,5 +1,19 @@
 @import "index";
 
+.form-float {
+    &-left {
+        left: 10%;
+    }
+
+    &-right {
+        right: 10%;
+    }
+
+    &-center {
+        left: calc(50% - 31rem / 2)
+    }
+}
+
 form {
     @include component('primary');
     @apply absolute;
@@ -8,7 +22,6 @@ form {
 
     width: 31rem;
     border-radius: 37px;
-    left: 10%;
     transform: translateY(calc(($height-content - var(--computed-height)) / 2));
     z-index: 5;
 
@@ -100,7 +113,7 @@ form {
         }
 
         .hr-show {
-            height: 2px;
+            height: 1px;
         }
 
         .hr-hidden {

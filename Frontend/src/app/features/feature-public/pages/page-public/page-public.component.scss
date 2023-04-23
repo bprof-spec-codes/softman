@@ -1,10 +1,10 @@
 @import "index";
 
-.feature-public-footer, .feature-public .summary {
+.page-public-footer, .page-public .summary {
     background: $color-grad-secondary;
 }
 
-.feature-public {
+.page-public {
     
     .description {
         @apply w-fit mx-auto;
@@ -125,7 +125,7 @@
 }
 
 
-.feature-public-footer {
+.page-public-footer {
     @apply grid grid-cols-4 grid-rows-3;
 
     height: 50vh;

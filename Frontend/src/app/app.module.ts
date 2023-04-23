@@ -9,13 +9,10 @@ import { AppComponent } from './app.component';
 
 import { NavbarComponent } from './core';
 
-import { FeaturePublicComponent } from './features';
-
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent,
-    FeaturePublicComponent
+    NavbarComponent
   ],
   imports: [
     BrowserModule,

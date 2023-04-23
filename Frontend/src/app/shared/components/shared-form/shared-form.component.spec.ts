@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FeaturePublicComponent } from './feature-public.component';
+import { SharedFormComponent } from './shared-form.component';
 
-describe('FeaturePublicComponent', () => {
-  let component: FeaturePublicComponent;
-  let fixture: ComponentFixture<FeaturePublicComponent>;
+describe('SharedFormComponent', () => {
+  let component: SharedFormComponent;
+  let fixture: ComponentFixture<SharedFormComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FeaturePublicComponent ]
+      declarations: [ SharedFormComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(FeaturePublicComponent);
+    fixture = TestBed.createComponent(SharedFormComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

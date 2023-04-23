@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-backgound-panel',
-  styleUrls: ['./background-panel.component.scss'],
+  selector: 'app-shared-backgound-panel',
+  styleUrls: ['./shared-background-panel.component.scss'],
   template: `
     <div class="background-panel">
         <img id="triangle-green-1" src="assets/images/image-triangle-green.svg" alt="Triangle green 1">
@@ -67,5 +67,5 @@ import { Component } from '@angular/core';
     </div>
   `
 })
-export class BackgroundPanelComponent {
+export class SharedBackgroundPanelComponent {
 }
