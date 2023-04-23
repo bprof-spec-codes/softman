@@ -5,7 +5,8 @@ import {
   PageRequestSoftwaresComponent,
   PageAddSoftwareComponent,
   PageAddClassComponent,
-  PageEditClassComponent
+  PageEditClassComponent,
+  PageManageClassesComponent
 } from './pages';
 
 const routes: Routes = [
@@ -27,6 +28,10 @@ const routes: Routes = [
         {
           path: 'edit-class',
           component: PageEditClassComponent
+        },
+        {
+          path: 'manage-classes',
+          component: PageManageClassesComponent
         }
       ]
     }

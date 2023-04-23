@@ -9,7 +9,8 @@ import {
   PageRequestSoftwaresComponent,
   PageAddSoftwareComponent,
   PageAddClassComponent,
-  PageEditClassComponent
+  PageEditClassComponent,
+  PageManageClassesComponent
 } from './pages';
 
 import {
@@ -24,6 +25,7 @@ import {
     PageAddSoftwareComponent,
     PageAddClassComponent,
     PageEditClassComponent,
+    PageManageClassesComponent,
     FlowLayoutPanelComponent,
     ItemClassroomComponent,
     SearchBarComponent

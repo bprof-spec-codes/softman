@@ -16,6 +16,7 @@ import { Router } from '@angular/router';
         <ul>
             <li><a routerLink="dashboard/request-softwares">Request softwares</a></li>
             <li><a routerLink="dashboard/add-software">Add software</a></li>
+            <li><a routerLink="dashboard/manage-classes">Manage classes</a></li>
             <li><a>Manage claims</a></li>
             <li><a routerLink="dashboard/add-class">Add class</a></li>
         </ul>
