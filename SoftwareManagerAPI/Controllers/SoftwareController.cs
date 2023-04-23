@@ -1,66 +1,66 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Infrastructure;
+using SoftwareManagerAPI.Data.Repository;
 using SoftwareManagerAPI.Models;
 using System.Diagnostics;
 
 namespace SoftwareManagerAPI.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("[controller]")]
     public class SoftwareController : ControllerBase
     {
-        static List<Software> SoftwaresList = new List<Software>()
+
+        ISoftwareRepo SoftwareRepo;
+
+        public SoftwareController(ISoftwareRepo SoftwareRepo)
         {
-            new Software() { Name = "Word", Size = 1500, VersionNumber = "2023", Id = "Soft0000" },
-            new Software() { Name = "Excel", Size = 2000, VersionNumber = "2023", Id = "Soft0001" },
-            new Software() { Name = "Visual Studio", Size = 4500, VersionNumber = "2022", Id = "Soft0002" },
-            new Software() { Name = "Matlab", Size = 800, VersionNumber = "2018", Id = "Soft0003" },
-            new Software() { Name = "Packet Tracer", Size = 600, VersionNumber = "2016", Id = "Soft0004" }
-        };
+
+            this.SoftwareRepo = SoftwareRepo;
+
+        }
+
 
         [HttpGet]
         public IEnumerable<Software> GetAll()
         {
-            return SoftwaresList;
+            return SoftwareRepo.ReadAll();
         }
 
         [HttpGet("{id}")]
         public Software? GetOne(string id)
         {
-            return SoftwaresList.FirstOrDefault(t=>t.Id== id);
+            return SoftwareRepo.ReadByID(id);
         }
 
         [HttpPost]
-        public async void CreateSoftware([FromBody] Software software)
+        public async Task<IActionResult> CreateSoftware([FromBody] Software software)
         {
-            SoftwaresList.Add(software);
+            var createdSoft = SoftwareRepo.Create(software);
+            return Ok(createdSoft);
         }
 
         [HttpDelete("{id}")]
-        public async void DeleteSoftware(string id)
+        public async Task<IActionResult> DeleteSoftware(string id)
         {
-            Software softwareToDelete = SoftwaresList.FirstOrDefault(t => t.Id == id);
-            SoftwaresList.Remove(softwareToDelete);
+            var deletedSoft = SoftwareRepo.DeleteByID(id);
+            return Ok(deletedSoft);
         }
 
         [HttpPut]
-        public async void UpdateSoftware([FromBody] Software updatedSoftware)
+        public async Task<IActionResult> UpdateSoftware([FromBody] Software updatedSoftware)
         {
-            Software oldSoftware = SoftwaresList.FirstOrDefault(t=>t.Id==updatedSoftware.Id);
-            oldSoftware.Name = updatedSoftware.Name;
-            oldSoftware.VersionNumber = updatedSoftware.VersionNumber;
-            oldSoftware.Size = updatedSoftware.Size;
-            oldSoftware.PictureData = updatedSoftware.PictureData;
-            oldSoftware.PictureContentType = updatedSoftware.PictureContentType;
+            var updatedSoft = SoftwareRepo.Update(updatedSoftware);
+            return Ok(updatedSoft);
         }
 
         [HttpGet]
         [Route("[action]")]
         public IEnumerable<Software> SearchSoftwares(string search)
         {
-            var results = SoftwaresList.Where(t =>
-            t.Name.ToLower().Contains(search.ToLower()) ||
-            t.VersionNumber.ToLower().Contains(search.ToLower()));
-            return results;
+            return SoftwareRepo.SearchSoftwares(search);
         }
     }
 }

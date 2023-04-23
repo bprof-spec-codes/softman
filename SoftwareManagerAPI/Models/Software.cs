@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace SoftwareManagerAPI.Models
 {
@@ -13,16 +14,16 @@ namespace SoftwareManagerAPI.Models
         public string VersionNumber { get; set; }
         [Required]
         public double Size { get; set; }
-
+        [NotMapped]
+        [JsonIgnore(Condition =JsonIgnoreCondition.Always)]
+        public virtual ICollection<SoftwareClaim>? SoftwareClaims { get; set; }
 
         //[StringLength(200)]
         //public string? ImageFileName { get; set; }
 
         public byte[]? PictureData { get; set; }
         public string? PictureContentType { get; set; }
-        [NotMapped]
-        public virtual ICollection<SoftwareClaim>? SoftwareClaims { get; set; }
-        
+
         public Software()
         {
             SoftwareClaims = new HashSet<SoftwareClaim>();

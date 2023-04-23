@@ -2,7 +2,7 @@
 {
     public class SoftwareClassRoomViewModel
     {
-        public ClassRoom ClassRoom { get; set; }
-        public Software Software { get; set; }
+        public string ClassRoomId { get; set; }
+        public string SoftwareId { get; set; }
     }
 }

@@ -1,61 +1,63 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using SoftwareManagerAPI.Data.Repository;
 using SoftwareManagerAPI.Models;
 
 namespace SoftwareManagerAPI.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("[controller]")]
     public class ClassController : ControllerBase
     {
-        static List<ClassRoom> ClassRooms = new List<ClassRoom>()
-        {
-            new ClassRoom(){Id="Class0000",RoomNumber="BA.01.11.",StorageCapacity=3000},
-            new ClassRoom(){Id="Class0001",RoomNumber="BC.04.07.",StorageCapacity=3500},
-            new ClassRoom(){Id="Class0002",RoomNumber="BA.11.20.",StorageCapacity=1400},
-            new ClassRoom(){Id="Class0003",RoomNumber="BA.03.18.",StorageCapacity=1000},
-            new ClassRoom(){Id="Class0004",RoomNumber="BD.02.11.",StorageCapacity=2000}
-        };
+        IClassRoomRepo ClassRoomRepo;
 
+        public ClassController(IClassRoomRepo ClassRoomRepo) { 
+        
+        this.ClassRoomRepo = ClassRoomRepo;
+        
+        }
+        
+        
         [HttpGet]
         public IEnumerable<ClassRoom> GetAll()
         {
-            return ClassRooms;
+            return ClassRoomRepo.ReadAll();
         }
 
         [HttpGet("{id}")]
         public ClassRoom? GetOne(string id)
         {
-            return ClassRooms.FirstOrDefault(t=>t.Id== id);
+            
+            return ClassRoomRepo.ReadByID(id);
         }
 
         [HttpGet]
         [Route("[action]")]
         public IEnumerable<ClassRoom> SearchClasses (string search)
         {
-            var results = ClassRooms.Where(t =>
-            t.RoomNumber.ToLower().Contains(search.ToLower()));
-            return results;
+           return ClassRoomRepo.SearchClasses(search);
         }
         
         [HttpPost]
-        public async void CreateClass([FromBody] ClassRoom classRoom)
+        public async Task<IActionResult> CreateClass([FromBody] ClassRoom classRoom)
         {
-            ClassRooms.Add(classRoom);
+            var craetedClass = ClassRoomRepo.Create(classRoom);
+            return Ok(craetedClass);
         }
 
         [HttpPut]
-        public async void UpdateClass([FromBody] ClassRoom updatedClassRoom)
+        public async Task<IActionResult> UpdateClass([FromBody] ClassRoom updatedClassRoom)
         {
-            ClassRoom oldClassRoom = ClassRooms.FirstOrDefault(t => t.Id == updatedClassRoom.Id);
-            oldClassRoom.RoomNumber= updatedClassRoom.RoomNumber;
-            oldClassRoom.StorageCapacity= updatedClassRoom.StorageCapacity;
+            var updatedClass = ClassRoomRepo.Update(updatedClassRoom);
+            return Ok(updatedClass);
         }
 
         [HttpDelete("{id}")]
-        public async void DeleteClass(string id)
+        public async Task<IActionResult> DeleteClass(string id)
         {
-            ClassRoom classRoomToDelete = ClassRooms.FirstOrDefault(t => t.Id == id);
-            ClassRooms.Remove(classRoomToDelete);
+            var deletedClass = ClassRoomRepo.DeleteByID(id);
+            return Ok(deletedClass);
         }
     }
 }
