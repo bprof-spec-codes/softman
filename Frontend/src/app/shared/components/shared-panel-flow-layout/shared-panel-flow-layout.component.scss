@@ -1,0 +1,33 @@
+@import "index";
+
+.panel-flow-layout {
+    @include component('primary');
+    @apply relative overflow-x-hidden overflow-y-auto;
+
+    &::-webkit-scrollbar {
+        @apply w-12;
+
+    }
+
+    &::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: $color-primary;
+        border-radius: 20px;
+        border: 1rem solid rgba(0, 0, 0, 0);
+        background-clip: padding-box;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+        background: $color-primary-hover;
+        border-radius: 20px;
+        border: 1rem solid rgba(0, 0, 0, 0);
+        background-clip: padding-box;
+    }
+
+    & .content {
+        @apply h-full w-full;
+    }
+}

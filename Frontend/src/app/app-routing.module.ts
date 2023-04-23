@@ -4,18 +4,23 @@ import { RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    loadChildren: () => import('./features/feature-public/feature-public.module')
-    .then(module => module.FeaturePublicModule)
+    loadChildren: () => import('./features/feature-dashboard-public/feature-dashboard-public.module')
+    .then(feature => feature.FeatureDashboardPublicModule)
   },
   {
     path: 'dashboard',
     loadChildren: () => import('./features/feature-dashboard/feature-dashboard.module')
-    .then(module => module.FeatureDashboardModule)
+    .then(feature => feature.FeatureDashboardModule)
   },
   {
     path: 'auth',
-    loadChildren: () => import('./features/feature-auth/feature-auth.module')
-    .then(module => module.FeatureAuthModule)
+    loadChildren: () => import('./features/feature-dashboard-auth/feature-dashboard-auth.module')
+    .then(feature => feature.FeatureDashboardAuthModule)
+  },
+  {
+    path: 'admin',
+    loadChildren: () => import('./features/feature-dashboard-admin/feature-dashboard-admin.module')
+    .then(feature => feature.FeatureDashboardAdminModule)
   }
 ];
 

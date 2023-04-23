@@ -1,0 +1,1 @@
+export { default as ImageType } from './image.type'

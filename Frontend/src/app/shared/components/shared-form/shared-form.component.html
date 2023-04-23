@@ -96,16 +96,18 @@
       *ngIf="options.mslogin"
       class="ms-container"
     >
-      <hr
-        [ngClass]="[
-          options.mslogin === 'with hr' ? 'hr-show' : 'hr-hidden'
-        ].join(' ')">
-      <div class="or">OR</div>
-      <hr
-        [ngClass]="[
-          options.mslogin === 'with hr' ? 'hr-show' : 'hr-hidden'
-        ].join(' ')">
-      <img src="assets/images/image-msbtn.svg" alt="Sign in with Microsoft">
+      <div class="row-wrapper">
+        <hr
+          [ngClass]="[
+            options.mslogin === 'with hr' ? 'hr-show' : 'hr-hidden'
+          ].join(' ')">
+        <div class="or">OR</div>
+        <hr
+          [ngClass]="[
+            options.mslogin === 'with hr' ? 'hr-show' : 'hr-hidden'
+          ].join(' ')">
+      </div>
+      <img [src]="imgMSLoginBtnForm.src" [alt]="imgMSLoginBtnForm.alt">
     </div>
 
 </form>

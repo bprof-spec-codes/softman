@@ -1,8 +1,8 @@
 <div class="page-request-softwares">
-    <img class="img-bg" src="assets/images/image-bg01.svg" alt="Background image 1">
+    <img class="img-bg" [src]="imgJetpackGuy.src" [alt]="imgJetpackGuy.alt">
     <div class="container container-left">
         <div class="cell-bar container-left__cell-1">
-            <app-search-bar></app-search-bar>
+            <app-shared-bar-search></app-shared-bar-search>
         </div>
         <div class="cell-btn-s container-left__cell-2">
             <app-shared-button text="Search"></app-shared-button>
@@ -11,12 +11,12 @@
             <app-shared-button text="Clear"></app-shared-button>
         </div>
         <div class="cell-flp container-left__cell-4">
-            <app-flow-layout-panel _nghost-flp-1>
+            <app-shared-panel-flow-layout _nghost-flp-1>
                 <app-shared-item-software
                     *ngFor="let software of softwares"
                     [software]="software">
                 </app-shared-item-software>
-            </app-flow-layout-panel>
+            </app-shared-panel-flow-layout>
         </div>
         <div class="cell-btn-a container-left__cell-5">
             <app-shared-button text="Add new"></app-shared-button>
@@ -24,7 +24,7 @@
     </div>
     <div class="container container-right">
         <div class="cell-bar container-right__cell-1">
-            <app-search-bar></app-search-bar>
+            <app-shared-bar-search></app-shared-bar-search>
         </div>
         <div class="cell-btn-s container-right__cell-2">
             <app-shared-button text="Search"></app-shared-button>
@@ -33,12 +33,12 @@
             <app-shared-button text="Clear"></app-shared-button>
         </div>
         <div class="cell-flp container-right__cell-4">
-            <app-flow-layout-panel _nghost-flp-2>
-                <app-item-classroom
+            <app-shared-panel-flow-layout _nghost-flp-2>
+                <app-shared-item-classroom
                     *ngFor="let classroom of classrooms"
                     [classroom]="classroom">
-                </app-item-classroom>
-            </app-flow-layout-panel>
+                </app-shared-item-classroom>
+            </app-shared-panel-flow-layout>
         </div>
         <div class="cell-lab container-right__cell-5">
             <ul>
@@ -47,7 +47,7 @@
             </ul>
         </div>
         <div class="cell-dnd container-right__cell-6">
-            <app-shared-drag-n-drop></app-shared-drag-n-drop>
+            <app-shared-panel-drag-n-drop></app-shared-panel-drag-n-drop>
         </div>
         <div class="cell-btn-a container-right__cell-7">
             <app-shared-button text="Send request"></app-shared-button>

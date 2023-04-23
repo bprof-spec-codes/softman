@@ -6,6 +6,8 @@ import {
 
 import { FormOptionsType, ButtonType } from 'src/app/shared'
 
+import { ImgMSLoginBtnForm } from 'src/assets';
+
 @Component({
   selector: 'app-shared-form',
   styleUrls: ['./shared-form.component.scss'],
@@ -19,6 +21,8 @@ export class SharedFormComponent implements AfterViewInit {
     @ViewChild('btn_container_parent') btnContainerParent?: ElementRef<HTMLDivElement>
     @ViewChild('btn_container_left') btnContainerLeft?: ElementRef<HTMLDivElement>
     @ViewChild('btn_container_right') btnContainerRight?: ElementRef<HTMLDivElement>
+
+    imgMSLoginBtnForm = ImgMSLoginBtnForm
 
     ngAfterViewInit() {
       this.form.nativeElement.style.setProperty(
@@ -36,11 +40,15 @@ export class SharedFormComponent implements AfterViewInit {
     generateClassLayer: (
       button: ButtonType, i: number
     ) => string = (button, i) => {
+      const isfirst = i === 0 || (i === 1 && button.display === 'inline-right')
+      const isLast = i === this.options.buttons.length - 1 ||
+        (i === this.options.buttons.length - 2 && button.display === 'inline-left')
+
       return [
         button.display,
-        i === 0 || (i === 1 && button.display === 'inline-right') ? 'mt-6' : '',
-        i === this.options.buttons.length - 1 ||
-        (i === this.options.buttons.length - 2 && button.display === 'inline-left') ? 'mb-12' : 'mb-6',
+        isfirst && this.options.padding?.between_input_button ? 'mt-12' : '',
+        isLast && this.options.padding?.large_after_last ? 'mb-36'
+          : isLast && this.options.mslogin ? '' : 'mb-16',
       ].join(' ')
     }
 }

@@ -2,33 +2,42 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import {
+  SharedBarSearchComponent,
   SharedButtonComponent,
-  SharedItemSoftwareComponent,
-  SharedDragNDropComponent,
   SharedFormComponent,
-  SharedBackgroundPanelComponent
+  SharedItemClassroomComponent,
+  SharedItemSoftwareComponent,
+  SharedPanelBackgroundComponent,
+  SharedPanelDragNDropComponent,
+  SharedPanelFlowLayoutComponent
 } from './components';
 
 import { SharedLayoutFormComponent } from './layouts';
 
 @NgModule({
   declarations: [
+    SharedBarSearchComponent,
     SharedButtonComponent,
-    SharedItemSoftwareComponent,
-    SharedDragNDropComponent,
     SharedFormComponent,
-    SharedBackgroundPanelComponent,
+    SharedItemClassroomComponent,
+    SharedItemSoftwareComponent,
+    SharedPanelBackgroundComponent,
+    SharedPanelDragNDropComponent,
+    SharedPanelFlowLayoutComponent,
     SharedLayoutFormComponent
   ],
   imports: [
     CommonModule,
   ],
   exports: [
+    SharedBarSearchComponent,
     SharedButtonComponent,
-    SharedItemSoftwareComponent,
-    SharedDragNDropComponent,
     SharedFormComponent,
-    SharedBackgroundPanelComponent,
+    SharedItemClassroomComponent,
+    SharedItemSoftwareComponent,
+    SharedPanelBackgroundComponent,
+    SharedPanelDragNDropComponent,
+    SharedPanelFlowLayoutComponent,
     SharedLayoutFormComponent
   ]
 })

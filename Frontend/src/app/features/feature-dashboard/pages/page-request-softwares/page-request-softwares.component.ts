@@ -2,6 +2,8 @@ import { Component, ViewEncapsulation } from '@angular/core';
 
 import { ISoftwareModel, IClassroomModel } from 'src/app/core';
 
+import { ImgJetpackGuy } from 'src/assets';
+
 @Component({
   selector: 'app-page-request-softwares',
   templateUrl: './page-request-softwares.component.html',
@@ -9,6 +11,9 @@ import { ISoftwareModel, IClassroomModel } from 'src/app/core';
   encapsulation: ViewEncapsulation.None
 })
 export class PageRequestSoftwaresComponent {
+
+    imgJetpackGuy = ImgJetpackGuy
+
     softwares: ISoftwareModel[] = [
         {
             id: 'asd1',

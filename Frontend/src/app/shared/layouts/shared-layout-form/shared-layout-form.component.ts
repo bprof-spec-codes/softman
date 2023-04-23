@@ -8,17 +8,17 @@ import { FormLayoutType } from 'src/app/shared';
   encapsulation: ViewEncapsulation.None,
   template: `
     <div class="layout-form">
+      <div class="poly-bg"></div>
       <img
         *ngIf="props.background"
         [ngClass]="[
           'img-bg',
           props.background.float === 'left' ? 'img-bg-left' : 'img-bg-right'
         ].join(' ')"
-        [src]="'assets/images/' + props.background.src"
-        alt="Background image"
+        [src]="props.background.img.src"
+        [alt]="props.background.img.alt"
       >
-      <app-shared-backgound-panel></app-shared-backgound-panel>
-      <div class="poly-bg"></div>
+      <app-shared-panel-background></app-shared-panel-background>
       <app-shared-form [options]="props.panel"></app-shared-form>
     </div>
   `

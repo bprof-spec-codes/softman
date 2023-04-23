@@ -2,11 +2,15 @@ import { Component } from '@angular/core';
 
 import { FormLayoutType } from 'src/app/shared';
 
+import { ImgSupport } from 'src/assets';
+
 @Component({
   selector: 'app-page-add-software',
   styles: [],
   template: `
-    <app-shared-layout-form [props]="formProps"></app-shared-layout-form>
+    <div class="page-add-software">
+      <app-shared-layout-form [props]="formProps"></app-shared-layout-form>
+    </div>
   `
 })
 export class PageAddSoftwareComponent {
@@ -14,7 +18,7 @@ export class PageAddSoftwareComponent {
   formProps: FormLayoutType = {
     background: {
       float: 'right',
-      src: 'image-bg02.svg'
+      img: ImgSupport
     },
     panel: {
       float: 'left',
@@ -26,7 +30,10 @@ export class PageAddSoftwareComponent {
       ],
       buttons: [
         { display: 'block-normal', type: 'filled', text: 'Add new' }
-      ]
+      ],
+      padding: {
+        between_input_button: true
+      }
     }
   }
 }

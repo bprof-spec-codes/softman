@@ -1,0 +1,19 @@
+@import "index";
+
+main {
+    @apply w-full relative;
+
+    background: $color-grad-secondary;
+    height: $height-main;
+
+    div[class^=page] {
+        height: 100%;
+        padding-left: 10%;
+        padding-right: 10%;
+    }
+
+    div[class=page-public] {
+        height: unset;
+        padding: 0;
+    }
+}

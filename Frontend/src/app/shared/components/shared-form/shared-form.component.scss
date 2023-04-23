@@ -2,11 +2,11 @@
 
 .form-float {
     &-left {
-        left: 10%;
+        @apply float-left;
     }
 
     &-right {
-        right: 10%;
+        @apply float-right;
     }
 
     &-center {
@@ -16,13 +16,13 @@
 
 form {
     @include component('primary');
-    @apply absolute;
+    @apply relative;
 
     --computed-height: 0;
 
     width: 31rem;
     border-radius: 37px;
-    transform: translateY(calc(($height-content - var(--computed-height)) / 2));
+    transform: translateY(calc(($height-main - var(--computed-height)) / 2));
     z-index: 5;
 
     span {
@@ -102,30 +102,38 @@ form {
 
         width: 70%;
 
-        hr, .or {
-            @apply inline-block;
+        .row-wrapper {
+            @apply mt-6 mb-10;
+
+            hr, .or {
+                @apply inline-block;
+            }
+    
+            hr {
+                border: none;
+                width: 40%;
+                background: white;
+            }
+    
+            .hr-show {
+                height: 1px;
+            }
+    
+            .hr-hidden {
+                height: 0px;
+            }
+    
+            .or {
+                @apply text-lg;
+    
+                width: 20%;
+                text-align: center;
+                color: white;
+            }
         }
 
-        hr {
-            border: none;
-            width: 40%;
-            background: white;
-        }
-
-        .hr-show {
-            height: 1px;
-        }
-
-        .hr-hidden {
-            height: 0px;
-        }
-
-        .or {
-            @apply text-lg;
-
-            width: 20%;
-            text-align: center;
-            color: white;
+        img {
+            @apply cursor-pointer mb-16;
         }
     }
 }

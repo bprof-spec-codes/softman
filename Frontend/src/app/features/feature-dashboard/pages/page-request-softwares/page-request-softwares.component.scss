@@ -1,7 +1,9 @@
 @import "index";
 
+$height-container: 80%;
+$width-container: 40%;
+
 .page-request-softwares {
-    @include page;
 
     & .img-bg {
         @apply absolute;
@@ -19,9 +21,9 @@
         grid-column-gap: 0.8rem;
         grid-row-gap: 0.5rem;
 
-        height: $height-container-page-request-softwares;
-        width: $width-container-page-request-softwares;
-        top: calc((100% - $height-container-page-request-softwares) / 2);
+        height: $height-container;
+        width: $width-container;
+        top: calc((100% - $height-container) / 2);
 
         & .cell-bar {
             & input {
@@ -50,14 +52,14 @@
 
         & .cell-flp {
             & [_nghost-flp-1], [_nghost-flp-2] {
-                & .flow-layout-panel {
+                & .panel-flow-layout {
                     height: 100%;
                 }
             }
         }
 
         & .cell-dnd {
-            & .drag-n-drop {
+            & .panel-drag-n-drop {
                 height: 100%;
             }
         }
@@ -72,8 +74,6 @@
     & .container-left {
         @apply float-left;
 
-        left: 10%;
-
         &__cell-1 { grid-area: 1 / 1 / 2 / 3; }
         &__cell-2 { grid-area: 1 / 3 / 2 / 4; }
         &__cell-3 { grid-area: 1 / 4 / 2 / 5; }
@@ -83,8 +83,6 @@
 
     & .container-right {
         @apply float-right;
-
-        right: 10%;
 
         &__cell-1 { grid-area: 1 / 1 / 2 / 3; }
         &__cell-2 { grid-area: 1 / 3 / 2 / 4; }

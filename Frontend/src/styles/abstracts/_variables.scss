@@ -11,8 +11,5 @@ $color-grad-component-primary: linear-gradient(145.92deg, rgba(255, 255, 255, 0.
 $color-grad-component-secondary: linear-gradient(94.97deg, rgba(48, 115, 115, 0.4) 0%, rgba(255, 255, 255, 0) 100%);
 
 // SIZES
-$height-navbar: 5rem;
-$height-content: calc(100vh - $height-navbar);
-$height-container-page-request-softwares: 80%;
-
-$width-container-page-request-softwares: 34%;
+$height-nav: 5rem;
+$height-main: calc(100vh - $height-nav);

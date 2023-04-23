@@ -3,10 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import {
   PageRequestSoftwaresComponent,
-  PageAddSoftwareComponent,
-  PageAddClassComponent,
-  PageEditClassComponent,
-  PageManageClassesComponent
+  PageAddSoftwareComponent
 } from './pages';
 
 const routes: Routes = [
@@ -20,18 +17,6 @@ const routes: Routes = [
         {
           path: 'add-software',
           component: PageAddSoftwareComponent
-        },
-        {
-          path: 'add-class',
-          component: PageAddClassComponent
-        },
-        {
-          path: 'edit-class',
-          component: PageEditClassComponent
-        },
-        {
-          path: 'manage-classes',
-          component: PageManageClassesComponent
         }
       ]
     }

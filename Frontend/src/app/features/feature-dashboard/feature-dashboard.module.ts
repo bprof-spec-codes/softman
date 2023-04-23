@@ -7,28 +7,13 @@ import { SharedModule } from 'src/app/shared';
 
 import {
   PageRequestSoftwaresComponent,
-  PageAddSoftwareComponent,
-  PageAddClassComponent,
-  PageEditClassComponent,
-  PageManageClassesComponent
+  PageAddSoftwareComponent
 } from './pages';
-
-import {
-  FlowLayoutPanelComponent,
-  ItemClassroomComponent,
-  SearchBarComponent
-} from './components';
 
 @NgModule({
   declarations: [
     PageRequestSoftwaresComponent,
-    PageAddSoftwareComponent,
-    PageAddClassComponent,
-    PageEditClassComponent,
-    PageManageClassesComponent,
-    FlowLayoutPanelComponent,
-    ItemClassroomComponent,
-    SearchBarComponent
+    PageAddSoftwareComponent
   ],
   imports: [
     CommonModule,

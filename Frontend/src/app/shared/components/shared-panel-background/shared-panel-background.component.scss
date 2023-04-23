@@ -1,0 +1,394 @@
+@import "index";
+
+$max-width: 3.8%;
+
+$width-1: calc($max-width * 1);
+$width-2: calc($max-width * .7);
+$width-3: calc($max-width * .49);
+$width-4: calc($max-width * .3);
+
+.panel-background {
+
+    img {
+        @apply absolute;
+    }
+
+    #triangle {
+
+        &-green {
+
+            &-1 {
+                transform: rotate(-8.51deg);
+                bottom: 5%;
+                right: 5%;
+                width: $width-2;
+            }
+
+            &-2 {
+                transform: rotate(-62.03deg);
+                bottom: 18%;
+                left: 42%;
+                width: $width-2;
+            }
+
+            &-3 {
+                transform: rotate(63.16deg);
+                top: 15%;
+                right: 30%;
+                width: $width-1;
+            }
+
+            &-4 {
+                transform: rotate(117.52deg);
+                top: 5%;
+                left: 40%;
+                width: $width-3;
+            }
+
+            &-5 {
+                transform: rotate(40.71deg);
+                top: 17%;
+                left: 2%;
+                width: $width-4;
+            }
+        }
+
+
+        &-blue {
+
+            &-1 {
+                transform: rotate(68.29deg);
+                bottom: 8%;
+                left: 12.5%;
+                width: $width-1;
+            }
+
+            &-2 {
+                transform: rotate(-29.11deg);
+                top: 46%;
+                left: 15%;
+                width: $width-2;
+            }
+
+            &-3 {
+                transform: rotate(-45deg);
+                top: 55%;
+                left: 20%;
+                width: $width-4;
+            }
+
+            &-4 {
+                transform: rotate(-52.18deg);
+                top: 35%;
+                right: 48%;
+                width: $width-3;
+            }
+
+            &-5 {
+                transform: rotate(29.11deg);
+                top: 3%;
+                right: 3%;
+                width: $width-4;
+            }
+
+            &-6 {
+                transform: rotate(4.52deg);
+                bottom: 40%;
+                right: 11%;
+                width: $width-2;
+            }
+
+            &-7 {
+                transform: rotate(4.52deg);
+                bottom: 6%;
+                right: 47%;
+                width: $width-3;
+            }
+        }
+
+
+        &-pink {
+
+            &-1 {
+                transform: rotate(-97.65deg);
+                bottom: 2%;
+                left: 5%;
+                width: $width-3;
+            }
+
+            &-2 {
+                transform: rotate(63.16deg);
+                bottom: 30%;
+                left: 2%;
+                width: $width-2;
+            }
+
+            &-3 {
+                transform: rotate(-45deg);
+                top: 17%;
+                left: 18%;
+                width: $width-3;
+            }
+
+            &-4 {
+                transform: rotate(49.18deg);
+                bottom: 38%;
+                left: 36%;
+                width: $width-3;
+            }
+
+            &-5 {
+                transform: rotate(9.16deg);
+                bottom: 46%;
+                right: 49%;
+                width: $width-3;
+            }
+
+            &-6 {
+                transform: rotate(-31.76deg);
+                top: 28%;
+                right: 39%;
+                width: $width-3;
+            }
+        }
+
+
+        &-yellow {
+
+            &-1 {
+                transform: rotate(-49.6deg);
+                bottom: 20%;
+                left: 31%;
+                width: $width-4;
+            }
+
+            &-2 {
+                transform: rotate(18.78deg);
+                top: 7%;
+                left: 27%;
+                width: $width-3;
+            }
+
+            &-3 {
+                transform: rotate(25.36deg);
+                top: 20%;
+                left: 47%;
+                width: $width-4;
+            }
+
+            &-4 {
+                transform: rotate(104.21deg);
+                top: 42%;
+                right: 27%;
+                width: $width-2;
+            }
+
+            &-5 {
+                transform: rotate(103.75deg);
+                bottom: 31%;
+                right: 3%;
+                width: $width-3;
+            }
+        }
+    }
+
+
+
+
+    #circle {
+
+        &-green {
+
+            &-1 {
+                bottom: 34%;
+                left: 15%;
+                width: $width-4;
+            }
+
+            &-2 {
+                top: 36%;
+                left: 35%;
+                width: $width-3;
+            }
+
+            &-3 {
+                top: 30%;
+                right: 2%;
+                width: $width-3;
+            }
+        }
+
+
+        &-blue {
+
+            &-1 {
+                top: 25%;
+                left: 7.5%;
+                width: $width-3;
+            }
+
+            &-2 {
+                top: 10%;
+                right: 48%;
+                width: $width-3;
+            }
+
+            &-3 {
+                bottom: 30%;
+                right: 21%;
+                width: $width-3;
+            }
+
+            &-4 {
+                top: 37%;
+                right: 12%;
+                width: $width-4;
+            }
+        }
+
+
+        &-pink {
+
+            &-1 {
+                top: 40%;
+                left: 4%;
+                width: $width-3;
+            }
+
+            &-2 {
+                top: 8%;
+                right: 15%;
+                width: $width-3;
+            }
+
+            &-3 {
+                bottom: 49%;
+                right: 20%;
+                width: $width-4;
+            }
+
+            &-4 {
+                bottom: 9%;
+                right: 30%;
+                width: $width-3;
+            }
+        }
+
+
+        &-yellow {
+
+            &-1 {
+                bottom: 24%;
+                left: 10%;
+                width: $width-3;
+            }
+
+            &-2 {
+                top: 33%;
+                left: 24%;
+                width: $width-3;
+            }
+
+            &-3 {
+                bottom: 5%;
+                left: 40%;
+                width: $width-3;
+            }
+
+            &-4 {
+                bottom: 35%;
+                right: 40%;
+                width: $width-4;
+            }
+        }
+    }
+
+
+
+
+    #confetti {
+
+        &-white {
+
+            width: $width-2;
+
+            &-1 {
+                transform: rotate(60deg);
+                bottom: 40%;
+                left: 7%;
+            }
+
+            &-2 {
+                transform: rotate(-241.23deg);
+                top: 5%;
+                left: 10%;
+            }
+
+            &-3 {
+                transform: rotate(-135deg);
+                top: 21%;
+                left: 32%;
+            }
+
+            &-4 {
+                transform: rotate(-210deg);
+                top: 47%;
+                left: 42%;
+            }
+
+            &-5 {
+                transform: rotate(-47.2deg);
+                bottom: 37%;
+                left: 25%;
+            }
+
+            &-6 {
+                transform: rotate(-1.83deg);
+                bottom: 15%;
+                left: 20%;
+            }
+
+            &-7 {
+                transform: rotate(10.94deg);
+                bottom: 15%;
+                right: 10%;
+            }
+
+            &-8 {
+                transform: rotate(-20.96deg);
+                bottom: 49%;
+                right: 3%;
+            }
+
+            &-9 {
+                transform: rotate(15deg);
+                top: 12%;
+                right: 9%;
+            }
+
+            &-10 {
+                transform: rotate(-75.66deg);
+                top: 4%;
+                right: 40%;
+            }
+
+            &-11 {
+                transform: rotate(69.65deg);
+                bottom: 50%;
+                right: 32%;
+            }
+
+            &-12 {
+                transform: rotate(-70.88deg);
+                bottom: 19%;
+                right: 46%;
+            }
+
+            &-13 {
+                transform: rotate(55deg);
+                bottom: 22%;
+                right: 25%;
+            }
+        }
+    }
+}

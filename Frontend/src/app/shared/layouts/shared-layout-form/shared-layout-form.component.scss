@@ -1,37 +1,33 @@
 @import "index";
 
 .layout-form {
-    @include page;
 
     .img-bg {
-        @apply absolute;
-
         z-index: 2;
         height: 75%;
-        top: 12.5%;
+        transform: translateY(17.5%);
 
         &-left {
-            left: 10%;
+            @apply float-left;
         }
 
         &-right {
-            right: 10%;
+            @apply float-right;
         }
     }
 
-    .background-panel {
+    .panel-background {
         @apply absolute;
 
         width: 80%;
         height: 90%;
 
-        transform: translate(10%, 5%);
+        transform: translateY(5%);
     }
 
     .poly-bg {
         @apply absolute top-0 left-0;
 
-        z-index: 1;
         width: 70vh;
         height: 70vh;
         border-radius: 100%;

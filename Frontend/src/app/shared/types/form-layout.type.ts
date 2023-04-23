@@ -1,9 +1,10 @@
+import { ImageType } from 'src/app/core'
 import FormOptionsType from './form-options.type'
 
 type FormLayoutType = {
     panel: FormOptionsType
     background?: {
-        src: string
+        img: ImageType
         float: 'left' | 'right'
     }
 }

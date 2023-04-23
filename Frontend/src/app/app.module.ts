@@ -7,12 +7,13 @@ import { SharedModule } from './shared';
 
 import { AppComponent } from './app.component';
 
-import { NavbarComponent } from './core';
+import { NavComponent, MainComponent } from './core';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent
+    NavComponent,
+    MainComponent
   ],
   imports: [
     BrowserModule,
