@@ -24,10 +24,19 @@ export class PagePublicComponent {
   imgPlan = ImgPlan
   imgMSLoginBtn = ImgMSLoginBtn
 
+  softwaresInDND: ISoftwareModel[] = []
+
   dummySoftware: ISoftwareModel = {
     id: 'id',
     name: 'Word',
     size: 450,
-    versionNumber: '1.0'
+    versionNumber: '1.0',
+    pictureData: '',
+    pictureContentType: ''
+  }
+
+  addSoftware(softwareJson: string) {
+    const software = JSON.parse(softwareJson) as ISoftwareModel
+    this.softwaresInDND = [software]
   }
 }

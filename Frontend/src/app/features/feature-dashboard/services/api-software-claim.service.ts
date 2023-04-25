@@ -1,37 +1,37 @@
 import { Injectable } from '@angular/core'
-import { Router } from '@angular/router'
 
 import {
     Config,
     LocalStorageService, ErrorHandlerService
 } from 'src/app/core'
 
-import { UserType, AuthResponseType } from '../types'
-
 @Injectable({
     providedIn: 'root'
 })
-export class AuthService {
-    
+export class SoftwareClaimApi {
+
     constructor(
-        private router: Router,
         private storageService: LocalStorageService,
         private errorHandlerService: ErrorHandlerService
-    ) {}
+    ) { }
 
-    login(payload: UserType) {
+    claimSoftware(classroomId: string, softwareId: string) {
+        const token = this.storageService.getToken()
+        
         return this.errorHandlerService.wrapper(
-            fetch(`${Config['base-url']}/auth`, {
+            fetch(`${Config['base-url']}/softwareclaim`, {
                 method: 'post',
                 headers: {
+                    'Authorization': `Bearer ${token}`,
                     'Content-type': 'application/json'
                 },
-                body: JSON.stringify(payload)
+                body: JSON.stringify({
+                    classRoomId: classroomId,
+                    softwareId: softwareId
+                })
             }),
             res => {
-                const data = res as AuthResponseType
-                this.storageService.setToken(data.token)
-                this.router.navigate(['dashboard/request-softwares'])
+                return res
             }
         )
     }

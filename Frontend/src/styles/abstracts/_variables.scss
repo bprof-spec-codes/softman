@@ -9,6 +9,7 @@ $color-grad-primary: linear-gradient(90.26deg, $color-primary 28.57%, #0B1234 93
 $color-grad-secondary: linear-gradient(105.17deg, $color-secondary 25%, #191348 97.49%);
 $color-grad-component-primary: linear-gradient(145.92deg, rgba(255, 255, 255, 0.4) 14.22%, rgba(255, 255, 255, 0.01) 88.46%);
 $color-grad-component-secondary: linear-gradient(94.97deg, rgba(48, 115, 115, 0.4) 0%, rgba(255, 255, 255, 0) 100%);
+$color-grad-pop-up: linear-gradient(115.77deg, $color-primary -1.44%, #191348 100%);
 
 // SIZES
 $height-nav: 5rem;

@@ -63,7 +63,6 @@ export class PageLoginComponent {
   onLoginClick(e: Event) {
     e.preventDefault()
     e.stopPropagation()
-    console.log(this.user)
     this.authService.login(this.user)
   }
 

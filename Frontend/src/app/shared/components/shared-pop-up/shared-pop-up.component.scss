@@ -1,0 +1,47 @@
+@import "index";
+
+.pop-up {
+    @apply absolute top-0 left-0;
+
+    &-sm {
+        width: 50vw;
+        height: 34vh;
+    }
+
+    &-lg {
+        width: 50vw;
+        height: 50vh;
+    }
+
+    background: $color-grad-pop-up;
+    border-radius: 34px;
+    transform: translate(50%, 40%);
+
+    .title {
+        @apply text-subtitle block mt-20;
+
+        color: white;
+        text-align: center;
+        font-weight: 500;
+    }
+
+    .text-wrapper {
+        @apply w-fit mx-auto mt-10;
+
+        .text {
+            @apply text-normal block;
+
+            text-align: left;
+        }
+    }
+
+    .btn-wrapper {
+        @apply absolute bottom-8 left-1/2;
+
+        transform: translateX(-50%);
+
+        button:first-child {
+            @apply mr-8;
+        }
+    }
+}

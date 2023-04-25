@@ -3,7 +3,8 @@ interface ISoftwareModel {
     name: string
     versionNumber: string
     size: number
-    imageFileName?: string
+    pictureData: string
+    pictureContentType: string
 }
 
 export default ISoftwareModel

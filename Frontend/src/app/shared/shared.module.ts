@@ -4,12 +4,14 @@ import { CommonModule } from '@angular/common';
 import {
   SharedBarSearchComponent,
   SharedButtonComponent,
+  SharedButtonCircleComponent,
   SharedFormComponent,
   SharedItemClassroomComponent,
   SharedItemSoftwareComponent,
   SharedPanelBackgroundComponent,
   SharedPanelDragNDropComponent,
-  SharedPanelFlowLayoutComponent
+  SharedPanelFlowLayoutComponent,
+  SharedPopUpComponent
 } from './components';
 
 import { SharedLayoutFormComponent } from './layouts';
@@ -18,13 +20,15 @@ import { SharedLayoutFormComponent } from './layouts';
   declarations: [
     SharedBarSearchComponent,
     SharedButtonComponent,
+    SharedButtonCircleComponent,
     SharedFormComponent,
     SharedItemClassroomComponent,
     SharedItemSoftwareComponent,
     SharedPanelBackgroundComponent,
     SharedPanelDragNDropComponent,
     SharedPanelFlowLayoutComponent,
-    SharedLayoutFormComponent
+    SharedLayoutFormComponent,
+    SharedPopUpComponent
   ],
   imports: [
     CommonModule,
@@ -32,13 +36,15 @@ import { SharedLayoutFormComponent } from './layouts';
   exports: [
     SharedBarSearchComponent,
     SharedButtonComponent,
+    SharedButtonCircleComponent,
     SharedFormComponent,
     SharedItemClassroomComponent,
     SharedItemSoftwareComponent,
     SharedPanelBackgroundComponent,
     SharedPanelDragNDropComponent,
     SharedPanelFlowLayoutComponent,
-    SharedLayoutFormComponent
+    SharedLayoutFormComponent,
+    SharedPopUpComponent
   ]
 })
 export class SharedModule { }

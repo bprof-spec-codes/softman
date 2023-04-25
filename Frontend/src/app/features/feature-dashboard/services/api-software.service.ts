@@ -8,18 +8,18 @@ import {
 @Injectable({
     providedIn: 'root'
 })
-export class ClassApi {
+export class SoftwareApi {
 
     constructor(
         private storageService: LocalStorageService,
         private errorHandlerService: ErrorHandlerService
     ) { }
 
-    getAllClass() {
+    getAllSoftwares() {
         const token = this.storageService.getToken()
         
         return this.errorHandlerService.wrapper(
-            fetch(`${Config['base-url']}/class`, {
+            fetch(`${Config['base-url']}/software`, {
                 method: 'get',
                 headers: {
                     'Authorization': `Bearer ${token}`
@@ -31,11 +31,11 @@ export class ClassApi {
         )
     }
 
-    searchClasses(prop: string) {
+    searchSoftwares(prop: string) {
         const token = this.storageService.getToken()
         
         return this.errorHandlerService.wrapper(
-            fetch(`${Config['base-url']}/class/searchclasses/?search=${prop}`, {
+            fetch(`${Config['base-url']}/software/searchsoftwares/?search=${prop}`, {
                 method: 'get',
                 headers: {
                     'Authorization': `Bearer ${token}`

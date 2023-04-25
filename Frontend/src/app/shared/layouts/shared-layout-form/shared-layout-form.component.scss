@@ -4,8 +4,8 @@
 
     .img-bg {
         z-index: 2;
-        height: 75%;
-        transform: translateY(17.5%);
+        height: 75vh;
+        transform: translateY(12%);
 
         &-left {
             @apply float-left;

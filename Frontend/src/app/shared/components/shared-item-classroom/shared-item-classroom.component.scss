@@ -11,4 +11,8 @@
     & .name {
         @apply text-normal;
     }
+
+    &-selected {
+        border: 2px solid $color-action;
+    }
 }

@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
     <app-core-nav></app-core-nav>
     <app-core-main>
       <router-outlet></router-outlet>
-    </app-core-main>    
+    </app-core-main>
   `
 })
 export class AppComponent {
