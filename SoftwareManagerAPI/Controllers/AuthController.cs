@@ -10,12 +10,15 @@ using System.Text;
 
 namespace SoftwareManagerAPI.Controllers
 {
+
     [ApiController]
     [Route("[controller]")]
     public class AuthController : ControllerBase
     {
+
+
         private readonly UserManager<AppUser> _userManager;
-     
+
         public AuthController(UserManager<AppUser> userManager, IConfiguration configuration)
         {
             _userManager = userManager;
@@ -26,16 +29,21 @@ namespace SoftwareManagerAPI.Controllers
             var user = await _userManager.FindByNameAsync(model.UserName);
             if (user != null && await _userManager.CheckPasswordAsync(user, model.Password))
             {
-                var claim = new List<Claim> { new Claim(JwtRegisteredClaimNames.Sub, user.UserName) };
+                var claim = new List<Claim>
+                {
+                    new Claim(JwtRegisteredClaimNames.Sub, user.UserName),
+                    new Claim(JwtRegisteredClaimNames.Name, user.UserName),
+                    new Claim(JwtRegisteredClaimNames.NameId, user.UserName)
+                };
                 foreach (var role in await _userManager.GetRolesAsync(user))
                 {
                     claim.Add(new Claim(ClaimTypes.Role, role));
                 }
                 var signinKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("nagyonhosszutitkoskodhelye"));
                 var token = new JwtSecurityToken(
-                issuer: "http://www.security.org", audience: "http://www.security.org",
-                claims: claim, expires: DateTime.Now.AddMinutes(60),
-                signingCredentials: new SigningCredentials(signinKey, SecurityAlgorithms.HmacSha256)
+                 issuer: "http://www.security.org", audience: "http://www.security.org",
+                 claims: claim, expires: DateTime.Now.AddMinutes(60),
+                 signingCredentials: new SigningCredentials(signinKey, SecurityAlgorithms.HmacSha256)
                 );
                 return Ok(new
                 {
@@ -52,34 +60,47 @@ namespace SoftwareManagerAPI.Controllers
         {
             var user = new AppUser
             {
-               
+
                 Email = model.Email,
                 UserName = model.UserName,
                 SecurityStamp = Guid.NewGuid().ToString(),
                 FirstName = model.FirstName,
                 LastName = model.LastName,
-                
+
             };
-            
-            var hiba= await _userManager.CreateAsync(user, model.Password);
-            
-            if (hiba.Succeeded==false)
+
+            var hiba = await _userManager.CreateAsync(user, model.Password);
+
+            if (hiba.Succeeded == false)
             {
                 throw new Exception("Nem felel meg az IdentityUser követelményeinek");
             }
-            await _userManager.AddToRoleAsync(user,"Admin");
+            await _userManager.AddToRoleAsync(user, "Admin");
 
             return Ok();
         }
 
 
-        
-        [HttpGet]
-        public  IEnumerable<AppUser> GetUserInfos()
-        {
-            
-            return _userManager.Users;
-        }
 
+        [Authorize]
+        [HttpGet]
+        public async Task<IActionResult> GetUserInfos()
+        {
+            var user = _userManager.Users.FirstOrDefault(t => t.UserName == this.User.Identity.Name);
+            if (user != null)
+            {
+                return Ok(new
+                {
+                    UserName = user.UserName,
+                    FirstName = user.FirstName,
+                    LastName = user.LastName,
+                    Email = user.Email,
+
+                    Roles = await _userManager.GetRolesAsync(user)
+                });
+            }
+            return Unauthorized();
+
+        }
     }
 }
