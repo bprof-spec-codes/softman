@@ -1,4 +1,4 @@
-﻿namespace SoftwareManagerAPI.Models
+﻿namespace SoftwareManagerAPI.Models.ViewModels
 {
     public class SoftwareClassRoomViewModel
     {

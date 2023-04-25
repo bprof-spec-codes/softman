@@ -9,11 +9,11 @@ namespace SoftwareManagerAPI.Models
     {
 
         [StringLength(200)]
-        [Required]
+     
         public string FirstName { get; set; }
 
         [StringLength(200)]
-        [Required]
+       
         public string LastName { get; set; }
 
         [NotMapped]

@@ -1,4 +1,5 @@
 ﻿using SoftwareManagerAPI.Models;
+using SoftwareManagerAPI.Models.ViewModels;
 
 namespace SoftwareManagerAPI.Data.Repository
 {
