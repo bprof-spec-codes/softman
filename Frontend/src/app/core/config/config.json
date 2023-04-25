@@ -1,3 +1,5 @@
 {
-    "base-url": "http://localhost:5009"
+    "base-url": "http://localhost:5009",
+    "token-key": "token:ab7a6df7-8710-44d4",
+    "logger": true
 }

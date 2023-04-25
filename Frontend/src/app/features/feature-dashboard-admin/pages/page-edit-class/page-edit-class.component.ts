@@ -24,11 +24,11 @@ export class PageEditClassComponent {
       float: 'left',
       title: 'Edit Class',
       inputs: [
-          { type: 'text', text: 'Classnumber' },
-          { type: 'text', text: 'Size' }
+          { type: 'text', text: 'Classnumber', value: '', name: '', onChange: (e) => {} },
+          { type: 'text', text: 'Size', value: '', name: '', onChange: (e) => {} }
       ],
       buttons: [
-          { display: 'block-normal', type: 'filled', text: 'Update' }
+          { display: 'block-normal', type: 'filled', text: 'Update', onClick: (e) => {} }
       ],
       padding: {
         between_input_button: true

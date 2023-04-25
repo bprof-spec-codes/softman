@@ -1,6 +1,6 @@
 import {
   AfterViewInit,
-  Component, ElementRef, Input,
+  Component, ElementRef, Input, EventEmitter,
   ViewChild, ViewEncapsulation
 } from '@angular/core';
 

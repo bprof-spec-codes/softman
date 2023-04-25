@@ -24,12 +24,12 @@ export class PageAddSoftwareComponent {
       float: 'left',
       title: 'Add Software',
       inputs: [
-        { type: 'text', text: 'Name' },
-        { type: 'text', text: 'Size' },
-        { type: 'file', text: 'Picture' }
+        { type: 'text', text: 'Name', value: '', name: '', onChange: (e) => {} },
+        { type: 'text', text: 'Size', value: '', name: '', onChange: (e) => {} },
+        { type: 'file', text: 'Picture', value: '', name: '', onChange: (e) => {} }
       ],
       buttons: [
-        { display: 'block-normal', type: 'filled', text: 'Add new' }
+        { display: 'block-normal', type: 'filled', text: 'Add new', onClick: (e) => {} }
       ],
       padding: {
         between_input_button: true

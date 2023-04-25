@@ -23,7 +23,13 @@ builder.Services.AddDbContext<ApiDbContext>(option =>
 
 
 
-
+builder.Services.AddCors(option =>
+{
+    option.AddDefaultPolicy(builder =>
+    {
+        builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
+    });
+});
 
 
 builder.Services.AddIdentity<AppUser, IdentityRole>(option =>
@@ -96,7 +102,7 @@ if (app.Environment.IsDevelopment())
 app.UseAuthentication();
 app.UseAuthorization();
 
-
+app.UseCors();
 
 app.MapControllers();
 

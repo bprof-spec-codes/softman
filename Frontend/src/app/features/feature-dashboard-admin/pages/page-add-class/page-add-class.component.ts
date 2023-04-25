@@ -18,11 +18,11 @@ export class PageAddClassComponent {
       float: 'left',
       title: 'Add Class',
       inputs: [
-        { type: 'text', text: 'Classnumber' },
-        { type: 'text', text: 'Size' }
+        { type: 'text', text: 'Classnumber', value: '', name: '', onChange: (e) => {} },
+        { type: 'text', text: 'Size', value: '', name: '', onChange: (e) => {} }
       ],
       buttons: [
-        { display: 'block-normal', type: 'filled', text: 'Add new' }
+        { display: 'block-normal', type: 'filled', text: 'Add new', onClick: (e) => {} }
       ],
       padding: {
         between_input_button: true

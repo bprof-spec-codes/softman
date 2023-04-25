@@ -30,9 +30,12 @@
       </ng-container>
 
       <ng-template #elseInput>
-        <input     
+        <input
           [type]="input.type"
           [placeholder]="input.text"
+          [value]="input.value"
+          [name]="input.name"
+          (change)="input.onChange($event)"
         >
       </ng-template>
       
@@ -62,6 +65,7 @@
             [text]="button.text"
             [type]="button.type"
             [classLayer]="generateClassLayer(button, i)"
+            (click)="button.onClick($event)"
             ngClass="h-fit"
           ></app-shared-button>
         </div>
@@ -74,6 +78,7 @@
             [text]="options.buttons[i + 1].text"
             [type]="options.buttons[i + 1].type"
             [classLayer]="generateClassLayer(options.buttons[i + 1], i + 1)"
+            (click)="options.buttons[i + 1].onClick($event)"
             ngClass="h-fit"
           ></app-shared-button>
         </div>            
@@ -86,6 +91,7 @@
           [text]="button.text"
           [type]="button.type"
           [classLayer]="generateClassLayer(button, i)"
+          (click)="button.onClick($event)"
           ngClass="h-fit"
         ></app-shared-button>
       </ng-template>

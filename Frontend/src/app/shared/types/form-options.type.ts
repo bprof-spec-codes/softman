@@ -3,7 +3,11 @@ import ButtonType from './button.type'
 type FormOptionsType = {
     float: 'left' | 'right' | 'center'
     title: string
-    inputs: { type: string, text: string }[]
+    inputs: {
+        type: string, text: string,
+        value: string, name: string,
+        onChange: (e: Event) => void
+    }[]
     buttons: ButtonType[]
     mslogin?: 'with hr' | 'without hr'
     padding?: {

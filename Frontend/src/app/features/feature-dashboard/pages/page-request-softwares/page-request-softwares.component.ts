@@ -16,7 +16,7 @@ export class PageRequestSoftwaresComponent {
     imgJetpackGuy = ImgJetpackGuy
 
     constructor() {
-        getAllClassesApi()
+        //getAllClassesApi()
     }
 
     softwares: ISoftwareModel[] = [
