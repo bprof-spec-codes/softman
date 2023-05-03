@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
@@ -10,7 +11,7 @@ using System.Text;
 
 namespace SoftwareManagerAPI.Controllers
 {
-
+ 
     [ApiController]
     [Route("[controller]")]
     public class AuthController : ControllerBase
@@ -23,7 +24,8 @@ namespace SoftwareManagerAPI.Controllers
         {
             _userManager = userManager;
         }
-        [HttpPost]
+
+
         private async Task<IActionResult> SocialAuth(AppUser user)
         {
             if (_userManager.Users.FirstOrDefault(t => t.Email == user.Email) == null)
@@ -56,6 +58,33 @@ namespace SoftwareManagerAPI.Controllers
             (signinKey, SecurityAlgorithms.HmacSha256)
                 );
 
+                return Ok(new
+                {
+                    token = new JwtSecurityTokenHandler().WriteToken(token),
+                    expiration = token.ValidTo
+                });
+            }
+            return Unauthorized();
+        }
+
+
+        [HttpPost]
+        public async Task<IActionResult> Login([FromBody] LoginViewModel model)
+        {
+            var user = await _userManager.FindByNameAsync(model.UserName);
+            if (user != null && await _userManager.CheckPasswordAsync(user, model.Password))
+            {
+                var claim = new List<Claim> { new Claim(JwtRegisteredClaimNames.Sub, user.UserName) };
+                foreach (var role in await _userManager.GetRolesAsync(user))
+                {
+                    claim.Add(new Claim(ClaimTypes.Role, role));
+                }
+                var signinKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("nagyonhosszutitkoskodhelye"));
+                var token = new JwtSecurityToken(
+                issuer: "http://www.security.org", audience: "http://www.security.org",
+                claims: claim, expires: DateTime.Now.AddMinutes(60),
+                signingCredentials: new SigningCredentials(signinKey, SecurityAlgorithms.HmacSha256)
+                );
                 return Ok(new
                 {
                     token = new JwtSecurityTokenHandler().WriteToken(token),

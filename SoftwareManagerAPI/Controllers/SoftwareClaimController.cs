@@ -45,7 +45,7 @@ namespace SoftwareManagerAPI.Controllers
         public async Task<IActionResult> CreateSoftwareClaim(SoftwareClassRoomViewModel model)
         {
             var user = await _userManager.GetUserAsync(this.User);
-            var appUserId = user.Id;
+            var appUserId = user?.Id;
             var createdSoftClaim = SoftwareClaimRepo.Create(model,appUserId);
             return Ok(createdSoftClaim);
         }
