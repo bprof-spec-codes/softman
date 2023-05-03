@@ -5,7 +5,7 @@ using SoftwareManagerAPI.Models;
 
 namespace SoftwareManagerAPI.Controllers
 {
-    
+    [Authorize]
     [ApiController]
     [Route("[controller]")]
     public class ClassController : ControllerBase

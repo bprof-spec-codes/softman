@@ -8,7 +8,7 @@ using SoftwareManagerAPI.Models.ViewModels;
 
 namespace SoftwareManagerAPI.Controllers
 {
-    
+    [Authorize]
     [ApiController]
     [Route("[controller]")]
     public class SoftwareClaimController : ControllerBase
