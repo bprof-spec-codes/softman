@@ -1,5 +1,6 @@
 {
     "base-url": "http://localhost:5009",
-    "token-key": "token:ab7a6df7-8710-44d4",
+    "auth-key": "auth:ab7a6df7-8710-44d4",
+    "role-key": "http://schemas.microsoft.com/ws/2008/06/identity/claims/role",
     "logger": true
 }

@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 
 import { FeatureDashboardAdminRoutingModule } from './feature-dashboard-admin-routing.module';
 
@@ -16,9 +15,8 @@ import {
     PageEditClassComponent
   ],
   imports: [
-    CommonModule,
-    FeatureDashboardAdminRoutingModule,
-    SharedModule
+    SharedModule,
+    FeatureDashboardAdminRoutingModule
   ]
 })
 export class FeatureDashboardAdminModule { }

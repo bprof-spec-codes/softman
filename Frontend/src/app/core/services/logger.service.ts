@@ -7,7 +7,7 @@ import { Config } from '../config'
 })
 export class LoggerService {
 
-    log(data: any) {
+    public log(data: any) {
         if (Config.logger) {
             console.log(data)
         }

@@ -17,8 +17,8 @@ import { NavComponent, MainComponent } from './core';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
-    SharedModule
+    SharedModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

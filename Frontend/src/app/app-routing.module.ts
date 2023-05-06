@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
+import { GuardUserService, GuardAdminService } from './core'
+
 const routes: Routes = [
   {
     path: '',
@@ -9,6 +11,7 @@ const routes: Routes = [
   },
   {
     path: 'dashboard',
+    canActivate: [GuardUserService],
     loadChildren: () => import('./features/feature-dashboard/feature-dashboard.module')
     .then(feature => feature.FeatureDashboardModule)
   },
@@ -19,6 +22,7 @@ const routes: Routes = [
   },
   {
     path: 'admin',
+    canActivate: [GuardAdminService],
     loadChildren: () => import('./features/feature-dashboard-admin/feature-dashboard-admin.module')
     .then(feature => feature.FeatureDashboardAdminModule)
   }

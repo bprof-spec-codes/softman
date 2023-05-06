@@ -1,48 +1,47 @@
 import { Injectable } from '@angular/core'
+import { Router } from '@angular/router'
 
 import {
-    Config,
-    LocalStorageService, ErrorHandlerService
+    ISoftwareModel,
+    ApiBaseService, LoggerService, LocalStorageService,
+    GuardUserService, GuardAdminService
 } from 'src/app/core'
 
 @Injectable({
     providedIn: 'root'
 })
-export class SoftwareApi {
+export class SoftwareApi extends ApiBaseService {
 
     constructor(
-        private storageService: LocalStorageService,
-        private errorHandlerService: ErrorHandlerService
-    ) { }
+        router: Router,
+        logger: LoggerService,
+        storageService: LocalStorageService,
+        guardUserService: GuardUserService,
+        guardAdminService: GuardAdminService
+    ) {
+        super(router, logger, storageService, guardUserService, guardAdminService)
+        this.defineBaseUrl('software')
+        this.defineRole('Customer')
+    }
 
-    getAllSoftwares() {
-        const token = this.storageService.getToken()
-        
-        return this.errorHandlerService.wrapper(
-            fetch(`${Config['base-url']}/software`, {
-                method: 'get',
-                headers: {
-                    'Authorization': `Bearer ${token}`
-                }
+    public getAllSoftwares() {
+        return this.wrap<ISoftwareModel[]>(
+            fetch(this.baseUrl, {
+                headers: this.defineHeaders(['auth'])
             }),
-            res => {
-                return res
+            data => {
+                return data
             }
         )
     }
 
-    searchSoftwares(prop: string) {
-        const token = this.storageService.getToken()
-        
-        return this.errorHandlerService.wrapper(
-            fetch(`${Config['base-url']}/software/searchsoftwares/?search=${prop}`, {
-                method: 'get',
-                headers: {
-                    'Authorization': `Bearer ${token}`
-                }
+    public searchSoftwares(prop: string) {
+        return this.wrap<ISoftwareModel[]>(
+            fetch(`${this.baseUrl}/searchsoftwares/?search=${prop}`, {
+                headers: this.defineHeaders(['auth'])
             }),
-            res => {
-                return res
+            data => {
+                return data
             }
         )
     }

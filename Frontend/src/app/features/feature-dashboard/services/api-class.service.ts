@@ -1,48 +1,47 @@
 import { Injectable } from '@angular/core'
+import { Router } from '@angular/router'
 
 import {
-    Config,
-    LocalStorageService, ErrorHandlerService
+    IClassroomModel,
+    ApiBaseService, LoggerService, LocalStorageService,
+    GuardUserService, GuardAdminService
 } from 'src/app/core'
 
 @Injectable({
     providedIn: 'root'
 })
-export class ClassApi {
+export class ClassApi extends ApiBaseService {
 
     constructor(
-        private storageService: LocalStorageService,
-        private errorHandlerService: ErrorHandlerService
-    ) { }
+        router: Router,
+        logger: LoggerService,
+        storageService: LocalStorageService,
+        guardUserService: GuardUserService,
+        guardAdminService: GuardAdminService
+    ) {
+        super(router, logger, storageService, guardUserService, guardAdminService)
+        this.defineBaseUrl('class')
+        this.defineRole('Customer')
+    }
 
-    getAllClass() {
-        const token = this.storageService.getToken()
-        
-        return this.errorHandlerService.wrapper(
-            fetch(`${Config['base-url']}/class`, {
-                method: 'get',
-                headers: {
-                    'Authorization': `Bearer ${token}`
-                }
+    public getAllClass() {
+        return this.wrap<IClassroomModel[]>(
+            fetch(this.baseUrl, {
+                headers: this.defineHeaders(['auth'])
             }),
-            res => {
-                return res
+            data => {
+                return data
             }
         )
     }
 
-    searchClasses(prop: string) {
-        const token = this.storageService.getToken()
-        
-        return this.errorHandlerService.wrapper(
-            fetch(`${Config['base-url']}/class/searchclasses/?search=${prop}`, {
-                method: 'get',
-                headers: {
-                    'Authorization': `Bearer ${token}`
-                }
+    public searchClasses(prop: string) {
+        return this.wrap<IClassroomModel[]>(
+            fetch(`${this.baseUrl}/searchclasses/?search=${prop}`, {
+                headers: this.defineHeaders(['auth'])
             }),
-            res => {
-                return res
+            data => {
+                return data
             }
         )
     }

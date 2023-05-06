@@ -1,7 +1,4 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-
-import { AuthService } from './services';
 
 import { FeatureDashboardAuthRoutingModule } from './feature-dashboard-auth-routing.module';
 
@@ -18,12 +15,8 @@ import {
     PageRegisterComponent
   ],
   imports: [
-    CommonModule,
-    FeatureDashboardAuthRoutingModule,
-    SharedModule
-  ],
-  providers: [
-    AuthService
+    SharedModule,
+    FeatureDashboardAuthRoutingModule
   ]
 })
 export class FeatureDashboardAuthModule { }

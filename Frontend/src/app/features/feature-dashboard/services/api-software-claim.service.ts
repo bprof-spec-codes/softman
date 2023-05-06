@@ -1,37 +1,40 @@
 import { Injectable } from '@angular/core'
+import { Router } from '@angular/router'
 
 import {
-    Config,
-    LocalStorageService, ErrorHandlerService
+    ApiBaseService, LoggerService, LocalStorageService,
+    GuardUserService, GuardAdminService
 } from 'src/app/core'
 
 @Injectable({
     providedIn: 'root'
 })
-export class SoftwareClaimApi {
+export class SoftwareClaimApi extends ApiBaseService {
 
     constructor(
-        private storageService: LocalStorageService,
-        private errorHandlerService: ErrorHandlerService
-    ) { }
+        router: Router,
+        logger: LoggerService,
+        storageService: LocalStorageService,
+        guardUserService: GuardUserService,
+        guardAdminService: GuardAdminService
+    ) {
+        super(router, logger, storageService, guardUserService, guardAdminService)
+        this.defineBaseUrl('softwareclaim')
+        this.defineRole('Customer')
+    }
 
-    claimSoftware(classroomId: string, softwareId: string) {
-        const token = this.storageService.getToken()
-        
-        return this.errorHandlerService.wrapper(
-            fetch(`${Config['base-url']}/softwareclaim`, {
+    public claimSoftware(classroomId: string, softwareId: string) {
+        return this.wrap(
+            fetch(this.baseUrl, {
                 method: 'post',
-                headers: {
-                    'Authorization': `Bearer ${token}`,
-                    'Content-type': 'application/json'
-                },
+                headers: this.defineHeaders(['content-json', 'auth']),
                 body: JSON.stringify({
                     classRoomId: classroomId,
                     softwareId: softwareId
                 })
             }),
-            res => {
-                return res
+            data => {
+                return data
             }
         )
     }

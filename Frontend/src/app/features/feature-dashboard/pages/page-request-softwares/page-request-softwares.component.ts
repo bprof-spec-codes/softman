@@ -117,7 +117,7 @@ export class PageRequestSoftwaresComponent {
     }
 
     getSelectedClassroom(prop: 'roomNumber' | 'storageCapacity') {
-        const found = this.classrooms.find(x => x.id === this.selectedClassroom)
+        const found = this.classrooms?.find(x => x.id === this.selectedClassroom)
         return found ? found[prop] : ''
     }
 

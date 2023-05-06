@@ -31,9 +31,10 @@ import { SharedLayoutFormComponent } from './layouts';
     SharedPopUpComponent
   ],
   imports: [
-    CommonModule,
+    CommonModule
   ],
   exports: [
+    CommonModule,
     SharedBarSearchComponent,
     SharedButtonComponent,
     SharedButtonCircleComponent,

@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 
 import { FeatureDashboardRoutingModule } from './feature-dashboard-routing.module';
 
@@ -16,9 +15,8 @@ import {
     PageAddSoftwareComponent
   ],
   imports: [
-    CommonModule,
-    FeatureDashboardRoutingModule,
-    SharedModule
+    SharedModule,
+    FeatureDashboardRoutingModule
   ]
 })
 export class FeatureDashboardModule { }

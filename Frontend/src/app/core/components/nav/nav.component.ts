@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-
 import { Router } from '@angular/router';
+
+import { LocalStorageService, GuardUserService, GuardAdminService } from '../../services';
 
 import { ImgLogoServer } from 'src/assets';
 
@@ -13,33 +14,47 @@ import { ImgLogoServer } from 'src/assets';
         <img
           [src]="imgLogoServer.src"
           [alt]="imgLogoServer.alt"
-          (click)="navigateToPublic()"
+          (click)="router.navigate([''])"
         >
         <ul>
-            <li><a routerLink="dashboard/request-softwares">Request softwares</a></li>
-            <li><a routerLink="dashboard/add-software">Add software</a></li>
-            <li><a>Manage claims</a></li>
-            <li><a routerLink="admin/add-class">Add class</a></li>
+          <li><a routerLink="dashboard/request-softwares">Request softwares</a></li>
+          <li><a routerLink="dashboard/add-software">Add software</a></li>
+          <li *ngIf="guardAdminService.isLoggedIn()"><a>Manage claims</a></li>
+          <li *ngIf="guardAdminService.isLoggedIn()"><a routerLink="admin/add-class">Add class</a></li>
         </ul>
-        <app-shared-button
+        <ng-template
+          *ngIf="
+            !guardUserService.isLoggedIn()
+            else sign_out
+          "
+        >
+          <app-shared-button            
             text="Sign in"
             [ngClass]="'btn'"
-            (click)="btnClick()"
-        ></app-shared-button>
+            (click)="router.navigate(['auth/login'])"
+          ></app-shared-button>
+        </ng-template>
+        <ng-template
+          #sign_out
+        >
+          <app-shared-button
+            text="Sign out"
+            type="outlined"
+            [ngClass]="'btn'"
+            (click)="storageService.clear()"
+          ></app-shared-button>
+        </ng-template>
       </nav>
     </header>
   `
 })
 export class NavComponent {
-  constructor(private _router: Router) {}
+  constructor(
+    public router: Router,
+    public storageService: LocalStorageService,
+    public guardUserService: GuardUserService,
+    public guardAdminService: GuardAdminService
+  ) { }
 
   imgLogoServer = ImgLogoServer
-
-  navigateToPublic() {
-    this._router.navigate([''])
-  }
-
-  btnClick() {
-    this._router.navigate(['auth/login'])
-  }
 }

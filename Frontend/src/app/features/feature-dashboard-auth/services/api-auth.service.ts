@@ -2,36 +2,41 @@ import { Injectable } from '@angular/core'
 import { Router } from '@angular/router'
 
 import {
-    Config,
-    LocalStorageService, ErrorHandlerService
+    AuthModel,
+    ApiBaseService, LoggerService, LocalStorageService,
+    GuardUserService, GuardAdminService
 } from 'src/app/core'
 
-import { UserType, AuthResponseType } from '../types'
+import { UserType } from '../types'
 
 @Injectable({
     providedIn: 'root'
 })
-export class AuthService {
+export class AuthService extends ApiBaseService {
     
     constructor(
-        private router: Router,
-        private storageService: LocalStorageService,
-        private errorHandlerService: ErrorHandlerService
-    ) {}
+        router: Router,
+        logger: LoggerService,
+        storageService: LocalStorageService,
+        guardUserService: GuardUserService,
+        guardAdminService: GuardAdminService
+    ) {
+        super(router, logger, storageService, guardUserService, guardAdminService)
+        this.defineBaseUrl('auth')
+        this.defineRole('None')
+    }
 
-    login(payload: UserType) {
-        return this.errorHandlerService.wrapper(
-            fetch(`${Config['base-url']}/auth`, {
+    public login(payload: UserType) {
+        return this.wrap<AuthModel>(
+            fetch(this.baseUrl, {
                 method: 'post',
-                headers: {
-                    'Content-type': 'application/json'
-                },
+                headers: this.defineHeaders(['content-json']),
                 body: JSON.stringify(payload)
             }),
-            res => {
-                const data = res as AuthResponseType
-                this.storageService.setToken(data.token)
+            data => {
+                this.storageService.setAuthModel(data)
                 this.router.navigate(['dashboard/request-softwares'])
+                return data
             }
         )
     }
