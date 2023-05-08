@@ -18,6 +18,8 @@ export class SharedFormComponent implements AfterViewInit {
     @Input() options!: FormOptionsType
 
     @ViewChild('form') form!: ElementRef<HTMLFormElement>
+    @ViewChild('file') file!: ElementRef<HTMLInputElement>
+    @ViewChild('img') img!: ElementRef<HTMLImageElement>
     @ViewChild('btn_container_parent') btnContainerParent?: ElementRef<HTMLDivElement>
     @ViewChild('btn_container_left') btnContainerLeft?: ElementRef<HTMLDivElement>
     @ViewChild('btn_container_right') btnContainerRight?: ElementRef<HTMLDivElement>
@@ -50,5 +52,17 @@ export class SharedFormComponent implements AfterViewInit {
         isLast && this.options.padding?.large_after_last ? 'mb-36'
           : isLast && this.options.mslogin ? '' : 'mb-16',
       ].join(' ')
+    }
+
+    fileInputTrigger(e: Event) {
+      e.preventDefault()
+      e.stopPropagation()
+      this.file.nativeElement.click()
+    }
+
+    fileInputChange(e: Event) {
+      const file = (e.target as HTMLInputElement).files![0]
+      this.img.nativeElement.src = URL.createObjectURL(file)
+      this.options.inputs[0].onChange(e)
     }
 }

@@ -34,6 +34,12 @@ form {
         padding-left: 15%;
     }
 
+    .pic {
+        @apply h-14 inline-block ml-4;
+
+        border-radius: 3.5rem;
+    }
+
     input {
         @include component('secondary');
         @apply text-link cursor-text block mx-auto mb-6 pl-4 py-0.5;
@@ -46,10 +52,17 @@ form {
         &::-ms-input-placeholder { color: white; }
     }
 
-    [nghost-btn-file] button {
-        @apply block py-0 mb-6;
+    [nghost-btn-file] {
 
-        margin-left: 15%;
+        button {
+            @apply block py-0 mb-6;
+
+            margin-left: 15%;
+        }
+        
+        .inline-left {
+            @apply float-left;
+        }
     }
 
     .btn-container-parent {

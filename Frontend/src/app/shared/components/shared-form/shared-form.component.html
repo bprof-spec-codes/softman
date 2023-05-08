@@ -20,13 +20,19 @@
         "
       >
         <input
+          #file
           [type]="input.type"
+          [name]="input.name"
+          (change)="fileInputChange($event)"
           hidden
         >
         <app-shared-button
           nghost-btn-file
+          [classLayer]="'inline-left'"
           [text]="input.text"
+          (click)="fileInputTrigger($event)"
         />
+        <img class="pic" #img [src]="input.value">
       </ng-container>
 
       <ng-template #elseInput>
