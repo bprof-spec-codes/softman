@@ -74,9 +74,13 @@ namespace SoftwareManagerAPI.Data.Repository
             var result = ReadAll().Where(t =>
             t.ClaimDate.ToString().ToLower().Contains(search.ToLower()) ||
             t.Status.ToString().ToLower().Contains(search.ToLower()) ||
-            t.AppUser.FirstName.ToLower().Contains(search.ToLower()) ||
-            t.AppUser.LastName.ToLower().Contains(search.ToLower()) ||
-            t.Software.Size.ToString().Contains(search.ToLower()));
+            (
+                t.AppUser != null && (
+                    t.AppUser.FirstName.ToLower().Contains(search.ToLower()) ||
+                    t.AppUser.LastName.ToLower().Contains(search.ToLower())
+                )
+            ) ||
+            (t.Software != null && t.Software.Size.ToString().Contains(search.ToLower())));
 
             return result;
         }

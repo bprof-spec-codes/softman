@@ -34,4 +34,42 @@ export class ApiAdminClassService extends ApiBaseService {
             }
         )
     }
+
+    public addClass(classroom: IClassroomModel) {
+        return this.wrap<IClassroomModel>(
+            fetch(this.baseUrl, {
+                method: 'post',
+                headers: this.defineHeaders(['content-json', 'auth']),
+                body: JSON.stringify(classroom)
+            }),
+            data => {
+                return data
+            }
+        )
+    }
+
+    public updateClass(classroom: IClassroomModel) {
+        return this.wrap<IClassroomModel>(
+            fetch(this.baseUrl, {
+                method: 'put',
+                headers: this.defineHeaders(['content-json', 'auth']),
+                body: JSON.stringify(classroom)
+            }),
+            data => {
+                return data
+            }
+        )
+    }
+
+    public deleteClass(id: string) {
+        return this.wrap<IClassroomModel>(
+            fetch(`${this.baseUrl}/${id}`, {
+                method: 'delete',
+                headers: this.defineHeaders(['auth'])
+            }),
+            data => {
+                return data
+            }
+        )
+    }
 }

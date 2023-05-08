@@ -9,27 +9,32 @@
             /></li>            
             <li><app-shared-button
                 text="Search"
+                (click)="searchSoftwareClaims()"
             /></li>
             <li><app-shared-button
                 text="Clear"
+                (click)="onClear()"
             /></li>
         </ul>
         <app-shared-panel-flow-layout>
             <app-shared-button
                 _nghost-btn-add
                 text="Add class"
+                (click)="router.navigate(['admin/add-class'])"
             />
             <app-shared-item-classroom
                 *ngFor="let classroom of classrooms"
                 [classroom]="classroom"
                 [isExtended]="true"
                 (select)="setSelectedClassroom($event)"
+                (delete)="deleteClassroom($event)"
             />
             <app-shared-item-software
                 *ngFor="let item of vm_softwareClaims"
                 [software]="item.software"
                 [softwareClaim]="item.claim"
                 [isExtended]="true"
+                (update)="updateSoftwareClaim($event)"
             />
         </app-shared-panel-flow-layout>
     </div>

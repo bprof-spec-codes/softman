@@ -21,7 +21,7 @@
     .panel-flow-layout {
         @apply h-full;
 
-        background: transparent;
-        backdrop-filter: unset;
+        background: transparent !important;
+        backdrop-filter: unset !important;
     }
 }

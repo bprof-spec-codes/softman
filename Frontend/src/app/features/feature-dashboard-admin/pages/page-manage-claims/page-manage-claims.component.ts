@@ -1,4 +1,5 @@
 import { Component, ViewEncapsulation } from '@angular/core';
+import { Router } from '@angular/router'
 
 import {
   ApiAdminClassService,
@@ -29,6 +30,7 @@ export class PageManageClaimsComponent {
   searchBars = { claims: '' }
 
   constructor(
+    public router: Router,
     private apiAdminClassService: ApiAdminClassService,
     private apiAdminSoftwareClaimService: ApiAdminSoftwareClaimService,
     private apiAdminSoftwareService: ApiAdminSoftwareService
@@ -36,6 +38,16 @@ export class PageManageClaimsComponent {
     this.loadClasses()
     this.loadSoftwares()
     this.loadSoftwareClaims()
+  }
+
+  private addSoftwareToClaim(filtered: ISoftwareClaimModel[]) {
+    this.vm_softwareClaims = []
+    filtered.map(claim => {
+      const software = this.softwares.find(x => x.id === claim.softwareId)
+      if (software) {
+        this.vm_softwareClaims.push({ claim, software })
+      }
+    })
   }
 
   async loadClasses() {
@@ -52,12 +64,25 @@ export class PageManageClaimsComponent {
 
   async filterSoftwareClaims() {
     const softwareClaims_filtered = this.softwareClaims.filter(x => x.classRoomId === this.selectedClassroom)
-    softwareClaims_filtered.map(claim => {
-      const software = this.softwares.find(x => x.id === claim.softwareId)
-      if (software) {
-        this.vm_softwareClaims.push({ claim, software })
-      }
-    })
+    this.addSoftwareToClaim(softwareClaims_filtered)
+  }
+
+  async searchSoftwareClaims() {
+    const softwareClaims_filtered = await this.apiAdminSoftwareClaimService.searchSoftwareClaims(this.searchBars.claims)
+    this.addSoftwareToClaim(softwareClaims_filtered)
+  }
+
+  async updateSoftwareClaim(args: { claim: ISoftwareClaimModel, status: number }) {
+    const claim = { ...args.claim, status: args.status }
+    const softwareClaim = await this.apiAdminSoftwareClaimService.updateSoftwareClaims(claim)
+    this.softwareClaims = this.softwareClaims.map(x => x.id === claim.id ? softwareClaim : x)
+    this.vm_softwareClaims = this.vm_softwareClaims.map(x => x.claim.id === claim.id ? { claim: softwareClaim, software: x.software } : x)
+  }
+
+  async deleteClassroom(id: string) {
+    const classroom = await this.apiAdminClassService.deleteClass(id)
+    this.classrooms = this.classrooms.filter(x => x.id !== classroom.id)
+    this.vm_softwareClaims = []
   }
 
   onSearchBarChange(e: Event) {
@@ -65,9 +90,16 @@ export class PageManageClaimsComponent {
     this.searchBars = {...this.searchBars, [name]: value}
   }
 
+  onClear() {
+    this.searchBars = { claims: '' }
+    this.loadClasses()
+    this.loadSoftwares()
+    this.loadSoftwareClaims()
+    this.vm_softwareClaims = []
+  }
+
   setSelectedClassroom(id: string) {
     this.selectedClassroom = id
-    this.vm_softwareClaims = []
     this.filterSoftwareClaims()
   }
 

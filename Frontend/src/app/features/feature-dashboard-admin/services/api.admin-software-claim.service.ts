@@ -34,4 +34,28 @@ export class ApiAdminSoftwareClaimService extends ApiBaseService {
             }
         )
     }
+
+    public updateSoftwareClaims(claim: ISoftwareClaimModel) {
+        return this.wrap<ISoftwareClaimModel>(
+            fetch(this.baseUrl, {
+                method: 'put',
+                headers: this.defineHeaders(['content-json', 'auth']),
+                body: JSON.stringify(claim)
+            }),
+            data => {
+                return data
+            }
+        )
+    }
+
+    public searchSoftwareClaims(prop: string) {
+        return this.wrap<ISoftwareClaimModel[]>(
+            fetch(`${this.baseUrl}/searchsoftwareclaims/?search=${prop}`, {
+                headers: this.defineHeaders(['auth'])
+            }),
+            data => {
+                return data
+            }
+        )
+    }
 }

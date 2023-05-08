@@ -1,4 +1,4 @@
-import { Component, Input, ViewEncapsulation } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ViewEncapsulation } from '@angular/core';
 
 import { ISoftwareModel, ISoftwareClaimModel } from 'src/app/core';
 
@@ -35,9 +35,11 @@ import { ISoftwareModel, ISoftwareClaimModel } from 'src/app/core';
             <app-shared-button-circle
               [value]="true"
               [isActive]="this.softwareClaim!.status === 0"
+              (click)="updateStatus({ claim: this.softwareClaim!, status: 1 })"
             />
             <app-shared-button-circle
               [isActive]="this.softwareClaim!.status === 0"
+              (click)="updateStatus({ claim: this.softwareClaim!, status: 2 })"
             />
           </div>
         </div>
@@ -49,6 +51,7 @@ export class SharedItemSoftwareComponent {
   @Input() software!: ISoftwareModel
   @Input() softwareClaim?: ISoftwareClaimModel
   @Input() isExtended: boolean = false
+  @Output() update: EventEmitter<any> = new EventEmitter()
 
   get serializedSize(): string {
       return `Size: ${this.software?.size} MB`
@@ -61,6 +64,12 @@ export class SharedItemSoftwareComponent {
   get serializedDate(): string {
     const date = new Date(this.softwareClaim!.claimDate)
     return `Date: ${date.toLocaleDateString('hu-HU', { year: 'numeric', month: '2-digit', day: '2-digit' })}`
+  }
+
+  updateStatus(args: { claim: ISoftwareClaimModel, status: number }) {
+    if (this.softwareClaim!.status === 0) {
+      this.update.emit(args)
+    }
   }
 
   drag(e: DragEvent) {
