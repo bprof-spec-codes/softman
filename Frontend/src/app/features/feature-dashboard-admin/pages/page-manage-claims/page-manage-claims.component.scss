@@ -1,0 +1,40 @@
+@import "index";
+
+.page-manage-claims {
+
+    .img-bg {
+        @apply absolute;
+
+        height: 75vh;
+        top: 12%;
+        right: 0%;
+    }
+
+    .container {
+        @apply relative;
+
+        height: 81vh;
+        width: 60vw;
+        transform: translateY(7vh);
+
+        .row {
+            @apply absolute top-0;
+
+            li {
+                @apply inline-block mr-4;
+            }
+        }
+
+        .panel-flow-layout {
+            @apply absolute bottom-0;
+    
+            height: 75vh;
+            width: 100%;
+    
+            [_nghost-btn-add] button {
+                margin-left: 2rem;
+                margin-top: 1rem;
+            }
+        }
+    }
+}

@@ -55,3 +55,9 @@ export const ImgShapeTriangleYellow = {
     alt: 'Yellow triangle image',
     id: 'triangle-yellow'
 } satisfies ImageType
+
+export const ImgShapeTrianglePurple = {
+    src: baseUrl + 'shape-triangle-purple.svg',
+    alt: 'Purple triangle image',
+    id: 'triangle-purple'
+} satisfies ImageType

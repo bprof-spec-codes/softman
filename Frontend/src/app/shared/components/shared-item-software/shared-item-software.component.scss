@@ -14,7 +14,7 @@
     &__cell-3 { grid-area: 2 / 4 / 4 / 9; }
 
     &__cell-1 {
-        & .avatar {
+        .avatar {
             @apply ml-6;
 
             width: 6.5rem;
@@ -28,7 +28,7 @@
     &__cell-2 {
         @apply pt-3;
 
-        & .name {
+        .name {
             @apply text-normal;
         }
     }
@@ -36,8 +36,79 @@
     &__cell-3 {
         @apply pt-3;
 
-        & .size {
+        .size {
             @apply text-desc;
+        }
+    }
+
+
+    &-max {
+        @include component('secondary');
+        @apply float-left my-2;
+
+        width: 65%;
+        height: 10rem;
+        margin-right: 0;
+        margin-left: calc(20% + 2rem);
+
+        &__cell-1 {
+            @apply inline-block;
+
+            height: 100%;
+            width: 9.5rem;
+
+            .avatar {
+                @apply ml-6;
+    
+                width: 7.5rem;
+                height: 7.5rem;
+                background-color: $color-extra;
+                border-radius: 100%;
+                margin-top: 1.2rem;
+            }
+        }
+        
+        &__cell-2 {
+            @apply absolute top-4;
+
+            left: 11rem;
+            height: 100%;
+            width: calc(100% - 11rem);
+    
+            li {
+                @apply block;
+
+                &:first-child {
+                    @apply text-normal pb-1;
+
+                    text-align: unset;
+                }
+
+                &:not(:first-child) {
+                    @apply text-desc;
+
+                    line-height: 1.2rem;
+                }
+
+                .rejected {
+                    color: red;
+                }
+
+                .accepted {
+                    color: limegreen;
+                }
+            }
+
+            .btns {
+                @apply absolute right-8 top-8;
+
+                button {
+
+                    &:first-child {
+                        @apply mr-10;
+                    }
+                }
+            }
         }
     }
 }

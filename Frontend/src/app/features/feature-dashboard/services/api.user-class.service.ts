@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core'
 import { Router } from '@angular/router'
 
 import {
+    IClassroomModel,
     ApiBaseService, LoggerService, LocalStorageService,
     GuardUserService, GuardAdminService
 } from 'src/app/core'
@@ -9,7 +10,7 @@ import {
 @Injectable({
     providedIn: 'root'
 })
-export class SoftwareClaimApi extends ApiBaseService {
+export class ApiUserClassService extends ApiBaseService {
 
     constructor(
         router: Router,
@@ -19,19 +20,25 @@ export class SoftwareClaimApi extends ApiBaseService {
         guardAdminService: GuardAdminService
     ) {
         super(router, logger, storageService, guardUserService, guardAdminService)
-        this.defineBaseUrl('softwareclaim')
+        this.defineBaseUrl('class')
         this.defineRole('Customer')
     }
 
-    public claimSoftware(classroomId: string, softwareId: string) {
-        return this.wrap(
+    public getAllClass() {
+        return this.wrap<IClassroomModel[]>(
             fetch(this.baseUrl, {
-                method: 'post',
-                headers: this.defineHeaders(['content-json', 'auth']),
-                body: JSON.stringify({
-                    classRoomId: classroomId,
-                    softwareId: softwareId
-                })
+                headers: this.defineHeaders(['auth'])
+            }),
+            data => {
+                return data
+            }
+        )
+    }
+
+    public searchClasses(prop: string) {
+        return this.wrap<IClassroomModel[]>(
+            fetch(`${this.baseUrl}/searchclasses/?search=${prop}`, {
+                headers: this.defineHeaders(['auth'])
             }),
             data => {
                 return data

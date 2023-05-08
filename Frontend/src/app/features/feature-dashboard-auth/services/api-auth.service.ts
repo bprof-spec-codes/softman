@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core'
 import { Router } from '@angular/router'
 
 import {
-    AuthModel,
+    IAuthModel,
     ApiBaseService, LoggerService, LocalStorageService,
     GuardUserService, GuardAdminService
 } from 'src/app/core'
@@ -12,7 +12,7 @@ import { UserType } from '../types'
 @Injectable({
     providedIn: 'root'
 })
-export class AuthService extends ApiBaseService {
+export class ApiAuthService extends ApiBaseService {
     
     constructor(
         router: Router,
@@ -27,7 +27,7 @@ export class AuthService extends ApiBaseService {
     }
 
     public login(payload: UserType) {
-        return this.wrap<AuthModel>(
+        return this.wrap<IAuthModel>(
             fetch(this.baseUrl, {
                 method: 'post',
                 headers: this.defineHeaders(['content-json']),
@@ -36,6 +36,21 @@ export class AuthService extends ApiBaseService {
             data => {
                 this.storageService.setAuthModel(data)
                 this.router.navigate(['dashboard/request-softwares'])
+                return data
+            }
+        )
+    }
+
+    public register(payload: UserType) {
+        payload.userName = payload.email
+        return this.wrap<any>(
+            fetch(this.baseUrl, {
+                method: 'put',
+                headers: this.defineHeaders(['content-json']),
+                body: JSON.stringify(payload)
+            }),
+            data => {
+                this.router.navigate(['auth/login'])
                 return data
             }
         )

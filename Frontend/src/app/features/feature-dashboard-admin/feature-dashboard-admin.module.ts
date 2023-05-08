@@ -6,13 +6,15 @@ import { SharedModule } from 'src/app/shared';
 
 import {
   PageAddClassComponent,
-  PageEditClassComponent
+  PageEditClassComponent,
+  PageManageClaimsComponent
 } from './pages';
 
 @NgModule({
   declarations: [
     PageAddClassComponent,
-    PageEditClassComponent
+    PageEditClassComponent,
+    PageManageClaimsComponent
   ],
   imports: [
     SharedModule,

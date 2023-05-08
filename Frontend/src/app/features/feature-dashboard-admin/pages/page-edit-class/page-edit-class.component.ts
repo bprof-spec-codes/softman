@@ -9,7 +9,7 @@ import { ImgBlogging } from 'src/assets';
   styles: [],
   template: `
     <div class="page-edit-class">
-      <app-shared-layout-form [props]="formProps"></app-shared-layout-form>
+      <app-shared-layout-form [props]="formProps"/>
     </div>
   `
 })

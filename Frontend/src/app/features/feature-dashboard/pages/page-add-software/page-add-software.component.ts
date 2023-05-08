@@ -9,7 +9,7 @@ import { ImgSupport } from 'src/assets';
   styles: [],
   template: `
     <div class="page-add-software">
-      <app-shared-layout-form [props]="formProps"></app-shared-layout-form>
+      <app-shared-layout-form [props]="formProps"/>
     </div>
   `
 })

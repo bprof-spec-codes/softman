@@ -1,0 +1,36 @@
+<div class="page-manage-claims">
+    <img class="img-bg" [src]="imgWebDevelopment.src" [alt]="imgWebDevelopment.alt">
+    <div class="container">
+        <ul class="row">
+            <li><app-shared-bar-search
+                name="claims"
+                [value]="searchBars.claims"
+                (textChange)="onSearchBarChange($event)"
+            /></li>            
+            <li><app-shared-button
+                text="Search"
+            /></li>
+            <li><app-shared-button
+                text="Clear"
+            /></li>
+        </ul>
+        <app-shared-panel-flow-layout>
+            <app-shared-button
+                _nghost-btn-add
+                text="Add class"
+            />
+            <app-shared-item-classroom
+                *ngFor="let classroom of classrooms"
+                [classroom]="classroom"
+                [isExtended]="true"
+                (select)="setSelectedClassroom($event)"
+            />
+            <app-shared-item-software
+                *ngFor="let item of vm_softwareClaims"
+                [software]="item.software"
+                [softwareClaim]="item.claim"
+                [isExtended]="true"
+            />
+        </app-shared-panel-flow-layout>
+    </div>
+</div>

@@ -34,14 +34,14 @@
         <div class="feature-dnd__cell-2">
             <app-shared-item-software
                 [software]="dummySoftware"
-            ></app-shared-item-software>
+            />
         </div>
         <div class="feature-dnd__cell-3">
             <app-shared-panel-drag-n-drop (addSoftware)="addSoftware($event)">
                 <app-shared-item-software
                     *ngFor="let software of softwaresInDND"
                     [software]="software"
-                ></app-shared-item-software>
+                />
             </app-shared-panel-drag-n-drop>
             <img [src]="imgIdea.src" [alt]="imgIdea.alt">
         </div>

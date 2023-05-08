@@ -20,8 +20,8 @@ import { PopUpType } from '../../types'
               *ngIf="props.onYes"
               [value]="true"
               (click)="props.onYes($event)"
-            ></app-shared-button-circle>
-            <app-shared-button-circle (click)="props.onNo($event)"></app-shared-button-circle>
+            />
+            <app-shared-button-circle (click)="props.onNo($event)"/>
         </div>
     </div>
   `

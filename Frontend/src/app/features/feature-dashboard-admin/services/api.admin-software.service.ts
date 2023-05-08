@@ -10,7 +10,7 @@ import {
 @Injectable({
     providedIn: 'root'
 })
-export class SoftwareApi extends ApiBaseService {
+export class ApiAdminSoftwareService extends ApiBaseService {
 
     constructor(
         router: Router,
@@ -21,23 +21,12 @@ export class SoftwareApi extends ApiBaseService {
     ) {
         super(router, logger, storageService, guardUserService, guardAdminService)
         this.defineBaseUrl('software')
-        this.defineRole('Customer')
+        this.defineRole('Admin')
     }
 
     public getAllSoftwares() {
         return this.wrap<ISoftwareModel[]>(
             fetch(this.baseUrl, {
-                headers: this.defineHeaders(['auth'])
-            }),
-            data => {
-                return data
-            }
-        )
-    }
-
-    public searchSoftwares(prop: string) {
-        return this.wrap<ISoftwareModel[]>(
-            fetch(`${this.baseUrl}/searchsoftwares/?search=${prop}`, {
                 headers: this.defineHeaders(['auth'])
             }),
             data => {

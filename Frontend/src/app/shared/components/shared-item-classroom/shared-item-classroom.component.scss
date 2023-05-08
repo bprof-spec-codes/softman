@@ -8,11 +8,32 @@
     margin: 1rem 2rem;
     padding: 0.35rem 1.5rem;
 
-    & .name {
+    .name {
         @apply text-normal;
+    }
+
+    .btn {
+        @apply text-normal float-right cursor-pointer;
+
+        margin-right: 20%;
+
+        &:last-child {
+            margin-right: 10%;
+        }
+    }
+
+    img {
+        @apply absolute cursor-pointer right-0 top-0;
+
+        height: 100%;
+        transform: rotate(90deg) translateX(-18%);
     }
 
     &-selected {
         border: 2px solid $color-action;
+    }
+
+    &-max {
+        width: 85%;
     }
 }

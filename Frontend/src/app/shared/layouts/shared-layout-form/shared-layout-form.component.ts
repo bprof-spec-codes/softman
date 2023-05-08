@@ -18,8 +18,8 @@ import { FormLayoutType } from 'src/app/shared';
         [src]="props.background.img.src"
         [alt]="props.background.img.alt"
       >
-      <app-shared-panel-background></app-shared-panel-background>
-      <app-shared-form [options]="props.panel"></app-shared-form>
+      <app-shared-panel-background/>
+      <app-shared-form [options]="props.panel"/>
     </div>
   `
 })

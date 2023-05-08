@@ -6,31 +6,31 @@
                 name="software"
                 [value]="searchBars.software"
                 (textChange)="onSearchBarChange($event)"
-            ></app-shared-bar-search>
+            />
         </div>
         <div class="cell-btn-s container-left__cell-2">
             <app-shared-button
                 text="Search" (click)="searchSoftwares()"
-            ></app-shared-button>
+            />
         </div>
         <div class="cell-btn-c container-left__cell-3">
             <app-shared-button
                 text="Clear" (click)="onClear('software')"
-            ></app-shared-button>
+            />
         </div>
         <div class="cell-flp container-left__cell-4">
             <app-shared-panel-flow-layout _nghost-flp-1>
                 <app-shared-item-software
                     *ngFor="let software of softwares"
-                    [software]="software">
-                </app-shared-item-software>
+                    [software]="software"
+                />
             </app-shared-panel-flow-layout>
         </div>
         <div class="cell-btn-a container-left__cell-5">
             <app-shared-button
                 text="Add new"
                 (click)="redirectToAddSoftware()"
-            ></app-shared-button>
+            />
         </div>
     </div>
     <div class="container container-right">
@@ -39,17 +39,17 @@
                 name="class"
                 [value]="searchBars.class"
                 (textChange)="onSearchBarChange($event)"
-            ></app-shared-bar-search>
+            />
         </div>
         <div class="cell-btn-s container-right__cell-2">
             <app-shared-button
                 text="Search" (click)="searchClasses()"
-            ></app-shared-button>
+            />
         </div>
         <div class="cell-btn-c container-right__cell-3">
             <app-shared-button
                 text="Clear" (click)="onClear('class')"
-            ></app-shared-button>
+            />
         </div>
         <div class="cell-flp container-right__cell-4">
             <app-shared-panel-flow-layout _nghost-flp-2>
@@ -58,7 +58,7 @@
                     [classroom]="classroom"
                     [isSelected]="classroom.id === selectedClassroom"
                     (select)="setSelectedClassroom($event)"
-                ></app-shared-item-classroom>
+                />
             </app-shared-panel-flow-layout>
         </div>
         <div class="cell-lab container-right__cell-5">
@@ -73,19 +73,19 @@
             >
                 <app-shared-item-software
                     *ngFor="let software of softwareClaims"
-                    [software]="software">
-                </app-shared-item-software>
+                    [software]="software"
+                />
             </app-shared-panel-drag-n-drop>
         </div>
         <div class="cell-btn-a container-right__cell-7">
             <app-shared-button
                 text="Send request"
                 (click)="claimSoftware()"
-            ></app-shared-button>
+            />
         </div>
     </div>
 </div>
 <app-shared-pop-up
     *ngIf="popup"
     [props]="popup"
-></app-shared-pop-up>
+/>

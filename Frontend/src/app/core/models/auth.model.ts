@@ -1,6 +1,6 @@
-interface AuthModel {
+interface IAuthModel {
     token: string
     expiration: Date
 }
 
-export default AuthModel
+export default IAuthModel

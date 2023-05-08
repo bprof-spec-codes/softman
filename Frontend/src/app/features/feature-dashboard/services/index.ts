@@ -1,3 +1,3 @@
-export * from './api-class.service'
-export * from './api-software.service'
-export * from './api-software-claim.service'
+export * from './api.user-class.service'
+export * from './api.user-software.service'
+export * from './api.user-software-claim.service'

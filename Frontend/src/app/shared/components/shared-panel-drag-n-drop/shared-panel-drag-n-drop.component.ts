@@ -8,7 +8,7 @@ import { Component, ViewEncapsulation, Output, EventEmitter } from '@angular/cor
     <div class="panel-drag-n-drop" (dragover)="allowDrop($event)" (drop)="drop($event)">
         <span class="placeholder">Drop here</span>
         <app-shared-panel-flow-layout>
-          <ng-content></ng-content>
+          <ng-content/>
         </app-shared-panel-flow-layout>
     </div>
   `

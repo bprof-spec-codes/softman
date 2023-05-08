@@ -4,7 +4,11 @@ import { Router } from '@angular/router';
 import { ISoftwareModel, IClassroomModel } from 'src/app/core';
 import { PopUpType } from 'src/app/shared';
 
-import { ClassApi, SoftwareApi, SoftwareClaimApi } from '../../services';
+import {
+    ApiUserClassService,
+    ApiUserSoftwareService,
+    ApiUserSoftwareClaimService
+} from '../../services';
 
 import { ImgJetpackGuy } from 'src/assets';
 
@@ -20,46 +24,42 @@ export class PageRequestSoftwaresComponent {
     softwareClaims: ISoftwareModel[] = []
     softwares: ISoftwareModel[] = []
     classrooms: IClassroomModel[] = []
-    selectedClassroom: string = ''
+    selectedClassroom?: string
 
     searchBars = { software: '', class: '' }
     popup: PopUpType | undefined = undefined
 
     constructor(
         private router: Router,
-        private classApi: ClassApi,
-        private softwareApi: SoftwareApi,
-        private softwareClaimApi: SoftwareClaimApi
+        private apiUserClassService: ApiUserClassService,
+        private apiUserSoftwareService: ApiUserSoftwareService,
+        private apiUserSoftwareClaimService: ApiUserSoftwareClaimService
     ) {
         this.loadClasses()
         this.loadSoftwares()
     }
 
     async loadClasses() {
-        const data = await this.classApi.getAllClass()
-        this.classrooms = data as IClassroomModel[]
-        this.selectedClassroom = this.classrooms[0].id
+        this.classrooms = await this.apiUserClassService.getAllClass()
+        this.selectedClassroom = this.classrooms ? this.classrooms[0].id : undefined
     }
 
     async loadSoftwares() {
-        const data = await this.softwareApi.getAllSoftwares()
-        this.softwares = data as ISoftwareModel[]
+        this.softwares = await this.apiUserSoftwareService.getAllSoftwares()
     }
 
     async searchSoftwares() {
-        const data = await this.softwareApi.searchSoftwares(this.searchBars.software)
-        this.softwares = data as ISoftwareModel[]
+        this.softwares = await this.apiUserSoftwareService.searchSoftwares(this.searchBars.software)
     }
 
     async searchClasses() {
-        const data = await this.classApi.searchClasses(this.searchBars.class)
-        this.classrooms = data as IClassroomModel[]
-        this.selectedClassroom = this.classrooms[0].id
+        this.classrooms = await this.apiUserClassService.searchClasses(this.searchBars.class)
+        this.selectedClassroom = this.classrooms ? this.classrooms[0].id : undefined
     }
 
     async claimSoftware() {
-        if (this.softwareClaims.length > 0) {
-            const data = await this.softwareClaimApi.claimSoftware(this.selectedClassroom, this.softwareClaims[0].id)
+        if (this.softwareClaims.length > 0 && this.selectedClassroom) {
+            const data = await this.apiUserSoftwareClaimService.claimSoftware(this.selectedClassroom, this.softwareClaims[0].id)
         }        
     }
 
@@ -118,7 +118,7 @@ export class PageRequestSoftwaresComponent {
 
     getSelectedClassroom(prop: 'roomNumber' | 'storageCapacity') {
         const found = this.classrooms?.find(x => x.id === this.selectedClassroom)
-        return found ? found[prop] : ''
+        return found ? found[prop] : prop === 'roomNumber' ? 'AA.00.00' : '0'
     }
 
     setSelectedClassroom(id: string) {

@@ -7,7 +7,7 @@ import { FormLayoutType } from 'src/app/shared';
   styles: [],
   template: `
     <div class="page-add-class">
-      <app-shared-layout-form [props]="formProps"></app-shared-layout-form>
+      <app-shared-layout-form [props]="formProps"/>
     </div>
   `
 })

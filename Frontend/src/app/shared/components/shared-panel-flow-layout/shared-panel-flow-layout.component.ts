@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
   template: `
     <div class="panel-flow-layout">
         <div class="content">
-            <ng-content></ng-content>
+            <ng-content/>
         </div>
     </div>
   `

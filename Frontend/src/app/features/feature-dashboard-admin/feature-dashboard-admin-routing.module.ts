@@ -3,7 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 
 import {
   PageAddClassComponent,
-  PageEditClassComponent
+  PageEditClassComponent,
+  PageManageClaimsComponent
 } from './pages';
 
 const routes: Routes = [
@@ -17,6 +18,10 @@ const routes: Routes = [
         {
           path: 'edit-class',
           component: PageEditClassComponent
+        },
+        {
+          path: 'manage-claims',
+          component: PageManageClaimsComponent
         }
       ]
     }

@@ -4,16 +4,16 @@ import { Router } from '@angular/router'
 import { FormLayoutType } from 'src/app/shared';
 import { UserType } from '../../types';
 
-import { ImgLogin } from 'src/assets';
+import { ApiAuthService } from '../../services';
 
-import { AuthService } from '../../services';
+import { ImgLogin } from 'src/assets';
 
 @Component({
   selector: 'app-page-login',
   styles: [],
   template: `
     <div class="page-login">
-      <app-shared-layout-form [props]="formProps"></app-shared-layout-form>
+      <app-shared-layout-form [props]="formProps"/>
     </div>    
   `
 })
@@ -22,7 +22,7 @@ export class PageLoginComponent {
   user: UserType = { password: '', userName: '' }
 
   constructor(
-    private authService: AuthService,
+    private apiAuthService: ApiAuthService,
     private router: Router
   ) { }
 
@@ -37,7 +37,7 @@ export class PageLoginComponent {
       inputs: [
         {
           type: 'text', text: 'Email address',
-          value: this.user.userName, name: 'userName',
+          value: this.user.userName!, name: 'userName',
           onChange: this.onInputChange.bind(this)
         },
         {
@@ -63,7 +63,7 @@ export class PageLoginComponent {
   onLoginClick(e: Event) {
     e.preventDefault()
     e.stopPropagation()
-    this.authService.login(this.user)
+    this.apiAuthService.login(this.user)
   }
 
   onSignUpClick(e: Event) {

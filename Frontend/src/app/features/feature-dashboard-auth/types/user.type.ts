@@ -1,6 +1,10 @@
 type UserType = {
-    userName: string
+    email?: string
+    userName?: string
+    firstName?: string
+    lastName?: string
     password: string
+    passwordAgain?: string
 }
 
 export default UserType

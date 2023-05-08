@@ -7,7 +7,7 @@ import { IGuardBase } from './interfaces'
 
 import { LocalStorageService } from '../local-storage.service'
 
-import { AuthModel } from '../../models'
+import { IAuthModel } from '../../models'
 import { RoleType } from '../../types'
 
 @Injectable({
@@ -20,7 +20,7 @@ export class GuardAdminService implements IGuardBase {
         protected storageService: LocalStorageService
     ) { }
 
-    private isExpired(authModel: AuthModel): boolean {
+    private isExpired(authModel: IAuthModel): boolean {
         const exp = new Date(authModel.expiration)
         return exp.getTime() <= Date.now()
     }

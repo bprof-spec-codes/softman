@@ -26,7 +26,7 @@
         <app-shared-button
           nghost-btn-file
           [text]="input.text"
-        ></app-shared-button>
+        />
       </ng-container>
 
       <ng-template #elseInput>
@@ -67,7 +67,7 @@
             [classLayer]="generateClassLayer(button, i)"
             (click)="button.onClick($event)"
             ngClass="h-fit"
-          ></app-shared-button>
+          />
         </div>
         <div
           #btn_container_right
@@ -80,7 +80,7 @@
             [classLayer]="generateClassLayer(options.buttons[i + 1], i + 1)"
             (click)="options.buttons[i + 1].onClick($event)"
             ngClass="h-fit"
-          ></app-shared-button>
+          />
         </div>            
       </div>
 
@@ -93,7 +93,7 @@
           [classLayer]="generateClassLayer(button, i)"
           (click)="button.onClick($event)"
           ngClass="h-fit"
-        ></app-shared-button>
+        />
       </ng-template>
       
     </ng-container>

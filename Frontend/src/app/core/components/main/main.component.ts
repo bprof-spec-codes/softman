@@ -6,7 +6,7 @@ import { Component, ViewEncapsulation } from '@angular/core';
   encapsulation: ViewEncapsulation.None,
   template: `
     <main>
-        <ng-content></ng-content>
+        <ng-content/>
     </main>
   `
 })
