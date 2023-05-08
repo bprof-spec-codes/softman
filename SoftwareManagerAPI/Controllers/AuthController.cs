@@ -211,7 +211,32 @@ namespace SoftwareManagerAPI.Controllers
 
 
 
-        
+        [Route("[action]")]
+        [HttpPost]
+        public async Task<IActionResult> Microsoft([FromBody] SocialToken token)
+        {
+            HttpClient client = new HttpClient();
+            client.BaseAddress = new Uri("https://graph.microsoft.com");
+            client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
+            client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token.Token);
+            var response = await client.GetAsync("/oidc/userinfo");
+            MsModel? userInfo = new MsModel();
+            if (response.IsSuccessStatusCode)
+            {
+                userInfo = await response.Content.ReadFromJsonAsync<MsModel>();
+                AppUser user = new AppUser
+                {
+                    FirstName = userInfo.given_name,
+                    LastName = userInfo.family_name,
+                    Email = userInfo.email,
+                    UserName = userInfo.email,
+                    EmailConfirmed = true
+                };
+                return await SocialAuth(user);
+            }
+            return BadRequest(new ErrorModel() { Message = "Ms login failed" });
+        }
+
 
 
 
