@@ -16,6 +16,11 @@
         @apply text-normal float-right cursor-pointer;
 
         margin-right: 20%;
+        color: $color-extra;
+
+        &:hover {
+            color: $color-plain;
+        }
 
         &:last-child {
             margin-right: 10%;

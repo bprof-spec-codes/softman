@@ -2,8 +2,8 @@ import { Config } from '../../config'
 
 import { Router } from '@angular/router'
 
-import { LoggerService } from '../logger.service'
-import { LocalStorageService } from '../local-storage.service'
+import { LoggerService } from '../utils/logger.service'
+import { LocalStorageService } from '../utils/local-storage.service'
 import { IGuardBase, GuardUserService, GuardAdminService } from '../guards'
 
 import { HeaderType, RoleType } from '../../types'
@@ -68,7 +68,8 @@ export class ApiBaseService {
 
     protected async wrap<T>(
         request: Promise<Response>,
-        callback: (res: T) => T
+        callback: (res: T) => T,
+        nobody: boolean = false
     ): Promise<T> {
         let result = undefined as T
         
@@ -78,10 +79,16 @@ export class ApiBaseService {
             }
             const res = await request
             if (res.ok) {
-                const data = await res.json()
-                this.logger.log('SUCCESS')
-                this.logger.log(data)
-                result = callback(data)
+                if (nobody) {
+                    this.logger.log('SUCCESS')
+                    result = callback({ } as T)
+                }
+                else {
+                    const data = await res.json()
+                    this.logger.log('SUCCESS')
+                    this.logger.log(data)
+                    result = callback(data)
+                }                
             }
             else {
                 if (res.status === 401) {

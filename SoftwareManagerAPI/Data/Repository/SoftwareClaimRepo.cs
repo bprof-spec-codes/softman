@@ -69,8 +69,27 @@ namespace SoftwareManagerAPI.Data.Repository
             throw new ArgumentException("The claimed software with this Id does not exists...");
         }
 
+
+        // -----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----| 
+        /*
+            Az AppUser null értéket vesz fel és ezt próbáltam megkerülni, ami valójában nem megoldás a problémára.
+            A SoftwareClaimControllerben a CreateSoftwareClaim endpointban a userManager a userre nullt ad vissza
+            és így az AppUserbe null értéket ment el.
+            Ez így hiba és pl classok törlésekor a szerver meghal emiatt a null reference hiba miatt.
+         */
+        // -----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----| 
         public IEnumerable<SoftwareClaim> SearchSoftwareClaims(string search)
         {
+            /*
+             
+            t.ClaimDate.ToString().ToLower().Contains(search.ToLower()) ||
+            t.Status.ToString().ToLower().Contains(search.ToLower()) ||
+            t.AppUser.FirstName.ToLower().Contains(search.ToLower()) ||
+            t.AppUser.LastName.ToLower().Contains(search.ToLower()) ||
+            t.Software.Size.ToString().Contains(search.ToLower())
+             
+             */
+
             var result = ReadAll().Where(t =>
             t.ClaimDate.ToString().ToLower().Contains(search.ToLower()) ||
             t.Status.ToString().ToLower().Contains(search.ToLower()) ||
@@ -84,6 +103,7 @@ namespace SoftwareManagerAPI.Data.Repository
 
             return result;
         }
+
 
         public SoftwareClaim Update(SoftwareClaim uptodate)
         {

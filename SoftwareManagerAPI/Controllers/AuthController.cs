@@ -67,7 +67,6 @@ namespace SoftwareManagerAPI.Controllers
             return Unauthorized();
         }
 
-
         [HttpPost]
         public async Task<IActionResult> Login([FromBody] LoginViewModel model)
         {

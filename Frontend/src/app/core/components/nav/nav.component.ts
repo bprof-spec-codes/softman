@@ -17,10 +17,10 @@ import { ImgLogoServer } from 'src/assets';
           (click)="router.navigate([''])"
         >
         <ul>
-          <li><a routerLink="dashboard/request-softwares">Request softwares</a></li>
-          <li><a routerLink="dashboard/add-software">Add software</a></li>
-          <li *ngIf="guardAdminService.isLoggedIn()"><a routerLink="admin/manage-claims">Manage claims</a></li>
-          <li *ngIf="guardAdminService.isLoggedIn()"><a routerLink="admin/add-class">Add class</a></li>
+          <li><a routerLink="dashboard/request-softwares" routerLinkActive="active">Request softwares</a></li>
+          <li><a routerLink="dashboard/add-software" routerLinkActive="active">Add software</a></li>
+          <li *ngIf="guardAdminService.isLoggedIn()"><a routerLink="admin/manage-claims" routerLinkActive="active">Manage claims</a></li>
+          <li *ngIf="guardAdminService.isLoggedIn()"><a routerLink="admin/add-class" routerLinkActive="active">Add class</a></li>
         </ul>
         <app-shared-button
           *ngIf="

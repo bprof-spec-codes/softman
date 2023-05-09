@@ -4,6 +4,7 @@ import { Location } from '@angular/common'
 import { FormLayoutType } from 'src/app/shared';
 import { ISoftwareModel } from 'src/app/core';
 
+import { FNSService } from 'src/app/core';
 import { ApiUserSoftwareService } from '../../services';
 
 import { ImgSupport } from 'src/assets';
@@ -51,7 +52,7 @@ export class PageAddSoftwareComponent {
         },
         {
           type: 'text', text: 'Size',
-          value: this.software.size.toString(), name: 'size',
+          value: '', name: 'size',
           onChange: this.onInputChange.bind(this)
         },
         {
@@ -91,6 +92,6 @@ export class PageAddSoftwareComponent {
     }
     else {
       this.software = {...this.software, [name]: value}
-    }    
+    }
   }
 }

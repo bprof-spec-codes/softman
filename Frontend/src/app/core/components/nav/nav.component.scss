@@ -11,6 +11,12 @@ nav {
 
         height: 60%;
         top: 20%;
+
+        opacity: .8;
+
+        &:hover {
+            opacity: 1;
+        }
     }
 
     & ul {
@@ -21,10 +27,20 @@ nav {
 
             & a {
                @apply text-link;
+
+               color: $color-extra;
+
+                &:hover {
+                    color: $color-plain;
+                }
             }
 
             &:not(:last-child) {
                 @apply mr-14;
+            }
+
+            .active {
+                color: $color-primary-active;
             }
         }
     }

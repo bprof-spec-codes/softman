@@ -41,10 +41,18 @@ namespace SoftwareManagerAPI.Controllers
             return SoftwareClaimRepo.SearchSoftwareClaims(search);
         }
 
+
+        // -----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----| 
+        /*
+            Az userManager nem talál usert és emiatt a szerver meghal.
+            A problémát egy kérdőjellel megkerültem, de így null értéket párosít a SoftwareClaim AppUser tulajdonságához, ami nem jó.
+         */
+        // -----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----| 
         [HttpPost]
         public async Task<IActionResult> CreateSoftwareClaim(SoftwareClassRoomViewModel model)
         {
             var user = await _userManager.GetUserAsync(this.User);
+            // var appUserId = user.Id;
             var appUserId = user?.Id;
             var createdSoftClaim = SoftwareClaimRepo.Create(model,appUserId);
             return Ok(createdSoftClaim);

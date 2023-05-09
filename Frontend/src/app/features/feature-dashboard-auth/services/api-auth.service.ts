@@ -43,6 +43,7 @@ export class ApiAuthService extends ApiBaseService {
 
     public register(payload: UserType) {
         payload.userName = payload.email
+        delete payload.passwordAgain
         return this.wrap<any>(
             fetch(this.baseUrl, {
                 method: 'put',
@@ -52,7 +53,8 @@ export class ApiAuthService extends ApiBaseService {
             data => {
                 this.router.navigate(['auth/login'])
                 return data
-            }
+            },
+            true
         )
     }
 }

@@ -24,6 +24,8 @@ export class PageRequestSoftwaresComponent {
     softwareClaims: ISoftwareModel[] = []
     softwares: ISoftwareModel[] = []
     classrooms: IClassroomModel[] = []
+    classroom_data_before?: IClassroomModel
+    hasRequest?: boolean
     selectedClassroom?: string
 
     searchBars = { software: '', class: '' }
@@ -41,7 +43,7 @@ export class PageRequestSoftwaresComponent {
 
     async loadClasses() {
         this.classrooms = await this.apiUserClassService.getAllClass()
-        this.selectedClassroom = this.classrooms ? this.classrooms[0].id : undefined
+        this.setSelectedClassroom(this.classrooms[0].id)
     }
 
     async loadSoftwares() {
@@ -54,12 +56,14 @@ export class PageRequestSoftwaresComponent {
 
     async searchClasses() {
         this.classrooms = await this.apiUserClassService.searchClasses(this.searchBars.class)
-        this.selectedClassroom = this.classrooms ? this.classrooms[0].id : undefined
+        this.setSelectedClassroom(this.classrooms[0].id)
     }
 
     async claimSoftware() {
         if (this.softwareClaims.length > 0 && this.selectedClassroom) {
-            const data = await this.apiUserSoftwareClaimService.claimSoftware(this.selectedClassroom, this.softwareClaims[0].id)
+            await this.apiUserSoftwareClaimService.claimSoftware(this.selectedClassroom, this.softwareClaims[0].id)
+            this.hasRequest = true
+            this.softwareClaims = []
         }        
     }
 
@@ -83,6 +87,10 @@ export class PageRequestSoftwaresComponent {
     }
 
     addSoftwareClaim(softwareSerialized: string) {
+        if (!this.hasRequest && this.classroom_data_before) {
+            this.classrooms = this.classrooms.map(x => x.id === this.selectedClassroom ? this.classroom_data_before! : x)
+        }
+
         const software = JSON.parse(softwareSerialized) as ISoftwareModel
         const classroom = this.classrooms.find(x => x.id === this.selectedClassroom)!
         const storageAfter = classroom.storageCapacity - software.size / 1000
@@ -122,8 +130,13 @@ export class PageRequestSoftwaresComponent {
     }
 
     setSelectedClassroom(id: string) {
+        if (!this.hasRequest && this.classroom_data_before) {
+            this.classrooms = this.classrooms.map(x => x.id === this.selectedClassroom ? this.classroom_data_before! : x)
+        }
         this.selectedClassroom = id
         this.softwareClaims = []
+        this.classroom_data_before = this.classrooms.find(x => x.id === id)
+        this.hasRequest = false
     }
 
     redirectToAddSoftware() {

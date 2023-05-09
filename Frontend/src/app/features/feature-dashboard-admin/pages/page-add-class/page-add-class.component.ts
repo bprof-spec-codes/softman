@@ -31,7 +31,7 @@ export class PageAddClassComponent {
         },
         {
           type: 'text', text: 'Size',
-          value: this.classroom.storageCapacity.toString(), name: 'storageCapacity',
+          value: '', name: 'storageCapacity',
           onChange: this.onInputChange.bind(this)
         }
       ],

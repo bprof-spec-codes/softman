@@ -17,15 +17,15 @@ import { ISoftwareModel, ISoftwareClaimModel } from 'src/app/core';
       (dragstart)="drag($event)"
     >
       <div class="item-software__cell-1"><div class="avatar"></div></div>
-      <div class="item-software__cell-2"><span class="name">{{software.name}}</span></div>
-      <div class="item-software__cell-3"><span class="size">{{serializedSize}}</span></div>
+      <div class="item-software__cell-2"><span class="name">{{software.name}} {{software.versionNumber}}</span></div>
+      <div class="item-software__cell-3"><span class="text">{{serializedSize}}</span></div>
     </div>
     <ng-template #extended>
       <div class="item-software-max">
         <div class="item-software-max__cell-1"><div class="avatar"></div></div>
         <div class="item-software-max__cell-2">
           <ul>
-            <li><span>{{software.name}}</span></li>
+            <li><span>{{software.name}} {{software.versionNumber}}</span></li>
             <li><span>{{serializedSize}}</span></li>
             <li><span>Sent by: {{softwareClaim!.appUserId}}</span></li>
             <li><span>Status: <span [ngClass]="serializedStatus">{{serializedStatus}}</span></span></li>

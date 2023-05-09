@@ -3,7 +3,7 @@ import { Router } from '@angular/router'
 
 import { IGuardBase } from './interfaces'
 
-import { LocalStorageService } from '../local-storage.service'
+import { LocalStorageService } from '../utils/local-storage.service'
 
 import { IAuthModel } from '../../models'
 

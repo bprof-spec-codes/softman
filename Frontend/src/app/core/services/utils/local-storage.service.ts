@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core'
 
-import { Config } from '../config'
-import { IAuthModel } from '../models'
+import { Config } from '../../config'
+import { IAuthModel } from '../../models'
 
 @Injectable({
   providedIn: 'root'
