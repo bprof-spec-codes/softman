@@ -98,7 +98,7 @@
   ![image](https://github.com/bprof-spec-codes/softman/assets/91885130/a322c71f-de9f-49fb-86fb-a4043b0240c4)
 
   ### Add Class
-  Manuálisan bármikor tudunk létrehozni új class-okat, amennyiben a nyilvántartásban nem találjuk azt, amelyhez szoftver igényt szeretnénk leadni.
+  Manuálisan bármikor létre tudunk hozni új class-okat Admin jogosultsággal, amennyiben a nyilvántartásban nem találjuk azt a class-t, amelyhez szoftver igényt szeretnénk leadni.
   ![image](https://github.com/bprof-spec-codes/softman/assets/91885130/eee8d9d4-0e2d-4c80-96c7-1dd657cb0678)
 
   ### Manage Claims
