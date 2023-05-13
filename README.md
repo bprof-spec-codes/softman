@@ -5,8 +5,11 @@
 
 
 # User manual
-#### Üzemeltetés
-#### User - pass kombinációk
+## Üzemeltetés
+<strong>Backend</strong> elindításához szükségünk van egy Visual Studio-ra, amely segítségével a szerverünk a [local](http://localhost:5009) címen lesz elérhető és a kliensünk ezen cím API-jaira fogja küldeni a  kéréseit.
+
+<strong>Frontend</strong> elindításához szükségünk van egy Angular CLI-re. Amennyiben először húzzuk le a repository-t, akkor szükség van az "npm install" parancsra, majd ezt követően pedig az "ng serve" utasítást kiadva a kliensünk le build-elődik. Ha nem adtunk meg egyéb portot, akkor a klienst alapértelmezetten a [local](http://localhost:4200) címen érjük el.
+## User - pass kombinációk
 - Admin
   - Kovi
     - Email = kovi91@gmail.com
@@ -21,7 +24,7 @@
     - Email = Jozsi@gmail.com
     - Username = Jozsi@gmail.com
     - Password = almafa123
-#### API funkciólista <!-- rövid magyarázattal -->
+## API funkciólista <!-- rövid magyarázattal -->
 4 db controllert különböztetünk meg, ezek közül az Auth controller foglalja magába az autentikációval kapcsolatos endpointokat, a controller pedig a nevének megfelelő példányokon végez CRUD műveleteket azoknak megfelelő endpointokon keresztül. Bármely CRUD műveletet hívjuk meg, eredményként egy IActionResult-ot fogunk kapni, amelyben az adott példány vagy a hibaüzenet lesz becsomagolva. Egyes controllerek kiegészülnek egyéb logikai endpointokkal, amelyek részletes leírással rendelkeznek a felsorolásban. Ezen endpointok meghívásához szükséges a controller neve mellé írni az adott endpoint nevét is pl.: Amennyiben a SearchSoftwareClaims endpoint tartalmát szeretnénk megkapni akkor azt a /SoftwareClaim/SearchSoftwareClaims címen érjük el.
 - ##### /Auth
 - ##### /Class
@@ -59,10 +62,16 @@
         - Name
         - VersionNumber
         - Size
-
-#### UI felület <!-- hol mit lehet elérni, csinálni, képpel alátámasztva -->
+## UI ismertető!
+  [Welome page](https://github.com/bprof-spec-codes/softman/assets/91885130/1c8bae9e-e496-4d60-8eaf-2d38f038a1d2)
 
 
 # Probléma jegyzőkönyv
-#### Backend
-#### Frontend
+## Backend
+  - Controller szinten le akartuk kérni az aktuális user-t az alábbi módon:
+    var user = await _userManager.GetUserAsync(this.User);
+    Erre hamar rá kellett jönnönk, hogy nem működőképes, mivel bejelentkezett felhasználó esetén is null értéket kaptunk vissza.
+
+    Megoldásképp a userek közt a UserName tulajdonságuk alapján kerestünk, mely végül pontosan visszadta a bejelentkezett felhsaználónkat.
+    var user = _userManager.Users.FirstOrDefault (t => t.UserName == this.User.Identity.Name);
+## Frontend
