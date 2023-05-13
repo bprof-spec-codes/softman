@@ -43,6 +43,9 @@
     - [HttpPost] Task<IActionResult> CreateClass(ClassRoom classRoom)
     - [HttpPut] Task<IActionResult> UpdateClass(ClassRoom updatedClassRoom)
     - [Httpdelete] Task<IActionResult> DeleteClass(string id)
+  - Egyéb endpointok
+    - [HttpGet][Route("[action]")] IEnumerable<ClassRoom> SearchClasses (string search)
+      - Egy olyan gyűjteményt ad vissza, amelyben a példányok valamilyen tulajdonsága tartalmazza a paraméterként megadott search értékét.
 - ##### /SoftwareClaim
   - CRUD funkciók
     - [HttpGet] IEnumerable<SoftwareClaim> GetAll()
