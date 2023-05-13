@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using SoftwareManagerAPI.Models;
 using SoftwareManagerAPI.Models.ViewModels;
@@ -126,6 +127,35 @@ namespace SoftwareManagerAPI.Controllers
         }
 
 
+        [Authorize]
+        [HttpGet("all")]
+        public async Task<IActionResult> GetAllUser()
+        {
+            var users = await _userManager.Users.ToListAsync();
+            if (users != null && users.Any())
+            {
+                var allUser = new List<object>();
+
+                foreach (var user in users)
+                {
+                    var userRoles = await _userManager.GetRolesAsync(user);
+
+                    allUser.Add(new
+                    {
+                        Id = user.Id,   
+                        UserName = user.UserName,
+                        FirstName = user.FirstName,
+                        LastName = user.LastName,
+                        Roles = userRoles
+                    });
+                }
+
+                return Ok(allUser);
+            }
+
+            return Unauthorized();
+        }
+
 
         [Authorize]
         [HttpGet]
@@ -145,7 +175,6 @@ namespace SoftwareManagerAPI.Controllers
                 });
             }
             return Unauthorized();
-
         }
 
         [Authorize]
