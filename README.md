@@ -87,7 +87,8 @@
   1. Bal oldalon böngészhetjük ki a számunkra szükséges szoftvert. Amennyiben nem talljuk azt amire szükségünk van, akkor nyugodtan hozhatunk létre újat is az "Add new" gomb segítségével.
   2. Jobb felső szekcióban azt a termet kereshetjük ki, amihez a szoftvert szeretnénk rendelni.
   3. Jobb alsó szekcióban pedig drag and drop módszerrel be tudjuk húzni a kikeresett szoftvert.
-  ![image](https://github.com/bprof-spec-codes/softman/assets/91885130/ea06e0b2-2924-40f7-a6cf-ae626f59808e)
+  ![image](https://github.com/bprof-spec-codes/softman/assets/91885130/c70358a4-8802-4cc2-b128-d683841c1afe)
+
 
   ### Add Software
   Új szoftvert tudunk hozzáadni az igényelhető szoftverek listájához.
@@ -101,7 +102,8 @@
   <strong>Admin által elérhető!</strong>
   
   Itt tudjuk kezelni a szoftver igényeket. Class-onként látjuk felsorolva, hogy hova, milyen igény érkezett, illetve az igényeknek milyen az állapota. (sent/accepted/rejected)
-  ![image](https://github.com/bprof-spec-codes/softman/assets/91885130/e54de550-f817-44d9-99ea-9cfe353ba081)
+  ![image](https://github.com/bprof-spec-codes/softman/assets/91885130/bba865ac-9724-49c2-8307-8cecca7c5f18)
+
 
 
 # Probléma jegyzőkönyv
