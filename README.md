@@ -117,6 +117,8 @@
 
     Megoldásképp a userek közt a UserName tulajdonságuk alapján kerestünk, mely végül pontosan visszadta a bejelentkezett felhsaználónkat.
     var user = _userManager.Users.FirstOrDefault (t => t.UserName == this.User.Identity.Name);
+  - A seed-elt, tanár jogosultságú felhasználók valamilyen oknál fogva nem tudtak belépni, viszont ha formon keresztül regisztráltunk felhasználót, akkor vele nem volt probléma. Először a kis- és nagybetűs felhasználónevekre gyanakodtunk, de formon keresztüli regisztráció során ez sem okozott problémát.
+  - Amikor egy SoftwareClaim státusza accepted-re változott, akkor az őt tároló terem kapciátsa nem változott. Ehhez a SoftwareClaim Update logikáján kellett módosítani, hogy amennyiben a frissített SoftwareClaim státusza accepted, akkor az idegenkulccsal hivatkozott terem kapacitását csökkentsük.
 ## Frontend
   - Eredetileg a Figma szerint a komponenseknek gardienses szegélye lett volna, viszont ezt nem sikerült abszorválni.
 Ezt úgy lehetett volna megcsinálni, hogy ha egy div kerül a komponemsek mögé úgy, hogy a div 2-3px-el nagyobb mint maga a komponens, és a div kapott volna egy gradienses backgroundot, de akkor elvész a komponensek transzparens háttere.
