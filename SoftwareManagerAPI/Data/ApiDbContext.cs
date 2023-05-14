@@ -118,6 +118,7 @@ namespace SoftwareManagerAPI.Data
                      SoftwareId = "Soft0000",
                      ClassRoomId = "Class0001",
                      AppUserId = "User003"
+                     
                  },
             new SoftwareClaim()
             {
@@ -165,14 +166,14 @@ namespace SoftwareManagerAPI.Data
                 AppUserId = "User002"
             }
                 );
-
+            string imagePath = @"C:\Users\Marci\Desktop\danika yasuo.png";
             builder.Entity<Software>().HasData(
 
-            new Software() { Name = "Word", Size = 1500, VersionNumber = "2023", Id = "Soft0000" },
-            new Software() { Name = "Excel", Size = 2000, VersionNumber = "2023", Id = "Soft0001" },
-            new Software() { Name = "Visual Studio", Size = 4500, VersionNumber = "2022", Id = "Soft0002" },
-            new Software() { Name = "Matlab", Size = 800, VersionNumber = "2018", Id = "Soft0003" },
-            new Software() { Name = "Packet Tracer", Size = 600, VersionNumber = "2016", Id = "Soft0004" }
+            new Software() { Name = "Word", Size = 1500, VersionNumber = "2023", Id = "Soft0000", PictureData= File.ReadAllBytes(@"Teszt.png"), PictureContentType = "image/png" },
+            new Software() { Name = "Excel", Size = 2000, VersionNumber = "2023", Id = "Soft0001" ,PictureData = File.ReadAllBytes(@"Teszt.png"), PictureContentType = "image/png" },
+            new Software() { Name = "Visual Studio", Size = 4500, VersionNumber = "2022", Id = "Soft0002", PictureData = File.ReadAllBytes(@"Teszt.png"), PictureContentType = "image/png" },
+            new Software() { Name = "Matlab", Size = 800, VersionNumber = "2018", Id = "Soft0003", PictureData = File.ReadAllBytes(@"Teszt.png"), PictureContentType = "image/png" },
+            new Software() { Name = "Packet Tracer", Size = 600, VersionNumber = "2016", Id = "Soft0004", PictureData = File.ReadAllBytes(@"Teszt.png"), PictureContentType = "image/png" }
                 );
 
             base.OnModelCreating(builder);
