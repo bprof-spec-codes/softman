@@ -14,12 +14,14 @@ namespace SoftwareManagerAPI.Controllers
     public class SoftwareClaimController : ControllerBase
     {
         UserManager<AppUser> _userManager;
+        IClassRoomRepo ClassRoomRepo;
         ISoftwareClaimRepo SoftwareClaimRepo;
 
-        public SoftwareClaimController(UserManager<AppUser> userManager, ISoftwareClaimRepo softwareClaimRepo)
+        public SoftwareClaimController(UserManager<AppUser> userManager, ISoftwareClaimRepo softwareClaimRepo, IClassRoomRepo classRoomRepo)
         {
             _userManager = userManager;
             SoftwareClaimRepo = softwareClaimRepo;
+            this.ClassRoomRepo = classRoomRepo;
         }
 
         [HttpGet]
@@ -62,6 +64,19 @@ namespace SoftwareManagerAPI.Controllers
         public async Task<IActionResult> UpdateSoftwareClaim([FromBody] SoftwareClaim updatedSoftwareClaim)
         {
             var updatedSoftClaim = SoftwareClaimRepo.Update(updatedSoftwareClaim);
+            if ((int)updatedSoftClaim.Status== 1)
+            {
+                ClassRoom Updated= new ClassRoom();
+                Updated.Id=updatedSoftClaim.ClassRoom.Id;
+                Updated.RoomNumber = updatedSoftClaim.ClassRoom.RoomNumber;
+                Updated.StorageCapacity = updatedSoftClaim.ClassRoom.StorageCapacity -= updatedSoftClaim.Software.Size; ;
+                if (Updated.StorageCapacity>=0)
+                {
+                    ClassRoomRepo.Update(Updated);
+                }
+
+                
+            }
             return Ok(updatedSoftClaim);
         }
 

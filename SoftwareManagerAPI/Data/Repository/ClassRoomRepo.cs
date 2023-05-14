@@ -71,20 +71,20 @@ namespace SoftwareManagerAPI.Data.Repository
 
         public ClassRoom Update(ClassRoom uptodate)
         {
-            var sameClass = ReadAll().FirstOrDefault(t =>
-            t.RoomNumber.ToLower() == uptodate.RoomNumber.ToLower() &&
-            t.StorageCapacity == uptodate.StorageCapacity);
-
-            if(sameClass == null)
+            foreach (var item in ReadAll())
             {
+                if (uptodate.RoomNumber==item.RoomNumber&&uptodate.Id!=item.Id)
+                {
+                    throw new Exception("This class is already exists...");
+                }
+            }
                 var oldClassRoom = ReadByID(uptodate.Id);
                 oldClassRoom.RoomNumber = uptodate.RoomNumber;
                 oldClassRoom.StorageCapacity = uptodate.StorageCapacity;
                 db.SaveChanges();
                 return oldClassRoom;
-            }
-            throw new ArgumentException("There is already a class with these paramters...");
-            
+         
+
         }
     }
 }
