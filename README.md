@@ -119,6 +119,9 @@
     var user = _userManager.Users.FirstOrDefault (t => t.UserName == this.User.Identity.Name);
   - A seed-elt, tanár jogosultságú felhasználók valamilyen oknál fogva nem tudtak belépni, viszont ha formon keresztül regisztráltunk felhasználót, akkor vele nem volt probléma. Először a kis- és nagybetűs felhasználónevekre gyanakodtunk, de formon keresztüli regisztráció során ez sem okozott problémát.
   - Amikor egy SoftwareClaim státusza accepted-re változott, akkor az őt tároló terem kapciátsa nem változott. Ehhez a SoftwareClaim Update logikáján kellett módosítani, hogy amennyiben a frissített SoftwareClaim státusza accepted, akkor az idegenkulccsal hivatkozott terem kapacitását csökkentsük.
+  - A regisztráció első kivitelezésekor az új user-eket nem adta hozzá a többihez, mivel nem tettek eleget a regisztációs megszorításnak. Ezt a jelszó követelmények módosításával oldottuk meg.
+  - Amikor még az adatbázis készült, akkor a Swagger folyamatosan hibát dobott, mert nem tudta megjeleníteni az adatokat, mivel a modelleken belül a megfelelő tulajdonságokra nem volt rátéve a [JsonIgnore] attribútum.
+  
 ## Frontend
   - Eredetileg a Figma szerint a komponenseknek gardienses szegélye lett volna, viszont ezt nem sikerült abszorválni.
 Ezt úgy lehetett volna megcsinálni, hogy ha egy div kerül a komponemsek mögé úgy, hogy a div 2-3px-el nagyobb mint maga a komponens, és a div kapott volna egy gradienses backgroundot, de akkor elvész a komponensek transzparens háttere.
