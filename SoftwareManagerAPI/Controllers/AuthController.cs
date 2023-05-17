@@ -128,7 +128,7 @@ namespace SoftwareManagerAPI.Controllers
 
 
         [Authorize]
-        [HttpGet("all")]
+        [HttpGet]
         public async Task<IActionResult> GetAllUser()
         {
             var users = await _userManager.Users.ToListAsync();

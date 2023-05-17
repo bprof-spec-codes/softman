@@ -83,9 +83,11 @@ builder.Services.AddControllers(opt=>
     opt.Filters.Add<ApiExceptionFilter>(); 
 });
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+
 builder.Services.AddEndpointsApiExplorer();
 //builder.Services.AddSwaggerGen();
 //---controller probléma javítása
+
 builder.Services.AddSwaggerGen(c =>
 {
     c.ResolveConflictingActions(apiDescriptions => apiDescriptions.First());
