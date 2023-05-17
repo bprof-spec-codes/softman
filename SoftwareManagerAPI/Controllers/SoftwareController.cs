@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using SoftwareManagerAPI.Data.Repository;
 using SoftwareManagerAPI.Models;
+using SoftwareManagerAPI.Models.ViewModels;
 using System.Diagnostics;
 
 namespace SoftwareManagerAPI.Controllers
@@ -39,6 +40,13 @@ namespace SoftwareManagerAPI.Controllers
         public async Task<IActionResult> CreateSoftware([FromBody] Software software)
         {
             var createdSoft = SoftwareRepo.Create(software);
+            return Ok(createdSoft);
+        }
+//-------Create Software from SoftwareViewModel (Need test!)------------------------------------------------
+        [HttpPost]
+        public async Task<IActionResult> CreateSoftwareFromSoftwareViewModel([FromBody] SoftwareViewModel software)
+        {
+            var createdSoft = SoftwareRepo.CreateSoftware(software);
             return Ok(createdSoft);
         }
 
