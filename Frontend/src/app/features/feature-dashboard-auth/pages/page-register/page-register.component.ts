@@ -7,11 +7,13 @@ import { ApiAuthService } from '../../services';
 
 import { ImgRegisterWelcome } from 'src/assets';
 
+import { BackgroundImgRegisterWelcome } from 'src/assets';
+
 @Component({
   selector: 'app-page-register',
-  styles: [],
+  styleUrls: ['./page-register.scss'],
   template: `
-    <div class="page-register">
+    <div class="page-register" [style.background]="'url(assets/images/img-registerBg.png)'">
       <app-shared-layout-form [props]="formProps"/>
     </div>
   `
@@ -31,9 +33,12 @@ export class PageRegisterComponent {
   ) { }
 
   formProps: FormLayoutType = {
+    // background: {
+    //   float: 'left',
+    //   img: ImgRegisterWelcome
+    // },
     background: {
-      float: 'left',
-      img: ImgRegisterWelcome
+      img: BackgroundImgRegisterWelcome
     },
     panel: {
       float: 'right',
