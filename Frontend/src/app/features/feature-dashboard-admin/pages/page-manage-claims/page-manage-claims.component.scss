@@ -18,7 +18,7 @@
         transform: translateY(7vh);
 
         .row {
-            @apply absolute top-0;
+            @apply absolute top-0 flex;
 
             li {
                 @apply inline-block mr-4;
