@@ -5,7 +5,7 @@ type FormLayoutType = {
     panel: FormOptionsType
     background?: {
         img: ImageType
-        float: 'left' | 'right'
+        // float: 'left' | 'right'
     }
 }
 

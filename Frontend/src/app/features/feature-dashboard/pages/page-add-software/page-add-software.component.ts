@@ -33,7 +33,7 @@ export class PageAddSoftwareComponent {
 
   formProps: FormLayoutType = {
     background: {
-      float: 'right',
+      // float: 'right',
       img: ImgSupport
     },
     panel: {
