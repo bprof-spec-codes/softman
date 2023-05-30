@@ -7,7 +7,8 @@ import {
   ImgSpaceDiscovery,
   ImgIdea,
   ImgPlan,
-  ImgMSLoginBtn
+  ImgMSLoginBtn,
+  ImgDevs
 } from 'src/assets'
 
 @Component({
@@ -23,6 +24,7 @@ export class PagePublicComponent {
   imgIdea = ImgIdea
   imgPlan = ImgPlan
   imgMSLoginBtn = ImgMSLoginBtn
+  imgDevs = ImgDevs
 
   softwaresInDND: ISoftwareModel[] = []
 
