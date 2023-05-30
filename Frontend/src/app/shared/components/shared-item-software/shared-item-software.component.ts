@@ -4,7 +4,7 @@ import { ISoftwareModel, ISoftwareClaimModel } from 'src/app/core';
 
 @Component({
   selector: 'app-shared-item-software',
-  styleUrls: ['./shared-item-software.component.scss'],
+  styleUrls: ['./shared-item-software.component-responsive.scss'],
   encapsulation: ViewEncapsulation.None,
   template: `
     <div
@@ -16,13 +16,13 @@ import { ISoftwareModel, ISoftwareClaimModel } from 'src/app/core';
       draggable="true"
       (dragstart)="drag($event)"
     >
-      <div class="item-software__cell-1"><div class="avatar"></div></div>
+      <div class="item-software__cell-1"><div class="avatar "><img class="rounded-full" src="https://xsgames.co/randomusers/avatar.php?g=pixel" alt=""></div></div>
       <div class="item-software__cell-2"><span class="name">{{software.name}} {{software.versionNumber}}</span></div>
       <div class="item-software__cell-3"><span class="text">{{serializedSize}}</span></div>
     </div>
     <ng-template #extended>
       <div class="item-software-max">
-        <div class="item-software-max__cell-1"><div class="avatar"></div></div>
+        <div class="item-software-max__cell-1"><div class="avatar"><img class="rounded-full" src="https://xsgames.co/randomusers/avatar.php?g=pixel" alt=""></div></div>
         <div class="item-software-max__cell-2">
           <ul>
             <li><span>{{software.name}} {{software.versionNumber}}</span></li>
