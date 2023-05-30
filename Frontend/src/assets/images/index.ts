@@ -2,6 +2,13 @@ import { ImageType } from 'src/app/core'
 
 const baseUrl = 'assets/images/img-'
 
+const nums: number[] = [];
+
+for (let i = 0; i < 4; i++) {
+    
+    nums.push(Math.floor(Math.random() * (50 - 1 + 1)) + 1)  
+}
+
 export * from './shapes'
 
 export const ImgSpaceDiscovery = {
@@ -64,7 +71,36 @@ export const ImgRegisterWelcome = {
     alt: 'Register welcome image'
 } satisfies ImageType
 
+export const BackgroundImgRegisterWelcome = {
+    src: baseUrl + 'registerBg.png',
+    alt: 'Register welcome image'
+} satisfies ImageType
+
+export const BackgroundImgLoginWelcome = {
+    src: baseUrl + 'loginBg.png',
+    alt: 'Login welcome image'
+} satisfies ImageType
+
 export const ImgWebDevelopment = {
     src: baseUrl + 'web-development.svg',
     alt: 'Web development image'
 } satisfies ImageType
+
+export const ImgDevs = [
+{
+    src: `https://xsgames.co/randomusers/assets/avatars/pixel/${nums[0]}.jpg`,
+    alt: 'Developers Icon'
+}satisfies ImageType,
+{
+    src: `https://xsgames.co/randomusers/assets/avatars/pixel/${nums[1]}.jpg`,
+    alt: 'Developers Icon'
+}satisfies ImageType,
+{
+    src: `https://xsgames.co/randomusers/assets/avatars/pixel/${nums[2]}.jpg`,
+    alt: 'Developers Icon'
+}satisfies ImageType,
+{
+    src: `https://xsgames.co/randomusers/assets/avatars/pixel/${nums[3]}.jpg`,
+    alt: 'Developers Icon'
+}satisfies ImageType,
+]satisfies Array<ImageType>
