@@ -36,7 +36,7 @@
     }
 
     .btn-wrapper {
-        @apply absolute bottom-8 left-1/2;
+        @apply absolute bottom-8 left-1/2 flex m-auto;
 
         transform: translateX(-50%);
 

@@ -1,0 +1,144 @@
+@import "index";
+
+.item-software {
+  @include component('secondary');
+  @apply grid grid-cols-8 grid-rows-3;
+
+  height: 8rem;
+  width: 28rem;
+  margin: 1rem 2rem;
+  padding: 0.5rem;
+
+  @media (max-width: 768px) {
+    width: 100%;
+    margin: 1rem 0;
+  }
+
+  &__cell-1 { grid-area: 1 / 1 / 4 / 4; }
+  &__cell-2 { grid-area: 1 / 4 / 2 / 9; }
+  &__cell-3 { grid-area: 2 / 4 / 4 / 9; }
+
+  &__cell-1 {
+    .avatar {
+      @apply ml-6;
+
+      width: 6.5rem;
+      height: 6.5rem;
+      background-color: $color-extra;
+      border-radius: 100%;
+      margin-top: 2px;
+
+      @media (max-width: 768px) {
+        width: 5rem;
+        height: 5rem;
+      }
+    }
+  }
+
+  &__cell-2 {
+    @apply pt-3;
+
+    .name {
+      @apply text-normal;
+
+      @media (max-width: 768px) {
+        font-size: 0.8rem;
+      }
+    }
+  }
+
+  &__cell-3 {
+    @apply pt-3;
+
+    .text {
+      @apply text-desc;
+
+      @media (max-width: 768px) {
+        font-size: 0.8rem;
+      }
+    }
+  }
+
+  &-max {
+    @include component('secondary');
+    @apply float-left my-2;
+
+    width: 65%;
+    height: 10rem;
+    margin-right: 0;
+    margin-left: calc(20% + 2rem);
+
+    @media (max-width: 768px) {
+      width: 100%;
+      margin: 1rem 0;
+    }
+
+    &__cell-1 {
+      @apply inline-block;
+
+      height: 100%;
+      width: 9.5rem;
+
+      .avatar {
+        @apply ml-6;
+
+        width: 7.5rem;
+        height: 7.5rem;
+        background-color: $color-extra;
+        border-radius: 100%;
+        margin-top: 1.2rem;
+
+        @media (max-width: 768px) {
+          width: 6rem;
+          height: 6rem;
+        }
+      }
+    }
+
+    &__cell-2 {
+      @apply absolute top-4;
+
+      left: 11rem;
+      height: 100%;
+      width: calc(100% - 11rem);
+
+      li {
+        @apply block;
+
+        &:first-child {
+          @apply text-normal pb-1;
+
+          text-align: unset;
+        }
+
+        &:not(:first-child) {
+          @apply text-desc;
+
+          line-height: 1.2rem;
+
+          @media (max-width: 768px) {
+            font-size: 0.8rem;
+          }
+        }
+
+        .rejected {
+          color: red;
+        }
+
+        .accepted {
+          color: limegreen;
+        }
+      }
+
+      .btns {
+        @apply absolute right-8 top-8;
+
+        button {
+          &:first-child {
+            @apply mr-10;
+          }
+        }
+    }
+    }
+  }
+}

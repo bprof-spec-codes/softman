@@ -35,7 +35,7 @@ export class PageEditClassComponent {
 
     this.formProps = {
       background: {
-        float: 'right',
+        // float: 'right',
         img: ImgBlogging
       },
       panel: {

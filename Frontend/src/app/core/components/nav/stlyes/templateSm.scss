@@ -1,0 +1,33 @@
+nav {
+    width: 100%;
+    z-index: 50;
+    position: relative;
+    background: linear-gradient(90.26deg, #307373 28.57%, #0B1234 93.95%);
+    height: 5rem;
+}
+nav img {
+    display: inline-block;
+    position: relative;
+    margin-left: 16px;
+    margin-right: 16px;
+    cursor: pointer;
+    height: 60%;
+    top: 20%;
+    opacity: 0.8;
+}
+nav ul li {
+    display: block;
+    height: 3em;
+    padding-bottom: 3em;
+    text-align: left;
+}
+
+nav ul li a {
+    color: #EFEFEF;
+}
+nav .btn {
+    float: right;
+    margin-right: 48px;
+    position: relative;
+    top: 20%;
+}

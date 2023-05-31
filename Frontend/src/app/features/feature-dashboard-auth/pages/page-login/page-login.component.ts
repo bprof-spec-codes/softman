@@ -8,11 +8,14 @@ import { ApiAuthService } from '../../services';
 
 import { ImgLogin } from 'src/assets';
 
+import { BackgroundImgLoginWelcome } from 'src/assets';
+
+
 @Component({
   selector: 'app-page-login',
-  styles: [],
+  styleUrls: ['./page-login.scss'],
   template: `
-    <div class="page-login">
+    <div class="page-login " [style.background]="'url(assets/images/img-loginBg.png)'">
       <app-shared-layout-form [props]="formProps"/>
     </div>    
   `
@@ -27,9 +30,16 @@ export class PageLoginComponent {
   ) { }
 
   formProps: FormLayoutType = {
+    // background: {
+    //   float: 'left',
+    //   img: {
+    //     src: './loginBg.png',
+    //     alt: 'Login Background',
+    //   },
+      
+    // },
     background: {
-      float: 'left',
-      img: ImgLogin
+      img: BackgroundImgLoginWelcome
     },
     panel: {
       float: 'right',

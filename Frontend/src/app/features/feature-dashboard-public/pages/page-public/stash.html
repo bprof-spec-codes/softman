@@ -1,0 +1,101 @@
+<div class="page-public">
+    <section class="summary">
+        <div class="summary__cell-1">
+            <img [src]="imgSEO.src" [alt]="imgSEO.alt">
+        </div>
+        <div class="summary__cell-2">
+            <ul>
+                <li>
+                    <h1 class="text-title sm:text-sm md:text-xl lg:text-xl xl:text-3xl 2xl:text-5xl ">Software Manager</h1>
+                </li>
+                <li>    
+                    <h3 class="text-normal">In case you teach in a class that does not have the software</h3>
+                    <h3 class="text-normal">which satisfies your requirements, you can claim any it here.</h3>
+                </li>
+            </ul>
+        </div>
+        <div class="summary__cell-3">
+            <img [src]="imgSpaceDiscovery.src" [alt]="imgSpaceDiscovery.alt">
+        </div>
+    </section>
+    <section class="feature-dnd">
+        <div class="feature-dnd__cell-1">
+            <ul class="description">
+                <li>
+                    <h2>Just drag n' drop</h2>
+                </li>
+                <li>
+                    <h3>First search for the class which needs any extra</h3>
+                    <h3>application then choose the one you need and after</h3>
+                    <h3>that just drag it and drop</h3>
+                </li>
+            </ul>
+        </div>
+        <div class="feature-dnd__cell-2">
+            <app-shared-item-software
+                [software]="dummySoftware"
+            />
+        </div>
+        <div class="feature-dnd__cell-3">
+            <app-shared-panel-drag-n-drop (addSoftware)="addSoftware($event)">
+                <app-shared-item-software
+                    *ngFor="let software of softwaresInDND"
+                    [software]="software"
+                />
+            </app-shared-panel-drag-n-drop>
+            <img [src]="imgIdea.src" [alt]="imgIdea.alt">
+        </div>
+    </section>
+    <section class="feature-ms">
+        <div class="feature-ms__cell-1">
+            <img [src]="imgMSLoginBtn.src" [alt]="imgMSLoginBtn.alt">
+        </div>
+        <div class="feature-ms__cell-2">
+            <img [src]="imgPlan.src" [alt]="imgPlan.alt">
+        </div>
+        <div class="feature-ms__cell-3">
+            <ul class="description">
+                <li>
+                    <h2>MS login</h2>
+                </li>
+                <li>
+                    <h3>No need for creating a profile from scratch.</h3>
+                    <h3>You can easily use your already existing Microsoft profile.</h3>
+                </li>
+            </ul>
+        </div>
+    </section>
+</div>
+<footer class="page-public-footer">
+    <div class="cell-1">
+        <h3>Created by:</h3>
+    </div>
+    <div class="cell-2">
+        <ul>
+            <li></li>
+            <li><h3>Kozma Hunor</h3></li>
+            <li><h4>Frontend</h4></li>
+        </ul>
+    </div>
+    <div class="cell-3">
+        <ul>
+            <li></li>
+            <li><h3>Szanyi Szabolcs</h3></li>
+            <li><h4>Teamleader</h4></li>
+        </ul>
+    </div>
+    <div class="cell-4">
+        <ul>
+            <li></li>
+            <li><h3>Schaffer Tamás</h3></li>
+            <li><h4>Frontend</h4></li>
+        </ul>
+    </div>
+    <div class="cell-5">
+        <ul>
+            <li></li>
+            <li><h3>Juhász Márton Bendegúz</h3></li>
+            <li><h4>Backend</h4></li>
+        </ul>
+    </div>
+</footer>

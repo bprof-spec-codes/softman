@@ -1,0 +1,14 @@
+@import "index";
+
+button {
+    width: 3.2rem;
+    height: 3.2rem;
+    border-radius: 3.2rem;
+    background-color: $color-action;
+    color: white;
+    font-size: 2rem;
+}
+
+.inactive {
+    background-color: gray;       
+}

@@ -1,0 +1,42 @@
+@import "index";
+
+button {
+    //button for page
+    @apply rounded-xl text-link px-3 py-0.5;
+
+    margin-bottom: 5em;
+    background: $color-action;
+    color: $color-plain;
+}
+
+.filled {
+    background: $color-action;
+}
+
+.outlined {
+    border: 2px solid $color-action;
+    background: transparent;
+}
+
+:hover {
+    @apply bg-violet-600
+  }
+  
+  .button:active {
+    @apply bg-violet-700
+  }
+  
+  .button:focus {
+    @apply outline-none
+    
+  }
+  
+  .button:focus:not(:focus-visible) {
+    @apply ring
+    
+  }
+  
+  .button:focus-visible {
+    @apply ring-violet-300
+    
+  }

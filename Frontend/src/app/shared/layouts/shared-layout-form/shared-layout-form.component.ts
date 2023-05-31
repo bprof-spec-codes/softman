@@ -9,7 +9,7 @@ import { FormLayoutType } from 'src/app/shared';
   template: `
     <div class="layout-form">
       <div class="poly-bg"></div>
-      <img
+      <!-- <img
         *ngIf="props.background"
         [ngClass]="[
           'img-bg',
@@ -17,7 +17,7 @@ import { FormLayoutType } from 'src/app/shared';
         ].join(' ')"
         [src]="props.background.img.src"
         [alt]="props.background.img.alt"
-      >
+      > -->
       <app-shared-panel-background/>
       <app-shared-form [options]="props.panel"/>
     </div>

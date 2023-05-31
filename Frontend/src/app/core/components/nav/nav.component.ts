@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, TemplateRef, ViewChild, HostListener  } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { LocalStorageService, GuardUserService, GuardAdminService } from '../../services';
@@ -8,48 +8,58 @@ import { ImgLogoServer } from 'src/assets';
 @Component({
   selector: 'app-core-nav',
   styleUrls: ['./nav.component.scss'],
-  template: `
-    <header>
-      <nav>
-        <img
-          [src]="imgLogoServer.src"
-          [alt]="imgLogoServer.alt"
-          (click)="router.navigate([''])"
-        >
-        <ul>
-          <li><a routerLink="dashboard/request-softwares" routerLinkActive="active">Request softwares</a></li>
-          <li><a routerLink="dashboard/add-software" routerLinkActive="active">Add software</a></li>
-          <li *ngIf="guardAdminService.isLoggedIn()"><a routerLink="admin/manage-claims" routerLinkActive="active">Manage claims</a></li>
-          <li *ngIf="guardAdminService.isLoggedIn()"><a routerLink="admin/add-class" routerLinkActive="active">Add class</a></li>
-        </ul>
-        <app-shared-button
-          *ngIf="
-            !guardUserService.isLoggedIn()
-            else sign_out
-          "
-          text="Sign in"
-          [ngClass]="'btn'"
-          (click)="router.navigate(['auth/login'])"
-        />
-        <ng-template #sign_out>
-          <app-shared-button
-            text="Sign out"
-            type="outlined"
-            [ngClass]="'btn'"
-            (click)="storageService.clear()"
-          />
-        </ng-template>
-      </nav>
-    </header>
-  `
+  templateUrl: './nav.component.html'
 })
 export class NavComponent {
-  constructor(
-    public router: Router,
-    public storageService: LocalStorageService,
-    public guardUserService: GuardUserService,
-    public guardAdminService: GuardAdminService
-  ) { }
+//phone screen, drop-down-list hidden/shown
+ menuVariable = true;
+ menu_icon_variable = false;
+//logo
+ imgLogoServer = ImgLogoServer
+//swap between templates by screen size (width)
 
-  imgLogoServer = ImgLogoServer
+/*
+screenWidth: number = 0;
+screenHeight: number = 0;
+  // update the screen size when the window is resized
+  @HostListener('window:resize', ['$event'])
+  onResize() {
+    this.screenWidth = window.innerWidth;
+    this.screenHeight = window.innerHeight;
+  }
+
+ @ViewChild('template1') template1!: TemplateRef<any>;
+ @ViewChild('template2') template2!: TemplateRef<any>;
+
+ selectedTemplate!: TemplateRef<any>;
+
+ showTemplate1: boolean = true;
+ 
+ ngOnInit() {
+  this.screenWidth = window.innerWidth;
+  this.screenHeight = window.innerHeight;
+  this.switchTemplate()
+ }
+
+switchTemplate() {
+  if (this.screenWidth > 999) {
+    this.showTemplate1 = true;
+  }else this.showTemplate1 = false;
+  this.selectedTemplate = this.showTemplate1 ? this.template1 : this.template2;
+}
+*/
+
+ constructor(
+  public router: Router,
+  public storageService: LocalStorageService,
+  public guardUserService: GuardUserService,
+  public guardAdminService: GuardAdminService
+) { }
+
+ openMenu() {
+   this.menuVariable = !this.menuVariable;
+   this.menu_icon_variable = !this.menu_icon_variable;
+   console.log(2 + 3)
+ }
+
 }
