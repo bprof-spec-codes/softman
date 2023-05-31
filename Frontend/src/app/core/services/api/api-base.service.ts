@@ -55,6 +55,7 @@ export class ApiBaseService {
             switch(type) {
                 case 'auth':
                     const authModel = this.storageService.getAuthModel()
+
                     headers.append('authorization', `bearer ${authModel?.token}`)
                     break
 
@@ -63,6 +64,7 @@ export class ApiBaseService {
                     break
             }
         })
+
         return headers
     }
 

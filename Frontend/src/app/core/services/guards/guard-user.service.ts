@@ -25,9 +25,12 @@ export class GuardUserService implements IGuardBase {
     public isLoggedIn() : boolean {
         let result = false
         let authModel = this.storageService.getAuthModel()
+
         if (authModel !== null) {
             if (!this.isExpired(authModel)) result = true
-            else this.storageService.clear()
+
+            //else this.storageService.clear()
+
         }
         return result
     }

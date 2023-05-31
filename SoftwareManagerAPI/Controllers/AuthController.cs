@@ -25,7 +25,20 @@ namespace SoftwareManagerAPI.Controllers
         public async Task<IActionResult> Login([FromBody] LoginViewModel model)
         {
             var user = await _userManager.FindByNameAsync(model.UserName);
-            if (user != null && await _userManager.CheckPasswordAsync(user, model.Password))
+
+            // ---------------------------------------------------------------------------------
+            // ISSUE: Returns false on correct parameters.
+            // .................................................................................
+
+            // var isValidPassword = await _userManager.CheckPasswordAsync(user, model.Password);
+
+            // if (user != null && await _userManager.CheckPasswordAsync(user, model.Password)) { }
+            // ---------------------------------------------------------------------------------
+
+            var hashedPassword = _userManager.PasswordHasher.HashPassword(user, model.Password);
+            var verificationResult = _userManager.PasswordHasher.VerifyHashedPassword(user, hashedPassword, model.Password);
+
+            if (user != null && verificationResult == PasswordVerificationResult.Success)
             {
                 var claim = new List<Claim>
                 {

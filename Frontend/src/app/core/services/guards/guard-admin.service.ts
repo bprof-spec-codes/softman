@@ -28,10 +28,13 @@ export class GuardAdminService implements IGuardBase {
     public isLoggedIn() : boolean {
         let result = false
         let authModel = this.storageService.getAuthModel()
+
         if (authModel !== null) {
             const role = JSON.parse(window.atob(authModel.token.split('.')[1]))[Config['role-key']] as RoleType
             if (role === 'Admin' && !this.isExpired(authModel)) result = true
-            else this.storageService.clear()
+
+            //else this.storageService.clear()
+
         }
         return result
     }
