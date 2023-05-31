@@ -93,7 +93,7 @@ export class PageRequestSoftwaresComponent {
 
         const software = JSON.parse(softwareSerialized) as ISoftwareModel
         const classroom = this.classrooms.find(x => x.id === this.selectedClassroom)!
-        const storageAfter = classroom.storageCapacity - software.size / 1000
+        const storageAfter = classroom.storageCapacity - Math.round(software.size / 1024 * 100) / 100
 
         if (storageAfter >= 0) {
             this.popup = {
@@ -105,8 +105,12 @@ export class PageRequestSoftwaresComponent {
                 ],
                 onYes: (e) => {
                     this.softwareClaims = [software]
+
+                    /*
                     this.classrooms = this.classrooms.map(x => x.id === this.selectedClassroom
                         ? {...x, storageCapacity: storageAfter} : x)
+                    */
+
                     this.popup = undefined
                 },
                 onNo: (e) => {

@@ -73,7 +73,7 @@ namespace SoftwareManagerAPI.Controllers
                 ClassRoom Updated= new ClassRoom();
                 Updated.Id=updatedSoftClaim.ClassRoom.Id;
                 Updated.RoomNumber = updatedSoftClaim.ClassRoom.RoomNumber;
-                Updated.StorageCapacity = updatedSoftClaim.ClassRoom.StorageCapacity -= updatedSoftClaim.Software.Size; ;
+                Updated.StorageCapacity = updatedSoftClaim.ClassRoom.StorageCapacity -= Math.Round(updatedSoftClaim.Software.Size / 1024, 2);
                 if (Updated.StorageCapacity>=0)
                 {
                     ClassRoomRepo.Update(Updated);
