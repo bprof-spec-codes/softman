@@ -36,6 +36,7 @@
   - Egyéb endpointok
     - [Route("[action]")][HttpPost] Task<IActionResult> Microsoft(SocialToken token)
       - A Microsoft loginhoz szükséges endpoint
+    - [Route("[action]")][HttpGet] Task<IActionResult> GetAllUsers()
 - ##### /Class
   - CRUD funkciók
     - [HttpGet] IEnumerable<ClassRoom> GetAll()
