@@ -72,8 +72,9 @@ export class ApiBaseService {
         request: Promise<Response>,
         callback: (res: T) => T,
         nobody: boolean = false
-    ): Promise<T> {
+    ): Promise<{ status: number, body: T }> {
         let result = undefined as T
+        let status: number
         
         try {
             if (this.guardService && !this.guardService.isLoggedIn()) {
@@ -99,6 +100,7 @@ export class ApiBaseService {
 
                 throw new Error(res.statusText)
             }
+            status = res.status
         }
         catch(error) {
             this.logger.log('ERROR')
@@ -107,8 +109,9 @@ export class ApiBaseService {
                 this.storageService.clear()
                 this.router.navigate(['auth/login'])
             }
+            status = 500
         }
 
-        return result
+        return { status, body: result }
     }
 }

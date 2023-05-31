@@ -25,10 +25,19 @@ form {
     transform: translateY(calc(($height-main - var(--computed-height)) / 2));
     z-index: 5;
 
-    span {
+    .title {
         @apply text-subtitle block mt-12 mb-8;
 
         color: white;
+        font-weight: 400;
+        line-height: 3rem;
+        padding-left: 15%;
+    }
+
+    .msg {
+        @apply text-sm block mb-4;
+
+        color: red;
         font-weight: 400;
         line-height: 3rem;
         padding-left: 15%;

@@ -42,20 +42,20 @@ export class PageRequestSoftwaresComponent {
     }
 
     async loadClasses() {
-        this.classrooms = await this.apiUserClassService.getAllClass()
+        this.classrooms = await (await this.apiUserClassService.getAllClass()).body
         this.setSelectedClassroom(this.classrooms[0].id)
     }
 
     async loadSoftwares() {
-        this.softwares = await this.apiUserSoftwareService.getAllSoftwares()
+        this.softwares = (await this.apiUserSoftwareService.getAllSoftwares()).body
     }
 
     async searchSoftwares() {
-        this.softwares = await this.apiUserSoftwareService.searchSoftwares(this.searchBars.software)
+        this.softwares = (await this.apiUserSoftwareService.searchSoftwares(this.searchBars.software)).body
     }
 
     async searchClasses() {
-        this.classrooms = await this.apiUserClassService.searchClasses(this.searchBars.class)
+        this.classrooms = await (await this.apiUserClassService.searchClasses(this.searchBars.class)).body
         this.setSelectedClassroom(this.classrooms[0].id)
     }
 

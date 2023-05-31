@@ -23,6 +23,7 @@ import { BackgroundImgLoginWelcome } from 'src/assets';
 export class PageLoginComponent {
 
   user: IUserModel = { password: '', userName: '' }
+  isError: boolean = false
 
   constructor(
     private apiAuthService: ApiAuthService,
@@ -42,6 +43,8 @@ export class PageLoginComponent {
       img: BackgroundImgLoginWelcome
     },
     panel: {
+      msgError: 'Wrong email address or password!',
+      isErrorCondition: this.getIsError.bind(this),
       float: 'right',
       title: 'Login',
       inputs: [
@@ -73,7 +76,10 @@ export class PageLoginComponent {
   onLoginClick(e: Event) {
     e.preventDefault()
     e.stopPropagation()
-    this.apiAuthService.login(this.user)
+    this.apiAuthService.login(this.user).then(data => {
+      if (data.status === 500) this.isError = true
+      else this.isError = false
+    })
   }
 
   onSignUpClick(e: Event) {
@@ -85,5 +91,9 @@ export class PageLoginComponent {
   onInputChange(e: Event) {
     const { name, value } = e.target as HTMLInputElement
     this.user = {...this.user, [name]: value}
+  }
+
+  getIsError() {
+    return this.isError
   }
 }

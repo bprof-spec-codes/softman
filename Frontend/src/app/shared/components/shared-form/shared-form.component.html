@@ -7,7 +7,9 @@
     "
 >
 
-    <span>{{options.title}}</span>
+    <span class="title">{{options.title}}</span>
+
+    <span *ngIf="options.isErrorCondition && options.isErrorCondition()" class="msg">{{options.msgError}}</span>
 
     <ng-container
       *ngFor="let input of options.inputs"

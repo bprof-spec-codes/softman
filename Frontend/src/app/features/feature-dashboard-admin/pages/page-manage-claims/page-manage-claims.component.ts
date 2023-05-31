@@ -56,19 +56,19 @@ export class PageManageClaimsComponent {
   }
 
   async loadUsers() {
-    this.users = await this.apiAdminAuthService.getAllUsers()
+    this.users = (await this.apiAdminAuthService.getAllUsers()).body
   }
 
   async loadClasses() {
-    this.classrooms = await this.apiAdminClassService.getAllClass()
+    this.classrooms = (await this.apiAdminClassService.getAllClass()).body
   }
 
   async loadSoftwares() {
-    this.softwares = await this.apiAdminSoftwareService.getAllSoftwares()
+    this.softwares = (await this.apiAdminSoftwareService.getAllSoftwares()).body
   }
 
   async loadSoftwareClaims() {
-    this.softwareClaims = await this.apiAdminSoftwareClaimService.getAllSoftwareClaims()
+    this.softwareClaims = (await this.apiAdminSoftwareClaimService.getAllSoftwareClaims()).body
   }
 
   async filterSoftwareClaims() {
@@ -77,19 +77,19 @@ export class PageManageClaimsComponent {
   }
 
   async searchSoftwareClaims() {
-    const softwareClaims_filtered = await this.apiAdminSoftwareClaimService.searchSoftwareClaims(this.searchBars.claims)
+    const softwareClaims_filtered = await (await this.apiAdminSoftwareClaimService.searchSoftwareClaims(this.searchBars.claims)).body
     this.addSoftwareToClaim(softwareClaims_filtered)
   }
 
   async updateSoftwareClaim(args: { claim: ISoftwareClaimModel, status: number }) {
     const claim = { ...args.claim, status: args.status }
-    const softwareClaim = await this.apiAdminSoftwareClaimService.updateSoftwareClaims(claim)
+    const softwareClaim = await (await this.apiAdminSoftwareClaimService.updateSoftwareClaims(claim)).body
     this.softwareClaims = this.softwareClaims.map(x => x.id === claim.id ? softwareClaim : x)
     this.vm_softwareClaims = this.vm_softwareClaims.map(x => x.claim.id === claim.id ? { claim: softwareClaim, software: x.software, user: x.user } : x)
   }
 
   async deleteClassroom(id: string) {
-    const classroom = await this.apiAdminClassService.deleteClass(id)
+    const classroom = await (await this.apiAdminClassService.deleteClass(id)).body
     this.classrooms = this.classrooms.filter(x => x.id !== classroom.id)
     this.vm_softwareClaims = []
   }
