@@ -48,7 +48,7 @@ export class PageEditClassComponent {
               onChange: this.onInputChange.bind(this)
             },
             {
-              type: 'text', text: 'Size',
+              type: 'number', text: 'Size',
               value: this.classroom.storageCapacity.toString(), name: 'storageCapacity',
               onChange: this.onInputChange.bind(this)
             }

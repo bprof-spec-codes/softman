@@ -30,7 +30,7 @@ export class PageAddClassComponent {
           onChange: this.onInputChange.bind(this)
         },
         {
-          type: 'text', text: 'Size',
+          type: 'number', text: 'Size',
           value: '', name: 'storageCapacity',
           onChange: this.onInputChange.bind(this)
         }

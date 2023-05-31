@@ -47,7 +47,7 @@ export class PageAddSoftwareComponent {
           onChange: this.onInputChange.bind(this)
         },
         {
-          type: 'text', text: 'Size',
+          type: 'number', text: 'Size',
           value: '', name: 'size',
           onChange: this.onInputChange.bind(this)
         },
