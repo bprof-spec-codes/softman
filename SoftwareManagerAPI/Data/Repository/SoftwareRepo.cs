@@ -1,4 +1,9 @@
 ﻿using SoftwareManagerAPI.Models;
+using SoftwareManagerAPI.Models.ViewModels;
+using System.IO;
+using System;
+using static SoftwareManagerAPI.Controllers.FbModel.Picture;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace SoftwareManagerAPI.Data.Repository
 {
@@ -13,12 +18,12 @@ namespace SoftwareManagerAPI.Data.Repository
         }
         public Software Create(Software Software)
         {
-            var sameSoftware = ReadAll().FirstOrDefault(t=>
+            var sameSoftware = ReadAll().FirstOrDefault(t =>
             t.Name.ToLower() == Software.Name.ToLower() &&
             t.VersionNumber.ToLower() == Software.VersionNumber.ToLower() &&
             t.Size == Software.Size);
 
-            if(sameSoftware == null)
+            if (sameSoftware == null)
             {
                 Software.Id = Guid.NewGuid().ToString();
                 db.Softwares.Add(Software);
@@ -26,9 +31,48 @@ namespace SoftwareManagerAPI.Data.Repository
                 return Software;
             }
             throw new ArgumentException("There is already a software with these patameters...");
-            
+
         }
 
+//-------Create Software from SoftwareViewModel (Need test!)------------------------------------------------
+        public Software CreateSoftware(SoftwareViewModel Software)
+        {
+            var sameSoftware = ReadAll().FirstOrDefault(s =>
+            s.Name.ToLower() == Software.Name.ToLower() &&
+            s.VersionNumber.ToLower() == Software.VersionNumber.ToLower() &&
+            s.Size == Software.Size);
+
+            var data_ContentType = ReadFromFile(Software.imageFile);
+
+            Software newSoftware = new Software()
+            {
+                Id = Guid.NewGuid().ToString(),
+                Name = sameSoftware.Name,
+                VersionNumber = sameSoftware.VersionNumber,
+                Size = sameSoftware.Size,
+                PictureData = data_ContentType.Data,
+                PictureContentType = data_ContentType.ContentType
+            };
+
+            if (sameSoftware == null)
+            {
+                db.Softwares.Add(newSoftware);
+                db.SaveChanges();
+                return newSoftware;
+            }
+            throw new ArgumentException("There is already a software with these patameters...");
+        }
+
+        private (byte[] Data, string ContentType) ReadFromFile(IFormFile formFile)
+        {
+            IFormFile pictureData = formFile;
+            using (var stream = pictureData.OpenReadStream())
+            {
+                byte[] buffer = new byte[pictureData.Length];
+                stream.Read(buffer, 0, (int)pictureData.Length);
+                return (buffer, pictureData.ContentType);
+            }
+        }
         public Software DeleteByID(string id)
         {
             var Software = ReadByID(id);

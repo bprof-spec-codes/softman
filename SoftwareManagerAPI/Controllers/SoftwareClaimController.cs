@@ -53,7 +53,11 @@ namespace SoftwareManagerAPI.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateSoftwareClaim(SoftwareClassRoomViewModel model)
         {
-            var user = await _userManager.GetUserAsync(this.User);
+            var user = _userManager.Users
+                .FirstOrDefault(t => t.UserName == this.User.Identity.Name);
+
+            //var user = await _userManager.GetUserAsync(this.User);
+
             // var appUserId = user.Id;
             var appUserId = user?.Id;
             var createdSoftClaim = SoftwareClaimRepo.Create(model,appUserId);

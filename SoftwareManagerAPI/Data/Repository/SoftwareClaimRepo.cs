@@ -28,6 +28,8 @@ namespace SoftwareManagerAPI.Data.Repository
                 softwareClaim.ClassRoomId = classRoomId;
                 softwareClaim.AppUserId = appUserId;
 
+                softwareClaim.ClaimDate = DateTime.Now;
+
                 db.softwareClaims.Add(softwareClaim);
                 db.SaveChanges();
                 return softwareClaim;
