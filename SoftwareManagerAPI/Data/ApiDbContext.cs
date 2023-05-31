@@ -20,13 +20,13 @@ namespace SoftwareManagerAPI.Data
         protected override void OnModelCreating(ModelBuilder builder)
         {
 
+            builder.Entity<SoftwareClaim>().HasOne(t => t.AppUser).WithMany(t => t.SoftwareClaims).HasForeignKey(t => t.AppUserId).OnDelete(DeleteBehavior.Cascade);
+            builder.Entity<SoftwareClaim>().HasOne(t => t.ClassRoom).WithMany(t => t.SoftwareClaims).HasForeignKey(t => t.ClassRoomId).OnDelete(DeleteBehavior.Cascade);
+            builder.Entity<SoftwareClaim>().HasOne(t => t.Software).WithMany(t => t.SoftwareClaims).HasForeignKey(t => t.SoftwareId).OnDelete(DeleteBehavior.Cascade);
 
-            builder.Entity<SoftwareClaim>().HasOne(t => t.AppUser).WithMany(t => t.SoftwareClaims);
-            builder.Entity<SoftwareClaim>().HasOne(t => t.ClassRoom).WithMany(t => t.SoftwareClaims);
-            builder.Entity<SoftwareClaim>().HasOne(t => t.Software).WithMany(t => t.SoftwareClaims);
-            builder.Entity<AppUser>().HasMany(t => t.SoftwareClaims).WithOne(t => t.AppUser);
-            builder.Entity<ClassRoom>().HasMany(t => t.SoftwareClaims).WithOne(t => t.ClassRoom);
-            builder.Entity<Software>().HasMany(t => t.SoftwareClaims).WithOne(t => t.Software);
+            //builder.Entity<AppUser>().HasMany(t => t.SoftwareClaims).WithOne(t => t.AppUser);
+            //builder.Entity<ClassRoom>().HasMany(t => t.SoftwareClaims).WithOne(t => t.ClassRoom);
+            //builder.Entity<Software>().HasMany(t => t.SoftwareClaims).WithOne(t => t.Software);
 
 
 
