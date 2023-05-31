@@ -112,8 +112,10 @@
 # Probléma jegyzőkönyv
 ## Backend
   - Controller szinten le akartuk kérni az aktuális user-t az alábbi módon:
+  
     var user = await _userManager.GetUserAsync(this.User);
-    Erre hamar rá kellett jönnönk, hogy nem működőképes, mivel bejelentkezett felhasználó esetén is null értéket kaptunk vissza.
+  
+    Erre hamar rá kellett jönnünk, hogy nem működőképes, mivel bejelentkezett felhasználó esetén is null értéket kaptunk vissza.
 
     Megoldásképp a userek közt a UserName tulajdonságuk alapján kerestünk, mely végül pontosan visszadta a bejelentkezett felhsaználónkat.
     var user = _userManager.Users.FirstOrDefault (t => t.UserName == this.User.Identity.Name);
