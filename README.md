@@ -116,7 +116,6 @@
     var user = await _userManager.GetUserAsync(this.User);
   
     Erre hamar rá kellett jönnünk, hogy nem működőképes, mivel bejelentkezett felhasználó esetén is null értéket kaptunk vissza.
-
     Megoldásképp a userek közt a UserName tulajdonságuk alapján kerestünk, mely végül pontosan visszadta a bejelentkezett felhsaználónkat.
     var user = _userManager.Users.FirstOrDefault (t => t.UserName == this.User.Identity.Name);
   - A seed-elt, tanár jogosultságú felhasználók valamilyen oknál fogva nem tudtak belépni, viszont ha formon keresztül regisztráltunk felhasználót, akkor vele nem volt probléma. Először a kis- és nagybetűs felhasználónevekre gyanakodtunk, de formon keresztüli regisztráció során ez sem okozott problémát.
