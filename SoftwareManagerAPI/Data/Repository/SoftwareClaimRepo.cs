@@ -110,7 +110,8 @@ namespace SoftwareManagerAPI.Data.Repository
             t.Status.ToString().ToLower().Contains(search.ToLower()) ||
             t.AppUser.FirstName.ToLower().Contains(search.ToLower()) ||
             t.AppUser.LastName.ToLower().Contains(search.ToLower()) ||
-            t.Software.Size.ToString().Contains(search.ToLower()));
+            t.Software.Size.ToString().Contains(search.ToLower()) ||
+            t.Software.Name.ToLower().Contains(search.ToLower()));
 
             return result;
         }

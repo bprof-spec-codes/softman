@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace SoftwareManagerAPI.Migrations
 {
-    public partial class teszt : Migration
+    public partial class init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -203,17 +203,20 @@ namespace SoftwareManagerAPI.Migrations
                         name: "FK_softwareClaims_AspNetUsers_AppUserId",
                         column: x => x.AppUserId,
                         principalTable: "AspNetUsers",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_softwareClaims_Classrooms_ClassRoomId",
                         column: x => x.ClassRoomId,
                         principalTable: "Classrooms",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_softwareClaims_Softwares_SoftwareId",
                         column: x => x.SoftwareId,
                         principalTable: "Softwares",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.InsertData(
@@ -230,9 +233,9 @@ namespace SoftwareManagerAPI.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { "User001", 0, "cf8ee424-7507-4341-bfe8-074aea09f9d1", "kovi91@gmail.com", true, "Kovács", "András", false, null, "KOVI91@GMAIL.COM", "KOVI91@GMAIL.COM", "AQAAAAEAACcQAAAAENnQDeIDACNhwCYKSV3VH6hbcYgI09c75DZMZK25IxpZFjgXfAUhoujaqUS22O9hDw==", null, false, "70149eb1-3b4b-4c15-8571-03addb9b1ce9", false, "kovi91@gmail.com" },
-                    { "User002", 0, "4c09d48c-2858-4e19-9590-1d388a362857", "KisPista@gmail.com", true, "Kis", "Pista", false, null, "KISPISTA@GMAIL.COM", "KISPISTA@GMAIL.COM", "AQAAAAEAACcQAAAAEPRDJqqGcgYNv4ulNIsBXkemMF/LI4w6UO7suAS+cU8JcgVA8zzD8n7KcCk4wgf2Qg==", null, false, "02781690-3aee-4e6f-a964-780bdbd04e01", false, "KisPista@gmail.com" },
-                    { "User003", 0, "11ef4ee9-1e75-41bf-9f96-79322f46b93a", "Jozsi@gmail.com", true, "Nagy", "József", false, null, "JOZSI@GMAIL.COM", "JOZSI@GMAIL.COM", "AQAAAAEAACcQAAAAEBN5H9hcaVG4tLp4Cy6SbWIerE8HTYVxYyJxm2vHUppbzLddG4Evk/8NueZ84uJm6A==", null, false, "b6645dd5-7be8-4e0d-98ee-9d562467f13e", false, "Jozsi@gmail.com" }
+                    { "User001", 0, "19777f1f-d402-4e9d-8323-169f01e28ab7", "kovi91@gmail.com", true, "Kovács", "András", false, null, "KOVI91@GMAIL.COM", "KOVI91@GMAIL.COM", "AQAAAAEAACcQAAAAEMH1u5luY5OXSo2wX9auccJZNc1zaVfwgW52qQCAh9mcXtg7I/+q/XvI/AnoT2h2AQ==", null, false, "1924e8f7-dac8-4101-a222-c74465605ab3", false, "kovi91@gmail.com" },
+                    { "User002", 0, "b5a630bb-6e0f-42ec-b791-fb2953c61446", "KisPista@gmail.com", true, "Kis", "Pista", false, null, "KISPISTA@GMAIL.COM", "KISPISTA@GMAIL.COM", "AQAAAAEAACcQAAAAEIn1P68D5n15BHlgi+PLgjL7YnXBvxszsNCblgUyb5ShRmkmsp8iJ9BMMMTBQlBuEg==", null, false, "63d8e568-f46b-4f3f-a0ab-a72226864dce", false, "KisPista@gmail.com" },
+                    { "User003", 0, "37b1fc2d-73cf-4b20-a505-85e12714cef5", "Jozsi@gmail.com", true, "Nagy", "József", false, null, "JOZSI@GMAIL.COM", "JOZSI@GMAIL.COM", "AQAAAAEAACcQAAAAEHlr6KTwMgymYU+Otq1pAPku48Tj0pYHODi6qQDYLdwcFL7sxw5NQiNs3EmBrMGfVg==", null, false, "b7f85b86-a319-4a14-8ccf-1fa4174de79b", false, "Jozsi@gmail.com" }
                 });
 
             migrationBuilder.InsertData(
