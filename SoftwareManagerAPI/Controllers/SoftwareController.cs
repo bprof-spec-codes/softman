@@ -44,7 +44,8 @@ namespace SoftwareManagerAPI.Controllers
         }
 //-------Create Software from SoftwareViewModel (Need test!)------------------------------------------------
         [HttpPost]
-        public async Task<IActionResult> CreateSoftwareFromSoftwareViewModel([FromBody] SoftwareViewModel software)
+        [Route("[action]")]
+        public async Task<IActionResult> CreateSoftwareFromSoftwareViewModel([FromForm] SoftwareViewModel software)
         {
             var createdSoft = SoftwareRepo.CreateSoftware(software);
             return Ok(createdSoft);

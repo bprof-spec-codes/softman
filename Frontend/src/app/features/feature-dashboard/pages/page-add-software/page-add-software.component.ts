@@ -23,8 +23,6 @@ export class PageAddSoftwareComponent {
   software: ISoftwareModel = {
     id: '',
     name: '',
-    pictureContentType: '',
-    pictureData: '',
     size: 0,
     versionNumber: ''
   }

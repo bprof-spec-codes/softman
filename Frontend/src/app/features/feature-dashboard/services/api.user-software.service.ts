@@ -35,6 +35,7 @@ export class ApiUserSoftwareService extends ApiBaseService {
         )
     }
 
+    /*
     public addSoftware(software: ISoftwareModel) {
         return this.wrap<ISoftwareModel>(
             fetch(this.baseUrl, {
@@ -47,17 +48,16 @@ export class ApiUserSoftwareService extends ApiBaseService {
             }
         )
     }
+    */
 
-    /*
-    public addSoftware(software: ISoftwareModel, file: File) {
-        const data = new URLSearchParams()
+    public addSoftware(software: ISoftwareModel) {
+        const data = new FormData()
         Object.entries(software).map(entry => {
             const [key, value] = entry
-            data.append(key, value)
+            data.append(key, key === 'size' ? Number(value) : value)
         })
-        data.set('pictureData', file.)
         return this.wrap<ISoftwareModel>(
-            fetch(this.baseUrl, {
+            fetch(`${this.baseUrl}/createsoftwarefromsoftwareviewmodel`, {
                 method: 'post',
                 headers: this.defineHeaders(['auth']),
                 body: data
@@ -67,7 +67,6 @@ export class ApiUserSoftwareService extends ApiBaseService {
             }
         )
     }
-    */
 
     public searchSoftwares(prop: string) {
         return this.wrap<ISoftwareModel[]>(

@@ -3,8 +3,8 @@ interface ISoftwareModel {
     name: string
     versionNumber: string
     size: number
-    pictureData: string
-    pictureContentType: string
+    pictureData?: string
+    pictureContentType?: string
     imageFile?: File
 }
 

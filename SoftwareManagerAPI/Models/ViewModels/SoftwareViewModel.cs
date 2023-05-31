@@ -10,6 +10,6 @@ namespace SoftwareManagerAPI.Models.ViewModels
         public string VersionNumber { get; set; }
         [Required]
         public double Size { get; set; }
-        public IFormFile imageFile { get; set; }
+        public IFormFile ImageFile { get; set; }
     }
 }

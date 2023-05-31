@@ -16,13 +16,13 @@ import { ISoftwareModel, ISoftwareClaimModel, IUserModel } from 'src/app/core';
       draggable="true"
       (dragstart)="drag($event)"
     >
-      <div class="item-software__cell-1"><div class="avatar "><img class="rounded-full" src="https://xsgames.co/randomusers/avatar.php?g=pixel" alt=""></div></div>
+      <div class="item-software__cell-1"><div class="avatar "><img class="w-full h-full rounded-full" [src]="serializedImg" alt=""></div></div>
       <div class="item-software__cell-2"><span class="name">{{software.name}} {{software.versionNumber}}</span></div>
       <div class="item-software__cell-3"><span class="text">{{serializedSize}}</span></div>
     </div>
     <ng-template #extended>
       <div class="item-software-max">
-        <div class="item-software-max__cell-1"><div class="avatar"><img class="rounded-full" src="https://xsgames.co/randomusers/avatar.php?g=pixel" alt=""></div></div>
+        <div class="item-software-max__cell-1"><div class="avatar"><img class="w-full h-full rounded-full" [src]="serializedImg" alt=""></div></div>
         <div class="item-software-max__cell-2">
           <ul>
             <li><span>{{software.name}} {{software.versionNumber}}</span></li>
@@ -73,6 +73,14 @@ export class SharedItemSoftwareComponent {
       return `${this.user.firstName} ${this.user.lastName}`
     }
     return result
+  }
+
+  get serializedImg(): string {
+    var src = 'https://xsgames.co/randomusers/avatar.php?g=pixel'
+    if (this.software.pictureData && this.software.pictureData != null) {
+      src = `data:${this.software.pictureContentType};base64, ${this.software.pictureData}`
+    }
+    return src
   }
 
   updateStatus(args: { claim: ISoftwareClaimModel, status: number }) {

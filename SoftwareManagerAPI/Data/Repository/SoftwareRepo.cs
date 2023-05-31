@@ -42,20 +42,20 @@ namespace SoftwareManagerAPI.Data.Repository
             s.VersionNumber.ToLower() == Software.VersionNumber.ToLower() &&
             s.Size == Software.Size);
 
-            var data_ContentType = ReadFromFile(Software.imageFile);
-
-            Software newSoftware = new Software()
-            {
-                Id = Guid.NewGuid().ToString(),
-                Name = sameSoftware.Name,
-                VersionNumber = sameSoftware.VersionNumber,
-                Size = sameSoftware.Size,
-                PictureData = data_ContentType.Data,
-                PictureContentType = data_ContentType.ContentType
-            };
+            var data_ContentType = ReadFromFile(Software.ImageFile);
 
             if (sameSoftware == null)
             {
+                Software newSoftware = new Software()
+                {
+                    Id = Guid.NewGuid().ToString(),
+                    Name = Software.Name,
+                    VersionNumber = Software.VersionNumber,
+                    Size = Software.Size,
+                    PictureData = data_ContentType.Data,
+                    PictureContentType = data_ContentType.ContentType
+                };
+
                 db.Softwares.Add(newSoftware);
                 db.SaveChanges();
                 return newSoftware;
