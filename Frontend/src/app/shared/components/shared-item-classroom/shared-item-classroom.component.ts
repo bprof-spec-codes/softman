@@ -26,7 +26,9 @@ import { ImgShapeTrianglePurple } from 'src/assets'
         [ngClass]="selected()"
       >
         <span class="name">{{classroom.roomNumber}}</span>
-        <img [src]="imgShapeTrianglePurple.src" [alt]="imgShapeTrianglePurple.alt" (click)="onSelect()">
+        <img [src]="imgShapeTrianglePurple.src" [alt]="imgShapeTrianglePurple.alt" (click)="onSelect()" [ngClass]="[
+          isSelected ? 'img-rotate' : ''
+        ].join(' ')">
         <button class="btn" (click)="onDelete()">Delete class</button>
         <button
           class="btn"

@@ -1,6 +1,7 @@
-import { ISoftwareModel, ISoftwareClaimModel } from 'src/app/core'
+import { IUserModel, ISoftwareModel, ISoftwareClaimModel } from 'src/app/core'
 
 type SoftwareClaimType = {
+    user?: IUserModel
     software: ISoftwareModel
     claim: ISoftwareClaimModel
 }

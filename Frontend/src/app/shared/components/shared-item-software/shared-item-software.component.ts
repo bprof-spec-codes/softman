@@ -1,6 +1,6 @@
 import { Component, Input, Output, EventEmitter, ViewEncapsulation } from '@angular/core';
 
-import { ISoftwareModel, ISoftwareClaimModel } from 'src/app/core';
+import { ISoftwareModel, ISoftwareClaimModel, IUserModel } from 'src/app/core';
 
 @Component({
   selector: 'app-shared-item-software',
@@ -27,7 +27,7 @@ import { ISoftwareModel, ISoftwareClaimModel } from 'src/app/core';
           <ul>
             <li><span>{{software.name}} {{software.versionNumber}}</span></li>
             <li><span>{{serializedSize}}</span></li>
-            <li><span>Sent by: {{softwareClaim!.appUserId}}</span></li>
+            <li><span>Sent by: {{serializedUser}}</span></li>
             <li><span>Status: <span [ngClass]="serializedStatus">{{serializedStatus}}</span></span></li>
             <li><span>{{serializedDate}}</span></li>
           </ul>
@@ -48,6 +48,7 @@ import { ISoftwareModel, ISoftwareClaimModel } from 'src/app/core';
   `
 })
 export class SharedItemSoftwareComponent {
+  @Input() user?: IUserModel
   @Input() software!: ISoftwareModel
   @Input() softwareClaim?: ISoftwareClaimModel
   @Input() isExtended: boolean = false
@@ -64,6 +65,14 @@ export class SharedItemSoftwareComponent {
   get serializedDate(): string {
     const date = new Date(this.softwareClaim!.claimDate)
     return `Date: ${date.toLocaleDateString('hu-HU', { year: 'numeric', month: '2-digit', day: '2-digit' })}`
+  }
+
+  get serializedUser(): string {
+    var result = ''
+    if (this.user) {
+      return `${this.user.firstName} ${this.user.lastName}`
+    }
+    return result
   }
 
   updateStatus(args: { claim: ISoftwareClaimModel, status: number }) {

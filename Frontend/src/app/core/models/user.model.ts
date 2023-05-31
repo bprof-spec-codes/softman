@@ -1,4 +1,8 @@
-type UserType = {
+import { RoleType } from '../types'
+
+interface IUserModel {
+    id?: string
+    roles?: RoleType[]
     email?: string
     userName?: string
     firstName?: string
@@ -7,4 +11,4 @@ type UserType = {
     passwordAgain?: string
 }
 
-export default UserType
+export default IUserModel

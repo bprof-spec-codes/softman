@@ -5,6 +5,7 @@ interface ISoftwareModel {
     size: number
     pictureData: string
     pictureContentType: string
+    imageFile?: File
 }
 
 export default ISoftwareModel

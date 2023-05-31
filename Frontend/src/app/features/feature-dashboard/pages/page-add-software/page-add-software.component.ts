@@ -20,8 +20,6 @@ import { ImgSupport } from 'src/assets';
 })
 export class PageAddSoftwareComponent {
 
-  file?: File
-
   software: ISoftwareModel = {
     id: '',
     name: '',
@@ -88,7 +86,7 @@ export class PageAddSoftwareComponent {
   onInputChange(e: Event) {
     const { name, value } = e.target as HTMLInputElement
     if (name === 'file') {
-      this.file = (e.target as HTMLInputElement).files![0]
+      this.software.imageFile = (e.target as HTMLInputElement).files![0]
     }
     else {
       this.software = {...this.software, [name]: value}

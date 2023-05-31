@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
+import { IUserModel } from 'src/app/core'
 import { FormLayoutType } from 'src/app/shared';
-import { UserType } from '../../types';
 
 import { ApiAuthService } from '../../services';
 
@@ -20,7 +20,7 @@ import { BackgroundImgRegisterWelcome } from 'src/assets';
 })
 export class PageRegisterComponent {
 
-  user: UserType = {
+  user: IUserModel = {
     email: '',
     firstName: '',
     lastName: '',

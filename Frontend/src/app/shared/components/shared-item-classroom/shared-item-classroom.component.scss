@@ -34,6 +34,10 @@
         transform: rotate(90deg) translateX(-18%);
     }
 
+    .img-rotate {
+        transform: rotate(180deg) translateY(-18%);
+    }
+
     &-selected {
         border: 2px solid $color-action;
     }

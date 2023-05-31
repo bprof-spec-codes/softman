@@ -140,8 +140,9 @@ namespace SoftwareManagerAPI.Controllers
         }
 
 
-        [Authorize]
+        [Authorize]        
         [HttpGet]
+        [Route("[action]")]
         public async Task<IActionResult> GetAllUser()
         {
             var users = await _userManager.Users.ToListAsync();
@@ -169,7 +170,7 @@ namespace SoftwareManagerAPI.Controllers
             return Unauthorized();
         }
 
-
+        
         [Authorize]
         [HttpGet]
         public async Task<IActionResult> GetUserInfos()

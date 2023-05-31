@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router'
 
+import { IUserModel } from 'src/app/core'
 import { FormLayoutType } from 'src/app/shared';
-import { UserType } from '../../types';
 
 import { ApiAuthService } from '../../services';
 
@@ -22,7 +22,7 @@ import { BackgroundImgLoginWelcome } from 'src/assets';
 })
 export class PageLoginComponent {
 
-  user: UserType = { password: '', userName: '' }
+  user: IUserModel = { password: '', userName: '' }
 
   constructor(
     private apiAuthService: ApiAuthService,

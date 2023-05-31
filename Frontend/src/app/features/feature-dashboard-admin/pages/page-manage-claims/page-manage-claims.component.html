@@ -26,11 +26,13 @@
                 *ngFor="let classroom of classrooms"
                 [classroom]="classroom"
                 [isExtended]="true"
+                [isSelected]="classroom.id === selectedClassroom"
                 (select)="setSelectedClassroom($event)"
                 (delete)="deleteClassroom($event)"
             />
             <app-shared-item-software
                 *ngFor="let item of vm_softwareClaims"
+                [user]="item.user"
                 [software]="item.software"
                 [softwareClaim]="item.claim"
                 [isExtended]="true"

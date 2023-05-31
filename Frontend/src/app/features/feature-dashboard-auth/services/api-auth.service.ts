@@ -7,7 +7,7 @@ import {
     GuardUserService, GuardAdminService
 } from 'src/app/core'
 
-import { UserType } from '../types'
+import { IUserModel } from 'src/app/core'
 
 @Injectable({
     providedIn: 'root'
@@ -26,7 +26,7 @@ export class ApiAuthService extends ApiBaseService {
         this.defineRole('None')
     }
 
-    public login(payload: UserType) {
+    public login(payload: IUserModel) {
         return this.wrap<IAuthModel>(
             fetch(this.baseUrl, {
                 method: 'post',
@@ -41,7 +41,7 @@ export class ApiAuthService extends ApiBaseService {
         )
     }
 
-    public register(payload: UserType) {
+    public register(payload: IUserModel) {
         payload.userName = payload.email
         delete payload.passwordAgain
         return this.wrap<any>(

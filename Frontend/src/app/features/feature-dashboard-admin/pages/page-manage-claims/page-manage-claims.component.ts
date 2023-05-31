@@ -4,10 +4,11 @@ import { Router } from '@angular/router'
 import {
   ApiAdminClassService,
   ApiAdminSoftwareClaimService,
-  ApiAdminSoftwareService
+  ApiAdminSoftwareService,
+  ApiAdminAuthService
 } from '../../services'
 
-import { IClassroomModel, ISoftwareClaimModel, ISoftwareModel } from 'src/app/core'
+import { IClassroomModel, ISoftwareClaimModel, ISoftwareModel, IUserModel } from 'src/app/core'
 import { SoftwareClaimType } from '../../types'
 
 import { ImgWebDevelopment } from 'src/assets'
@@ -21,6 +22,7 @@ import { ImgWebDevelopment } from 'src/assets'
 export class PageManageClaimsComponent {
   imgWebDevelopment = ImgWebDevelopment
 
+  users: IUserModel[] = []
   classrooms: IClassroomModel[] = []
   softwares: ISoftwareModel[] = []
   softwareClaims: ISoftwareClaimModel[] = []
@@ -33,8 +35,10 @@ export class PageManageClaimsComponent {
     public router: Router,
     private apiAdminClassService: ApiAdminClassService,
     private apiAdminSoftwareClaimService: ApiAdminSoftwareClaimService,
-    private apiAdminSoftwareService: ApiAdminSoftwareService
+    private apiAdminSoftwareService: ApiAdminSoftwareService,
+    private apiAdminAuthService: ApiAdminAuthService
   ) {
+    this.loadUsers()
     this.loadClasses()
     this.loadSoftwares()
     this.loadSoftwareClaims()
@@ -44,10 +48,15 @@ export class PageManageClaimsComponent {
     this.vm_softwareClaims = []
     filtered.map(claim => {
       const software = this.softwares.find(x => x.id === claim.softwareId)
+      const user = this.users.find(x => x.id == claim.appUserId)
       if (software) {
-        this.vm_softwareClaims.push({ claim, software })
+        this.vm_softwareClaims.push({ claim, software, user })
       }
     })
+  }
+
+  async loadUsers() {
+    this.users = await this.apiAdminAuthService.getAllUsers()
   }
 
   async loadClasses() {
@@ -76,7 +85,7 @@ export class PageManageClaimsComponent {
     const claim = { ...args.claim, status: args.status }
     const softwareClaim = await this.apiAdminSoftwareClaimService.updateSoftwareClaims(claim)
     this.softwareClaims = this.softwareClaims.map(x => x.id === claim.id ? softwareClaim : x)
-    this.vm_softwareClaims = this.vm_softwareClaims.map(x => x.claim.id === claim.id ? { claim: softwareClaim, software: x.software } : x)
+    this.vm_softwareClaims = this.vm_softwareClaims.map(x => x.claim.id === claim.id ? { claim: softwareClaim, software: x.software, user: x.user } : x)
   }
 
   async deleteClassroom(id: string) {
