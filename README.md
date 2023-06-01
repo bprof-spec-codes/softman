@@ -2,7 +2,7 @@
 - Teamleader: Szanyi Szabolcs
 - Backend: Juhász Márton Bendegúz
 - Frontend: Schaffer Tamás
-- Kozma Hunor
+- Fullstack: Kozma Hunor
 
 
 # User manual
