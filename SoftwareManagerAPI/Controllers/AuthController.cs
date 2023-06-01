@@ -125,9 +125,8 @@ namespace SoftwareManagerAPI.Controllers
 
             return Ok();
         }
-
-
         [Authorize]
+        [Route("[Action]")]
         [HttpGet]
         public async Task<IActionResult> GetAllUser()
         {
