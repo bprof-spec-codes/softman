@@ -6,6 +6,10 @@ import { Component, ViewEncapsulation, Output, EventEmitter } from '@angular/cor
   encapsulation: ViewEncapsulation.None,
   template: `
     <div class="panel-drag-n-drop" (dragover)="allowDrop($event)" (drop)="drop($event)">
+    <p class="subtitle"><span>Upload Software</span><br><span id="counter">0%</span></p>
+    <div class="upload-bar">
+      <div id="progress-line"></div>
+    </div>
         <span class="placeholder">Drop here</span>
         <app-shared-panel-flow-layout>
           <ng-content/>

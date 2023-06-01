@@ -1,8 +1,13 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { ISoftwareModel, IClassroomModel } from 'src/app/core';
 import { PopUpType } from 'src/app/shared';
+
+import $ from 'jquery';
+import 'jquery-ui-dist/jquery-ui';
+
+
 
 import {
     ApiUserClassService,
@@ -17,8 +22,10 @@ import { ImgJetpackGuy } from 'src/assets';
   templateUrl: './page-request-softwares.component.html',
   styleUrls: ['./page-request-softwares.component.scss'],
   encapsulation: ViewEncapsulation.None
+
+  
 })
-export class PageRequestSoftwaresComponent {
+export class PageRequestSoftwaresComponent implements OnInit {
     imgJetpackGuy = ImgJetpackGuy
 
     softwareClaims: ISoftwareModel[] = []
@@ -31,6 +38,9 @@ export class PageRequestSoftwaresComponent {
     searchBars = { software: '', class: '' }
     popup: PopUpType | undefined = undefined
 
+    private timeout: number | null = null;
+    private widthCount = 0;
+
     constructor(
         private router: Router,
         private apiUserClassService: ApiUserClassService,
@@ -40,6 +50,17 @@ export class PageRequestSoftwaresComponent {
         this.loadClasses()
         this.loadSoftwares()
     }
+    ngOnInit() {
+        $('#draggable').draggable();
+        $('#dropzone').droppable({
+          drop: () => {
+            $('#draggable').fadeOut();
+            this.timeout = window.setTimeout(() => {
+              this.updateProgress();
+            }, 200);
+          },
+        });
+      }
 
     async loadClasses() {
         this.classrooms = await this.apiUserClassService.getAllClass()
@@ -104,10 +125,12 @@ export class PageRequestSoftwaresComponent {
                     `Storage after added software: ${storageAfter} GB`
                 ],
                 onYes: (e) => {
+                    this.updateProgress()
                     this.softwareClaims = [software]
                     this.classrooms = this.classrooms.map(x => x.id === this.selectedClassroom
                         ? {...x, storageCapacity: storageAfter} : x)
                     this.popup = undefined
+                    
                 },
                 onNo: (e) => {
                     this.popup = undefined
@@ -209,4 +232,26 @@ export class PageRequestSoftwaresComponent {
             storageCapacity: 15
         }
     ]*/
-}
+
+
+    updateProgress() {
+        this.widthCount += 10;
+        console.log(this.widthCount);
+        $('#progress-line').css('width', this.widthCount + '%');
+        if (this.widthCount < 110) {
+          this.timeout = window.setTimeout(() => {
+            this.updateProgress();
+          }, 200);
+          $('#status').text('Uploading...');
+          $('#counter').text(this.widthCount + 'Kb');
+        } else {
+          $('#status').text('Done');
+          if (this.timeout) {
+            window.clearTimeout(this.timeout);
+          }
+          $('#dropzone').hide();
+          $('.img-preview-area').fadeIn();
+          $('.save-btn').fadeIn();
+        }
+      }
+    }

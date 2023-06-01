@@ -4,10 +4,11 @@ import { Router } from '@angular/router'
 import {
   ApiAdminClassService,
   ApiAdminSoftwareClaimService,
-  ApiAdminSoftwareService
+  ApiAdminSoftwareService,
+  ApiAdminUserService
 } from '../../services'
 
-import { IClassroomModel, ISoftwareClaimModel, ISoftwareModel } from 'src/app/core'
+import { IClassroomModel, ISoftwareClaimModel, ISoftwareModel, IUserModel } from 'src/app/core'
 import { SoftwareClaimType } from '../../types'
 
 import { ImgWebDevelopment } from 'src/assets'
@@ -25,7 +26,9 @@ export class PageManageClaimsComponent {
   softwares: ISoftwareModel[] = []
   softwareClaims: ISoftwareClaimModel[] = []
   vm_softwareClaims: SoftwareClaimType[] = []
+  users: IUserModel[] = []
   selectedClassroom?: string
+
 
   searchBars = { claims: '' }
 
@@ -33,19 +36,22 @@ export class PageManageClaimsComponent {
     public router: Router,
     private apiAdminClassService: ApiAdminClassService,
     private apiAdminSoftwareClaimService: ApiAdminSoftwareClaimService,
-    private apiAdminSoftwareService: ApiAdminSoftwareService
+    private apiAdminSoftwareService: ApiAdminSoftwareService,
+    private apiAdminUserService: ApiAdminUserService
   ) {
     this.loadClasses()
     this.loadSoftwares()
     this.loadSoftwareClaims()
+    this.loadUsers()
   }
-
+  
   private addSoftwareToClaim(filtered: ISoftwareClaimModel[]) {
     this.vm_softwareClaims = []
     filtered.map(claim => {
+      const user = this.users.find(u => u.id === claim.appUserId)
       const software = this.softwares.find(x => x.id === claim.softwareId)
-      if (software) {
-        this.vm_softwareClaims.push({ claim, software })
+      if (software && user) {
+        this.vm_softwareClaims.push({ claim, software, user })
       }
     })
   }
@@ -56,6 +62,10 @@ export class PageManageClaimsComponent {
 
   async loadSoftwares() {
     this.softwares = await this.apiAdminSoftwareService.getAllSoftwares()
+  }
+
+  async loadUsers() {
+    this.users = await this.apiAdminUserService.getAllUsers()
   }
 
   async loadSoftwareClaims() {
@@ -76,7 +86,7 @@ export class PageManageClaimsComponent {
     const claim = { ...args.claim, status: args.status }
     const softwareClaim = await this.apiAdminSoftwareClaimService.updateSoftwareClaims(claim)
     this.softwareClaims = this.softwareClaims.map(x => x.id === claim.id ? softwareClaim : x)
-    this.vm_softwareClaims = this.vm_softwareClaims.map(x => x.claim.id === claim.id ? { claim: softwareClaim, software: x.software } : x)
+    this.vm_softwareClaims = this.vm_softwareClaims.map(x => x.claim.id === claim.id ? { claim: softwareClaim, software: x.software,  user: x.user} : x)
   }
 
   async deleteClassroom(id: string) {

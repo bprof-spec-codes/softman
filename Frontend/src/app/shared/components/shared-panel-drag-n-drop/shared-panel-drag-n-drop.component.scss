@@ -21,7 +21,35 @@
     .panel-flow-layout {
         @apply h-full;
 
+        bottom: 6.5em;
         background: transparent !important;
         backdrop-filter: unset !important;
+
+        .item-software {
+          margin-top: 6em;
+          width: 92.363%;
+        }
     }
+    .upload-bar {
+        height: 10px;
+        width: 100px;
+        background: #ddd;
+        margin: 18px;
+        border-radius: 99px;
+        width: 91%;
+        overflow: hidden;
+      }
+    #progress-line {
+        background: #008cf7;
+        width: 0%;
+        height: 10px;
+        border-radius: 99px;
+      }
+      .subtitle {
+        text-align: center;
+        margin-left: 3.5em;
+        margin-right: 3.5em;
+        font-size: 1.2em;
+        color: #ddd;
+      }
 }
